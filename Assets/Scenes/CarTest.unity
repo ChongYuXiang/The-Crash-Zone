@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bdfb869a91e944f8a3606a9f31d2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  control: 0
-  maxAcceleration: 70
+  maxAcceleration: 50
+  boostAcceleration: 200
   brakeAcceleration: 500
   turnSensitivity: 1
   maxSteerAngle: 30
@@ -215,6 +215,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.06, y: 1.2605064, z: 4.8544555}
   m_Center: {x: 0, y: 0.7900716, z: -0.017288446}
+--- !u!114 &65539328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65539323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 4baa5fbced417c24e90ec84d075b6ac4,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Cars
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &145109164
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +613,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13.443625, y: 13.443625, z: 13.443625}
+  m_LocalScale: {x: 93.205, y: 93.205, z: 93.205}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -625,7 +656,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -738,7 +769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSmoothness: 5
-  rotSmoothness: 7
+  rotSmoothness: 6
   moveOffset: {x: 0, y: 2.7, z: -5}
   rotOffset: {x: 0, y: 1, z: 0}
   carTarget: {fileID: 915413820}
@@ -913,6 +944,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 65539324}
+    - targetCorrespondingSourceObject: {fileID: 4591691155392393144, guid: a9cbfe7195f75844aa7ec0619ca7616f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 65539328}
   m_SourcePrefab: {fileID: 100100000, guid: a9cbfe7195f75844aa7ec0619ca7616f, type: 3}
 --- !u!1 &1991074458 stripped
 GameObject:

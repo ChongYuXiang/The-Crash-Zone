@@ -1,14 +1,28 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using UnityEngine.Animations;
+using UnityEditor.ShaderGraph;
 
 public class CarsController : MonoBehaviour
 {
-    public enum ControlMode
+    private PlayerControls controls;
+
+    private void Awake()
     {
-        Keyboard,
-        Buttons
-    };
+        controls = new PlayerControls();
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
 
     public enum Axel
     {
@@ -26,9 +40,8 @@ public class CarsController : MonoBehaviour
         public Axel axel;
     }
 
-    public ControlMode control;
-
     public float maxAcceleration = 30.0f;
+    public float boostAcceleration = 60.0f;
     public float brakeAcceleration = 50.0f;
 
     public float turnSensitivity = 1.0f;
@@ -63,30 +76,33 @@ public class CarsController : MonoBehaviour
         Brake();
     }
 
-    public void MoveInput(float input)
-    {
-        moveInput = input;
-    }
-
-    public void SteerInput(float input)
-    {
-        steerInput = input;
-    }
-
     void GetInputs()
     {
-        if (control == ControlMode.Keyboard)
-        {
-            moveInput = Input.GetAxis("Vertical");
-            steerInput = Input.GetAxis("Horizontal");
-        }
+        moveInput = controls.Cars.Accelerate.ReadValue<float>();
+        steerInput = controls.@Cars.Steer.ReadValue<float>();
     }
 
     void Move()
     {
-        foreach (var wheel in wheels)
+        float boostInput = controls.Cars.Boost.ReadValue<float>();
+
+        // If boosting, use boostAcceleration; otherwise, use maxAcceleration
+        float acceleration = boostInput > 0 ? boostAcceleration : maxAcceleration;
+        float torque = moveInput * 600f * acceleration * Time.deltaTime;
+
+        foreach (var wheel in wheels) // Apply the calculated torque to each drive wheel
         {
-            wheel.wheelCollider.motorTorque = moveInput * 600 * maxAcceleration * Time.deltaTime;
+            wheel.wheelCollider.motorTorque = torque;
+        }
+
+        // Clamp top speed if not boosting
+        if (boostInput <= 0)
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb.velocity.magnitude > maxAcceleration)
+            {
+                rb.velocity = Vector3.ClampMagnitude(rb.velocity, Mathf.Lerp(rb.velocity.magnitude, maxAcceleration, 0.1f));
+            }
         }
     }
 
@@ -104,7 +120,7 @@ public class CarsController : MonoBehaviour
 
     void Brake()
     {
-        if (Input.GetKey(KeyCode.Space) || moveInput == 0)
+        if (controls.Cars.Brake.ReadValue<float>() != 0 || moveInput == 0)
         {
             foreach (var wheel in wheels)
             {
