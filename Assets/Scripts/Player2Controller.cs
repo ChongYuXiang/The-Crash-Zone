@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Animations;
 using UnityEditor.ShaderGraph;
 
-public class CarsController : MonoBehaviour
+public class Player2Controller : MonoBehaviour
 {
     private PlayerControls controls;
 
@@ -78,13 +78,13 @@ public class CarsController : MonoBehaviour
 
     void GetInputs()
     {
-        moveInput = controls.Cars.Accelerate.ReadValue<float>();
-        steerInput = controls.@Cars.Steer.ReadValue<float>();
+        moveInput = controls.Player2.Accelerate.ReadValue<float>();
+        steerInput = controls.Player2.Steer.ReadValue<float>();
     }
 
     void Move()
     {
-        float boostInput = controls.Cars.Boost.ReadValue<float>();
+        float boostInput = controls.Player2.Boost.ReadValue<float>();
 
         // If boosting, use boostAcceleration; otherwise, use maxAcceleration
         float acceleration = boostInput > 0 ? boostAcceleration : maxAcceleration;
@@ -98,10 +98,9 @@ public class CarsController : MonoBehaviour
         // Clamp top speed if not boosting
         if (boostInput <= 0)
         {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            if (rb.velocity.magnitude > maxAcceleration)
+            if (carRb.velocity.magnitude > maxAcceleration)
             {
-                rb.velocity = Vector3.ClampMagnitude(rb.velocity, Mathf.Lerp(rb.velocity.magnitude, maxAcceleration, 0.1f));
+                carRb.velocity = Vector3.ClampMagnitude(carRb.velocity, Mathf.Lerp(carRb.velocity.magnitude, maxAcceleration, 0.1f));
             }
         }
     }
@@ -120,7 +119,7 @@ public class CarsController : MonoBehaviour
 
     void Brake()
     {
-        if (controls.Cars.Brake.ReadValue<float>() != 0 || moveInput == 0)
+        if (controls.Player2.Brake.ReadValue<float>() != 0 || moveInput == 0)
         {
             foreach (var wheel in wheels)
             {
