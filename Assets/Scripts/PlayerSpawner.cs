@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
@@ -36,6 +37,20 @@ public class PlayerSpawner : MonoBehaviour
             SpawnPlayer2();
         }
     }
+
+    public void RemovePlayer(int playerNum)
+    {
+        if (playerNum == 1)
+        {
+            player1CarID = null;
+            // Add a script here to delete clone1
+        }
+        if (playerNum == 2)
+        {
+            player2CarID = null;
+            // Add a script here to delete clone2
+        }
+    } 
 
     public void StartGame()
     {
