@@ -66,7 +66,7 @@ public class Player2Controller : MonoBehaviour
     {
         GetInputs();
         AnimateWheels();
-        //WheelEffects();
+        WheelEffects();
     }
 
     void LateUpdate()
@@ -147,22 +147,19 @@ public class Player2Controller : MonoBehaviour
         }
     }
 
-    /*
     void WheelEffects()
     {
         foreach (var wheel in wheels)
         {
-            //var dirtParticleMainSettings = wheel.smokeParticle.main;
-
-            if (Input.GetKey(KeyCode.Space) && wheel.axel == Axel.Rear && wheel.wheelCollider.isGrounded == true && carRb.velocity.magnitude >= 10.0f)
+            if (controls.Player2.Brake.ReadValue<float>() != 0 && wheel.axel == Axel.Rear && wheel.wheelCollider.isGrounded == true && carRb.velocity.magnitude >= 2.0f)
             {
                 wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = true;
-                wheel.smokeParticle.Emit(1);
+                //wheel.smokeParticle.Emit(1);
             }
             else
             {
                 wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = false;
             }
         }
-    }*/
+    }
 }
