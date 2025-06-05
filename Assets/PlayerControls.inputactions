@@ -804,7 +804,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Boost",
+                    "name": "Ability",
                     "type": "Button",
                     "id": "7bf1ae45-1a49-45a0-9085-83a49e878ddc",
                     "expectedControlType": "",
@@ -898,7 +898,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Boost",
+                    "action": "Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -936,7 +936,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Boost",
+                    "name": "Ability",
                     "type": "Button",
                     "id": "c284bd36-57c5-463f-885e-61b8a003679d",
                     "expectedControlType": "",
@@ -1030,7 +1030,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Boost",
+                    "action": "Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

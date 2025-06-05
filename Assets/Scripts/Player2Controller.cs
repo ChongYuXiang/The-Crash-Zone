@@ -84,7 +84,7 @@ public class Player2Controller : MonoBehaviour
 
     void Move()
     {
-        float boostInput = controls.Player2.Boost.ReadValue<float>();
+        float boostInput = controls.Player2.Ability.ReadValue<float>();
 
         // If boosting, use boostAcceleration; otherwise, use maxAcceleration
         float acceleration = boostInput > 0 ? boostAcceleration : maxAcceleration;

@@ -9,27 +9,26 @@ public class Player1Controller : MonoBehaviour
 {
     private PlayerControls controls;
 
+    // Set up control detection
     private void Awake()
     {
         controls = new PlayerControls();
     }
-
     private void OnEnable()
     {
         controls.Enable();
     }
-
     private void OnDisable()
     {
         controls.Disable();
     }
 
+    // Wheel classes
     public enum Axel
     {
         Front,
         Rear
     }
-
     [Serializable]
     public struct Wheel
     {
@@ -39,6 +38,9 @@ public class Player1Controller : MonoBehaviour
         public ParticleSystem smokeParticle;
         public Axel axel;
     }
+
+    // Variables
+    public int playerNum;
 
     public float maxAcceleration = 30.0f;
     public float boostAcceleration = 60.0f;
@@ -53,8 +55,11 @@ public class Player1Controller : MonoBehaviour
 
     float moveInput;
     float steerInput;
+    float brakeInput;
+    float abilityInput;
 
     private Rigidbody carRb;
+
 
     void Start()
     {
@@ -62,6 +67,7 @@ public class Player1Controller : MonoBehaviour
         carRb.centerOfMass = _centerOfMass;
     }
 
+    // At the start of each frame, retrieve inputs and update vfx/animation
     void Update()
     {
         GetInputs();
@@ -69,6 +75,7 @@ public class Player1Controller : MonoBehaviour
         WheelEffects();
     }
 
+    // At the end of each frame, calculate the car's movement
     void LateUpdate()
     {
         Move();
@@ -76,18 +83,29 @@ public class Player1Controller : MonoBehaviour
         Brake();
     }
 
-    void GetInputs()
+    void GetInputs() // Read inputs
     {
-        moveInput = controls.Player1.Accelerate.ReadValue<float>();
-        steerInput = controls.Player1.Steer.ReadValue<float>();
+        // Check if the car is controlled by player 1 or player 2 to read the correct inputs
+        if (playerNum == 1) // Player 1
+        {
+            moveInput = controls.Player1.Accelerate.ReadValue<float>();
+            steerInput = controls.Player1.Steer.ReadValue<float>();
+            brakeInput = controls.Player1.Brake.ReadValue<float>();
+            abilityInput = controls.Player1.Ability.ReadValue<float>();
+        }
+        if (playerNum == 2) // Player 2
+        {
+            moveInput = controls.Player2.Accelerate.ReadValue<float>();
+            steerInput = controls.Player2.Steer.ReadValue<float>();
+            brakeInput = controls.Player2.Brake.ReadValue<float>();
+            abilityInput = controls.Player2.Ability.ReadValue<float>();
+        }
     }
 
-    void Move()
+    void Move() // Forward and backward movement and boosting with ability key
     {
-        float boostInput = controls.Player1.Boost.ReadValue<float>();
-
         // If boosting, use boostAcceleration; otherwise, use maxAcceleration
-        float acceleration = boostInput > 0 ? boostAcceleration : maxAcceleration;
+        float acceleration = abilityInput > 0 ? boostAcceleration : maxAcceleration;
         float torque = moveInput * 600f * acceleration * Time.deltaTime;
 
         foreach (var wheel in wheels) // Apply the calculated torque to each drive wheel
@@ -96,7 +114,7 @@ public class Player1Controller : MonoBehaviour
         }
 
         // Clamp top speed if not boosting
-        if (boostInput <= 0)
+        if (abilityInput <= 0)
         {
             if (carRb.velocity.magnitude > maxAcceleration)
             {
@@ -105,21 +123,22 @@ public class Player1Controller : MonoBehaviour
         }
     }
 
-    void Steer()
+    void Steer() // Left and right steering
     {
-        foreach (var wheel in wheels)
+        foreach (var wheel in wheels) // For each wheel,
         {
-            if (wheel.axel == Axel.Front)
+            if (wheel.axel == Axel.Front) // If wheel is front wheel,
             {
+                // Turn wheel
                 var _steerAngle = steerInput * turnSensitivity * maxSteerAngle;
                 wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, _steerAngle, 0.6f);
             }
         }
     }
 
-    void Brake()
+    void Brake() // Stop vehicle movement
     {
-        if (controls.Player1.Brake.ReadValue<float>() != 0 || moveInput == 0)
+        if (brakeInput != 0 || moveInput == 0)
         {
             foreach (var wheel in wheels)
             {
@@ -135,30 +154,36 @@ public class Player1Controller : MonoBehaviour
         }
     }
 
-    void AnimateWheels()
+    void AnimateWheels() // Spin and rotate wheels
     {
-        foreach (var wheel in wheels)
+        foreach (var wheel in wheels) // For each wheel,
         {
+            // Get rotation of wheel colliders
             Quaternion rot;
             Vector3 pos;
             wheel.wheelCollider.GetWorldPose(out pos, out rot);
+
+            // Match transform of colliders with mesh
             wheel.wheelModel.transform.position = pos;
             wheel.wheelModel.transform.rotation = rot;
         }
     }
 
 
-    void WheelEffects()
+    void WheelEffects() // VFX for wheels when braking
     {
-        foreach (var wheel in wheels)
+        foreach (var wheel in wheels) // For each wheel,
         {
-            if (controls.Player2.Brake.ReadValue<float>() != 0 && wheel.axel == Axel.Rear && wheel.wheelCollider.isGrounded == true && carRb.velocity.magnitude >= 2.0f)
+            // Check if braking, if car in grounded, and if the car is still moving
+            if (brakeInput != 0 && wheel.axel == Axel.Rear && wheel.wheelCollider.isGrounded == true && carRb.velocity.magnitude >= 2.0f)
             {
+                // Enable effects
                 wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = true;
                 //wheel.smokeParticle.Emit(1);
             }
             else
             {
+                // Disable effects
                 wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = false;
             } 
         }
