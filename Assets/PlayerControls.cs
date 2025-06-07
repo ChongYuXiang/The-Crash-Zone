@@ -826,7 +826,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Boost"",
+                    ""name"": ""Ability"",
                     ""type"": ""Button"",
                     ""id"": ""7bf1ae45-1a49-45a0-9085-83a49e878ddc"",
                     ""expectedControlType"": """",
@@ -920,7 +920,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Boost"",
+                    ""action"": ""Ability"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -958,7 +958,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Boost"",
+                    ""name"": ""Ability"",
                     ""type"": ""Button"",
                     ""id"": ""c284bd36-57c5-463f-885e-61b8a003679d"",
                     ""expectedControlType"": """",
@@ -1052,7 +1052,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Boost"",
+                    ""action"": ""Ability"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1144,13 +1144,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player1_Accelerate = m_Player1.FindAction("Accelerate", throwIfNotFound: true);
         m_Player1_Steer = m_Player1.FindAction("Steer", throwIfNotFound: true);
         m_Player1_Brake = m_Player1.FindAction("Brake", throwIfNotFound: true);
-        m_Player1_Boost = m_Player1.FindAction("Boost", throwIfNotFound: true);
+        m_Player1_Ability = m_Player1.FindAction("Ability", throwIfNotFound: true);
         // Player2
         m_Player2 = asset.FindActionMap("Player2", throwIfNotFound: true);
         m_Player2_Accelerate = m_Player2.FindAction("Accelerate", throwIfNotFound: true);
         m_Player2_Steer = m_Player2.FindAction("Steer", throwIfNotFound: true);
         m_Player2_Brake = m_Player2.FindAction("Brake", throwIfNotFound: true);
-        m_Player2_Boost = m_Player2.FindAction("Boost", throwIfNotFound: true);
+        m_Player2_Ability = m_Player2.FindAction("Ability", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -1403,7 +1403,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player1_Accelerate;
     private readonly InputAction m_Player1_Steer;
     private readonly InputAction m_Player1_Brake;
-    private readonly InputAction m_Player1_Boost;
+    private readonly InputAction m_Player1_Ability;
     public struct Player1Actions
     {
         private @PlayerControls m_Wrapper;
@@ -1411,7 +1411,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Accelerate => m_Wrapper.m_Player1_Accelerate;
         public InputAction @Steer => m_Wrapper.m_Player1_Steer;
         public InputAction @Brake => m_Wrapper.m_Player1_Brake;
-        public InputAction @Boost => m_Wrapper.m_Player1_Boost;
+        public InputAction @Ability => m_Wrapper.m_Player1_Ability;
         public InputActionMap Get() { return m_Wrapper.m_Player1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1430,9 +1430,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Brake.started += instance.OnBrake;
             @Brake.performed += instance.OnBrake;
             @Brake.canceled += instance.OnBrake;
-            @Boost.started += instance.OnBoost;
-            @Boost.performed += instance.OnBoost;
-            @Boost.canceled += instance.OnBoost;
+            @Ability.started += instance.OnAbility;
+            @Ability.performed += instance.OnAbility;
+            @Ability.canceled += instance.OnAbility;
         }
 
         private void UnregisterCallbacks(IPlayer1Actions instance)
@@ -1446,9 +1446,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Brake.started -= instance.OnBrake;
             @Brake.performed -= instance.OnBrake;
             @Brake.canceled -= instance.OnBrake;
-            @Boost.started -= instance.OnBoost;
-            @Boost.performed -= instance.OnBoost;
-            @Boost.canceled -= instance.OnBoost;
+            @Ability.started -= instance.OnAbility;
+            @Ability.performed -= instance.OnAbility;
+            @Ability.canceled -= instance.OnAbility;
         }
 
         public void RemoveCallbacks(IPlayer1Actions instance)
@@ -1473,7 +1473,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player2_Accelerate;
     private readonly InputAction m_Player2_Steer;
     private readonly InputAction m_Player2_Brake;
-    private readonly InputAction m_Player2_Boost;
+    private readonly InputAction m_Player2_Ability;
     public struct Player2Actions
     {
         private @PlayerControls m_Wrapper;
@@ -1481,7 +1481,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Accelerate => m_Wrapper.m_Player2_Accelerate;
         public InputAction @Steer => m_Wrapper.m_Player2_Steer;
         public InputAction @Brake => m_Wrapper.m_Player2_Brake;
-        public InputAction @Boost => m_Wrapper.m_Player2_Boost;
+        public InputAction @Ability => m_Wrapper.m_Player2_Ability;
         public InputActionMap Get() { return m_Wrapper.m_Player2; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1500,9 +1500,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Brake.started += instance.OnBrake;
             @Brake.performed += instance.OnBrake;
             @Brake.canceled += instance.OnBrake;
-            @Boost.started += instance.OnBoost;
-            @Boost.performed += instance.OnBoost;
-            @Boost.canceled += instance.OnBoost;
+            @Ability.started += instance.OnAbility;
+            @Ability.performed += instance.OnAbility;
+            @Ability.canceled += instance.OnAbility;
         }
 
         private void UnregisterCallbacks(IPlayer2Actions instance)
@@ -1516,9 +1516,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Brake.started -= instance.OnBrake;
             @Brake.performed -= instance.OnBrake;
             @Brake.canceled -= instance.OnBrake;
-            @Boost.started -= instance.OnBoost;
-            @Boost.performed -= instance.OnBoost;
-            @Boost.canceled -= instance.OnBoost;
+            @Ability.started -= instance.OnAbility;
+            @Ability.performed -= instance.OnAbility;
+            @Ability.canceled -= instance.OnAbility;
         }
 
         public void RemoveCallbacks(IPlayer2Actions instance)
@@ -1605,13 +1605,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnAccelerate(InputAction.CallbackContext context);
         void OnSteer(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
-        void OnBoost(InputAction.CallbackContext context);
+        void OnAbility(InputAction.CallbackContext context);
     }
     public interface IPlayer2Actions
     {
         void OnAccelerate(InputAction.CallbackContext context);
         void OnSteer(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
-        void OnBoost(InputAction.CallbackContext context);
+        void OnAbility(InputAction.CallbackContext context);
     }
 }
