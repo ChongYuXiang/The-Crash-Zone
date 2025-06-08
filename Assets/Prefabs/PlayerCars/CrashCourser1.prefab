@@ -2339,7 +2339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bdfb869a91e944f8a3606a9f31d2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 0
+  playerNum: 1
   maxAcceleration: 50
   boostAcceleration: 200
   brakeAcceleration: 400
@@ -3013,7 +3013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7376147746951213026}
   m_Layer: 0
-  m_Name: DefaultCar1
+  m_Name: CrashCourser1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

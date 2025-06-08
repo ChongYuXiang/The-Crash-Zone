@@ -11,17 +11,19 @@ public class PlayerSpawner : MonoBehaviour
     private Transform spawnPoint2;
 
     [SerializeField] 
-    private GameObject defaultCar1;
+    private GameObject CrashCourser1;
     [SerializeField]
-    private GameObject defaultCar2;
+    private GameObject CrashCourser2;
+    [SerializeField]
+    private GameObject WinchWrangler1;
+    [SerializeField]
+    private GameObject WinchWrangler2;
 
     public string player1CarID;
     public string player2CarID;
 
     public void SaveNFCID(string ID)
     {
-        Debug.Log("Saving... ID sent: " + ID);
-
         if (string.IsNullOrEmpty(player1CarID))
         {
             // Save player 1's car ID
@@ -43,12 +45,10 @@ public class PlayerSpawner : MonoBehaviour
         if (playerNum == 1)
         {
             player1CarID = null;
-            // Add a script here to delete clone1
         }
         if (playerNum == 2)
         {
             player2CarID = null;
-            // Add a script here to delete clone2
         }
     } 
 
@@ -66,21 +66,35 @@ public class PlayerSpawner : MonoBehaviour
 
     private void SpawnPlayer1()
     {
+        Debug.Log("Spawning P1...");
         if (player1CarID == "04-C4-9A-15-C2-2A-81")
         {
             // Spawn player 1 at spawn point 1
-            GameObject clone1 = (GameObject)Instantiate(defaultCar1, spawnPoint1.position, spawnPoint1.rotation);
-            Debug.Log("Player 1 spawned");
+            GameObject clone = (GameObject)Instantiate(CrashCourser1, spawnPoint1.position, spawnPoint1.rotation);
+            Debug.Log("Player 1 (CrashCourser) spawned");
+        }
+        if (player1CarID == "04-E1-7E-16-C2-2A-81")
+        {
+            // Spawn player 2 at spawn point 2
+            GameObject clone = (GameObject)Instantiate(WinchWrangler1, spawnPoint1.position, spawnPoint1.rotation);
+            Debug.Log("Player 1 (WinchWrangler) spawned");
         }
     }
 
-    private void SpawnPlayer2() 
+    private void SpawnPlayer2()
     {
+        Debug.Log("Spawning P2...");
+        if (player2CarID == "04-C4-9A-15-C2-2A-81")
+        {
+            // Spawn player 1 at spawn point 1
+            GameObject clone = (GameObject)Instantiate(CrashCourser2, spawnPoint2.position, spawnPoint2.rotation);
+            Debug.Log("Player 2 (CrashCourser) spawned");
+        }
         if (player2CarID == "04-E1-7E-16-C2-2A-81")
         {
             // Spawn player 2 at spawn point 2
-            GameObject clone2 = (GameObject)Instantiate(defaultCar2, spawnPoint2.position, spawnPoint2.rotation);
-            Debug.Log("Player 2 spawned");
+            GameObject clone = (GameObject)Instantiate(WinchWrangler2, spawnPoint2.position, spawnPoint2.rotation);
+            Debug.Log("Player 2 (WinchWrangler) spawned");
         }
     }
 }
