@@ -39,8 +39,10 @@ public class PlayersCarController : MonoBehaviour
         public Axel axel;
     }
 
-    // Variables
-    public int playerNum;
+    // Public Variables
+    public int playerNum = 1;
+    public float health = 100;
+    public BoxCollider hitbox;
 
     public float maxAcceleration = 30.0f;
     public float boostAcceleration = 60.0f;
@@ -49,16 +51,16 @@ public class PlayersCarController : MonoBehaviour
     public float turnSensitivity = 1.0f;
     public float maxSteerAngle = 30.0f;
 
-    public Vector3 _centerOfMass;
-
     public List<Wheel> wheels;
 
-    float moveInput;
-    float steerInput;
-    float brakeInput;
-    float abilityInput;
+    // Inputs
+    private float moveInput;
+    private float steerInput;
+    private float brakeInput;
+    private float abilityInput;
 
     private Rigidbody carRb;
+    private Vector3 _centerOfMass;
 
 
     void Start()
@@ -188,4 +190,17 @@ public class PlayersCarController : MonoBehaviour
             } 
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (playerNum == 1 && other.CompareTag("player2Colliders"))
+        {
+            Debug.Log("player 1 hit player 2");
+        }
+        if (playerNum == 2 && other.CompareTag("player1Colliders"))
+        {
+            Debug.Log("player 2 hit player 1");
+        }
+    }
+
 }
