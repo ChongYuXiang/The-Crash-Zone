@@ -23,6 +23,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -71,6 +75,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NoiseEdgesTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -98,8 +106,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaAffectsOpacity: 1
+    - _AlphaClip: 0
     - _AlphaCutoff: 0.5
     - _AlphaIsDissolve: 1
+    - _AlphaToMask: 0
+    - _BaseColorEdgesLerp: 0
+    - _Blend: 0
+    - _BlendOp: 0
     - _BumpScale: 1
     - _CameraOffset: 0
     - _ColorSmoothstep: 0
@@ -113,7 +126,13 @@ Material:
     - _Distortion_Amount: 0
     - _Dst: 10
     - _DstBlend: 0
-    - _EmissiveIntensity: 3
+    - _DstBlendAlpha: 0
+    - _EdgesBias: 0
+    - _EdgesMultiply: 1
+    - _EdgesPower: 1
+    - _EmissionIntensity: 1
+    - _EmissiveIntensity: 100
+    - _EnvironmentReflections: 1
     - _ErosionMultiply: 1
     - _ErosionPower: 1
     - _ErosionSmoothstep: 0
@@ -129,15 +148,16 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _MaskDistortionIntensity: 1
+    - _MaskDistortionIntensity: 0
     - _MaskMultiply: 1
     - _MaskPower: 1
     - _MaskSmoothstep: 0
-    - _MaskSmoothstepSmoothness: 0.69
+    - _MaskSmoothstepSmoothness: 0.2
     - _Mask_Multiply: 1
     - _Mask_Power: 1
     - _Metallic: 0
     - _Mode: 0
+    - _NoiseDepth: 0
     - _OcclusionStrength: 1
     - _Opacity_Boost: 1
     - _OverallSpeed: 1
@@ -145,18 +165,24 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _SampleGI: 0
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
+    - _Specular: 0
     - _SpecularHighlights: 1
     - _Src: 5
     - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
+    - _Surface: 0
     - _UVSec: 0
     - _WindSpeed: -5
     - _ZTest: 2
-    - _ZWrite: 0
+    - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color01: {r: 0.7019608, g: 0.85098046, b: 1, a: 0}
+    - _BaseColor: {r: 0, g: 1, b: 0.97092485, a: 1}
+    - _Color: {r: 0, g: 1, b: 0.9709248, a: 1}
+    - _Color01: {r: 0, g: 0.921015, b: 1, a: 0}
     - _Color02: {r: 0.20000002, g: 0.86666673, b: 1, a: 0}
     - _ColorPanSpeed: {r: -0.733, g: 0.113, b: 0, a: 0}
     - _ColorUVScale: {r: 0.5, g: 1, b: 0, a: 0}
@@ -169,6 +195,7 @@ Material:
     - _DistortionUVScale: {r: 0.1, g: 0.3, b: 0, a: 0}
     - _Distortion_Scale: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Distortion_Speed: {r: 0, g: 0, b: 0, a: 0}
+    - _EdgesColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _ErosionPanSpeed: {r: -0.337, g: 0.07, b: 0, a: 0}
     - _ErosionUVScale: {r: 0.1, g: 0.3, b: 0, a: 0}
@@ -178,4 +205,6 @@ Material:
     - _MaskUVScale: {r: 0.25, g: 1, b: 0, a: 0}
     - _Mask_Scale: {r: 0.5, g: 1, b: 0, a: 0}
     - _Mask_Speed: {r: 0.5, g: 0, b: 0, a: 0}
+    - _WorldNoiseSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _WorldNoiseTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
