@@ -66,8 +66,8 @@ Material:
     - _NormalStrength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RimBoost: 4
+    - _RimBoost: 5
     m_Colors:
-    - _CrackColor: {r: 8.352403, g: 8.352403, b: 8.352403, a: 0}
-    - _Ice_Color: {r: 0, g: 0.72492695, b: 1, a: 0}
+    - _CrackColor: {r: 0.63119525, g: 0.63119525, b: 0.63119525, a: 0}
+    - _Ice_Color: {r: 0, g: 0.7995782, b: 1, a: 0}
   m_BuildTextureStacks: []
