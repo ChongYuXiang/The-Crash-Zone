@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.09411766, g: 0.11764707, b: 0.28627452, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.005
@@ -4990,9 +4990,9 @@ SceneRoots:
   - {fileID: 170324463}
   - {fileID: 672745122}
   - {fileID: 1716281638}
-  - {fileID: 1066659910}
   - {fileID: 1173552412}
+  - {fileID: 1473649583}
   - {fileID: 580817283}
   - {fileID: 783940306}
   - {fileID: 1707865146}
-  - {fileID: 1473649583}
+  - {fileID: 1066659910}
