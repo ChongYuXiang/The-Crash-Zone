@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.Animations;
 using UnityEditor.ShaderGraph;
+using TMPro;
 
 public class PlayersCarController : MonoBehaviour
 {
@@ -42,7 +43,6 @@ public class PlayersCarController : MonoBehaviour
     // Public Variables
     public int playerNum = 1;
     public float health = 100;
-    public BoxCollider hitbox;
 
     public float maxAcceleration = 30.0f;
     public float boostAcceleration = 60.0f;
@@ -51,6 +51,7 @@ public class PlayersCarController : MonoBehaviour
     public float turnSensitivity = 1.0f;
     public float maxSteerAngle = 30.0f;
 
+    public TextMeshProUGUI healthText;
     public List<Wheel> wheels;
 
     // Inputs
@@ -61,6 +62,8 @@ public class PlayersCarController : MonoBehaviour
 
     private Rigidbody carRb;
     private Vector3 _centerOfMass;
+    private Transform target = null;
+    private Vector3 toTarget;
 
 
     void Start()
@@ -69,24 +72,35 @@ public class PlayersCarController : MonoBehaviour
         carRb.centerOfMass = _centerOfMass;
     }
 
-    // At the start of each frame, retrieve inputs and update vfx/animation
+    // Called at the START of each frame
     void Update()
     {
+        // Retrieve inputs and update vfx/animation
         GetInputs();
         AnimateWheels();
         WheelEffects();
     }
 
-    // At the end of each frame, calculate the car's movement
+    // Called at the END of each frame
     void LateUpdate()
     {
+        // Car movement
         Move();
         Steer();
         Brake();
+        // Get velocity towards enemy player
+        if (target != null)
+        {
+            toTarget = (target.position - transform.position).normalized;
+        }
+        // Health check
+        CheckHealth();
     }
 
     void GetInputs() // Read inputs
     {
+        GameObject targetObj = null;
+
         // Check if the car is controlled by player 1 or player 2 to read the correct inputs
         if (playerNum == 1) // Player 1
         {
@@ -94,14 +108,43 @@ public class PlayersCarController : MonoBehaviour
             steerInput = controls.Player1.Steer.ReadValue<float>();
             brakeInput = controls.Player1.Brake.ReadValue<float>();
             abilityInput = controls.Player1.Ability.ReadValue<float>();
+            targetObj = GameObject.Find("player2Target");
         }
-        if (playerNum == 2) // Player 2
+        else if (playerNum == 2) // Player 2
         {
             moveInput = controls.Player2.Accelerate.ReadValue<float>();
             steerInput = controls.Player2.Steer.ReadValue<float>();
             brakeInput = controls.Player2.Brake.ReadValue<float>();
             abilityInput = controls.Player2.Ability.ReadValue<float>();
+            targetObj = GameObject.Find("player1Target");
         }
+
+        if (targetObj != null)
+        {
+            target = targetObj.transform;
+        }
+        else
+        {
+            target = null;
+        }
+    }
+
+    void CheckHealth()
+    {
+        if (health <= 0)
+        {
+            health = 0;
+            healthText.color = Color.red;
+        }
+        else if (health < 30)
+        {
+            healthText.color = Color.red;
+        }
+        else if (health < 65)
+        {
+            healthText.color = Color.yellow;
+        }
+        healthText.text = health.ToString();
     }
 
     void Move() // Forward and backward movement and boosting with ability key
@@ -193,14 +236,37 @@ public class PlayersCarController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (playerNum == 1 && other.CompareTag("player2Colliders"))
+        if ((playerNum == 1 && other.CompareTag("player2Colliders")) || (playerNum == 2 && other.CompareTag("player1Colliders")))
         {
-            Debug.Log("player 1 hit player 2");
-        }
-        if (playerNum == 2 && other.CompareTag("player1Colliders"))
-        {
-            Debug.Log("player 2 hit player 1");
+
+            Rigidbody otherRb = other.attachedRigidbody;
+            if (otherRb == null) return;
+
+            // Your direction of movement
+            Vector3 myVelocity = carRb.velocity;
+            Vector3 contactNormal = (other.transform.position - transform.position).normalized;
+
+            // Check if you are moving INTO the other player
+            float impactAlignment = Vector3.Dot(myVelocity.normalized, contactNormal);
+
+            // impactAlignment > 0 means you're moving into the other car
+            if (impactAlignment > 0.5f) // You can tweak the threshold if needed
+            {
+                float relativeSpeed = myVelocity.magnitude;
+                if (otherRb.velocity.magnitude >= 0)
+                {
+                    relativeSpeed = (myVelocity - otherRb.velocity).magnitude;
+                }
+                int damageDealt = Mathf.CeilToInt(relativeSpeed) * 3;
+
+                // Deal damage to enemy
+                var enemyCar = other.GetComponentInParent<PlayersCarController>();
+                if (enemyCar != null)
+                {
+                    enemyCar.health -= damageDealt;
+                    Debug.Log($"[Player {playerNum}] dealt {damageDealt} from {damageDealt/3}. Relative Speed: {relativeSpeed}. Enemy Health: {enemyCar.health}");
+                }
+            }
         }
     }
-
 }
