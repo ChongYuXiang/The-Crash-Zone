@@ -52,6 +52,7 @@ public class PlayersCarController : MonoBehaviour
     public float maxSteerAngle = 30.0f;
 
     public TextMeshProUGUI healthText;
+    public GameObject abilityManager;
     public List<Wheel> wheels;
 
     // Inputs
@@ -88,6 +89,7 @@ public class PlayersCarController : MonoBehaviour
         Move();
         Steer();
         Brake();
+        Ability();
         // Get velocity towards enemy player
         if (target != null)
         {
@@ -149,22 +151,11 @@ public class PlayersCarController : MonoBehaviour
 
     void Move() // Forward and backward movement and boosting with ability key
     {
-        // If boosting, use boostAcceleration; otherwise, use maxAcceleration
-        float acceleration = abilityInput > 0 ? boostAcceleration : maxAcceleration;
-        float torque = moveInput * 600f * acceleration * Time.deltaTime;
+        float torque = moveInput * 600f * maxAcceleration * Time.deltaTime;
 
         foreach (var wheel in wheels) // Apply the calculated torque to each drive wheel
         {
             wheel.wheelCollider.motorTorque = torque;
-        }
-
-        // Clamp top speed if not boosting
-        if (abilityInput <= 0)
-        {
-            if (carRb.velocity.magnitude > maxAcceleration)
-            {
-                carRb.velocity = Vector3.ClampMagnitude(carRb.velocity, Mathf.Lerp(carRb.velocity.magnitude, maxAcceleration, 0.1f));
-            }
         }
     }
 
@@ -196,6 +187,18 @@ public class PlayersCarController : MonoBehaviour
             {
                 wheel.wheelCollider.brakeTorque = 0;
             }
+        }
+    }
+
+    void Ability()
+    {
+        if (abilityInput != 0 && playerNum == 1)
+        {
+            abilityManager.SendMessage("ActivateAbility", 2);
+        }
+        if (abilityInput != 0 && playerNum == 2)
+        {
+            abilityManager.SendMessage("ActivateAbility", 1);
         }
     }
 
@@ -234,6 +237,7 @@ public class PlayersCarController : MonoBehaviour
         }
     }
 
+    // Collision of players
     private void OnTriggerEnter(Collider other)
     {
         if ((playerNum == 1 && other.CompareTag("player2Colliders")) || (playerNum == 2 && other.CompareTag("player1Colliders")))
@@ -249,8 +253,8 @@ public class PlayersCarController : MonoBehaviour
             // Check if you are moving INTO the other player
             float impactAlignment = Vector3.Dot(myVelocity.normalized, contactNormal);
 
-            // impactAlignment > 0 means you're moving into the other car
-            if (impactAlignment > 0.5f) // You can tweak the threshold if needed
+            // if player is moving towards the other car
+            if (impactAlignment > 0.5f)
             {
                 float relativeSpeed = myVelocity.magnitude;
                 if (otherRb.velocity.magnitude >= 0)
