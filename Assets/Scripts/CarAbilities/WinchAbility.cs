@@ -27,16 +27,17 @@ public class WinchAbility : MonoBehaviour
             ropeLine.SetPosition(0, gameObject.transform.position); // Set start position to be self
             ropeLine.SetPosition(1, ropeTarget.transform.position); // Set end position to be at the target pivot
 
+            if (Vector3.Distance(targetPlayer.transform.position, selfPlayer.transform.position) > 7) // Minimum distance between players needed to pull
+            {
+                Rigidbody targetRb = targetPlayer.GetComponent<Rigidbody>(); // Get target's rigidbody
+                Vector3 pullDirection = (ropeLine.transform.position - ropeTarget.transform.position).normalized; // Calculate the direction for pull force
 
-            Rigidbody targetRb = targetPlayer.GetComponent<Rigidbody>();
-            Vector3 pullDirection = (ropeLine.transform.position - ropeTarget.transform.position).normalized;
+                targetRb.AddForce(pullDirection * pullStrength * Time.deltaTime, ForceMode.Acceleration); // Use physics to pull the target player
 
-            targetRb.AddForce(pullDirection * pullStrength * Time.deltaTime, ForceMode.Acceleration);
-
-
-            targetPlayer.transform.position = Vector3.MoveTowards(targetPlayer.transform.position, selfPlayer.transform.position, moveStrength * Time.deltaTime);
-            selfPlayer.transform.position = Vector3.MoveTowards(selfPlayer.transform.position, targetPlayer.transform.position, moveStrength * Time.deltaTime);
-
+                // Manually move both players towards each other over time
+                targetPlayer.transform.position = Vector3.MoveTowards(targetPlayer.transform.position, selfPlayer.transform.position, moveStrength * Time.deltaTime);
+                selfPlayer.transform.position = Vector3.MoveTowards(selfPlayer.transform.position, targetPlayer.transform.position, moveStrength * Time.deltaTime);
+            }
         }
         else // No current target,
         {
@@ -55,7 +56,7 @@ public class WinchAbility : MonoBehaviour
 
     IEnumerator AbilityTimer()
     {
-        yield return new WaitForSeconds(4); // Wait 4 seconds
+        yield return new WaitForSeconds(5); // Wait seconds
 
         // Reset targets to null to stop the Update()
         ropeTarget = null;

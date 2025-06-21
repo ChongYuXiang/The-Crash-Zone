@@ -5645,6 +5645,7 @@ MonoBehaviour:
   turnSensitivity: 1
   maxSteerAngle: 25
   healthText: {fileID: 2191272980593236672}
+  abilityManager: {fileID: 0}
   wheels:
   - wheelModel: {fileID: 106830228317172314}
     wheelCollider: {fileID: 7225751486357536832}
@@ -16071,7 +16072,7 @@ Transform:
   m_GameObject: {fileID: 4411490999647484639}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21462,7 +21463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7376147746951213026
 Transform:
   m_ObjectHideFlags: 0
