@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Animations;
 using UnityEditor.ShaderGraph;
 using TMPro;
+using System.Collections;
 
 public class PlayersCarController : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class PlayersCarController : MonoBehaviour
     // Public Variables
     public int playerNum = 1;
     public float health = 100;
+    private float maxHealth;
 
     public float maxAcceleration = 30.0f;
     public float boostAcceleration = 60.0f;
@@ -53,6 +55,8 @@ public class PlayersCarController : MonoBehaviour
 
     public TextMeshProUGUI healthText;
     public GameObject abilityManager;
+    public int abilityCooldownMax;
+    private int abilityCooldownCurrent = 0;
     public List<Wheel> wheels;
 
     // Inputs
@@ -71,6 +75,7 @@ public class PlayersCarController : MonoBehaviour
     {
         carRb = GetComponent<Rigidbody>();
         carRb.centerOfMass = _centerOfMass;
+        maxHealth = health;
     }
 
     // Called at the START of each frame
@@ -97,6 +102,17 @@ public class PlayersCarController : MonoBehaviour
         }
         // Health check
         CheckHealth();
+    }
+
+    IEnumerator CooldownTimer()
+    {
+        while (abilityCooldownCurrent > 0)
+        {
+            yield return new WaitForSeconds(1); // Wait 1 second
+            abilityCooldownCurrent -= 1;
+            Debug.Log(abilityCooldownCurrent);
+        }
+        yield return new WaitForEndOfFrame();
     }
 
     void GetInputs() // Read inputs
@@ -192,13 +208,17 @@ public class PlayersCarController : MonoBehaviour
 
     void Ability()
     {
-        if (abilityInput != 0 && playerNum == 1)
+        if (abilityInput != 0 && playerNum == 1 && abilityCooldownCurrent == 0)
         {
             abilityManager.SendMessage("ActivateAbility", 2);
+            abilityCooldownCurrent = abilityCooldownMax;
+            StartCoroutine(CooldownTimer());
         }
-        if (abilityInput != 0 && playerNum == 2)
+        if (abilityInput != 0 && playerNum == 2 && abilityCooldownCurrent == 0)
         {
             abilityManager.SendMessage("ActivateAbility", 1);
+            abilityCooldownCurrent = abilityCooldownMax;
+            StartCoroutine(CooldownTimer());
         }
     }
 
@@ -272,5 +292,36 @@ public class PlayersCarController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private bool healingStatus = false;
+
+    public void HealingOverTime(bool isHealing)
+    {
+        healingStatus = isHealing;
+        if (healingStatus)
+        {
+            StartCoroutine(HealPerSecond());
+        }
+        else
+        {
+            StopCoroutine(HealPerSecond());
+        }
+    }
+    public IEnumerator HealPerSecond()
+    {
+        while (healingStatus == true)
+        {
+            if (health > 0)
+            {
+                health += 1;
+            }
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
+            yield return new WaitForSeconds(0.2f); // Wait seconds
+        }
+        yield return new WaitForEndOfFrame();
     }
 }

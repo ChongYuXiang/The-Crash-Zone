@@ -567,6 +567,7 @@ MonoBehaviour:
   maxSteerAngle: 25
   healthText: {fileID: 8667761122672082963}
   abilityManager: {fileID: 3134316346994557697}
+  abilityCooldownMax: 0
   wheels:
   - wheelModel: {fileID: 51496095955902655}
     wheelCollider: {fileID: 7142474463668002627}
@@ -604,7 +605,7 @@ MonoBehaviour:
   maxSpeed: 40
   minPitch: 0
   maxPitch: 1
-  maxVolume: 0.5
+  maxVolume: 1
 --- !u!82 &6823230146125686467
 AudioSource:
   m_ObjectHideFlags: 0
