@@ -18,11 +18,18 @@ public class PlayersCarController : MonoBehaviour
     }
     private void OnEnable()
     {
+        if (controls == null)
+        {
+            controls = new PlayerControls();
+        }
         controls.Enable();
     }
     private void OnDisable()
     {
-        controls.Disable();
+        if (controls != null)
+        {
+            controls.Disable();
+        }
     }
 
     // Wheel classes
@@ -49,7 +56,12 @@ public class PlayersCarController : MonoBehaviour
     public float maxAcceleration = 30.0f;
     public float boostAcceleration = 60.0f;
     public float brakeAcceleration = 50.0f;
-    public float maxVelocity = 10f;
+    public float maxVelocity = 30f;
+
+    private bool isSpeedBoostActive = false;
+    private float savedAcceleration;
+    private bool isInSlowZone = false;
+
 
 
     public float turnSensitivity = 1.0f;
@@ -88,6 +100,7 @@ public class PlayersCarController : MonoBehaviour
         GetInputs();
         AnimateWheels();
         WheelEffects();
+
     }
 
     // Called at the END of each frame
@@ -270,7 +283,7 @@ public class PlayersCarController : MonoBehaviour
 
     void ClampMaxSpeed()
     {
-        if (carRb.velocity.magnitude > maxVelocity)
+        if (!isSpeedBoostActive && carRb.velocity.magnitude > maxVelocity)
         {
             carRb.velocity = carRb.velocity.normalized * maxVelocity;
         }
@@ -345,11 +358,57 @@ public class PlayersCarController : MonoBehaviour
     }
 
     // Jack's thingy   
-    public void ApplyInstantSpeedBoost(float boostSpeed)
+    public void ApplyInstantSpeedBoost(float boostSpeed, float duration = 2f)
     {
+        StopCoroutine("SpeedBoostCoroutine");
+        StartCoroutine(SpeedBoostCoroutine(boostSpeed, duration));
+    }
+
+    private IEnumerator SpeedBoostCoroutine(float boostSpeed, float duration)
+    {
+        isSpeedBoostActive = true;
+
+        // Apply boosted velocity
         Vector3 forwardVelocity = transform.forward * boostSpeed;
         carRb.velocity = new Vector3(forwardVelocity.x, carRb.velocity.y, forwardVelocity.z);
-        Debug.Log("Speed boost applied!");
+
+        yield return new WaitForSeconds(duration);
+
+        isSpeedBoostActive = false;
+
+        // Clamp back to maxVelocity if still too fast
+        if (carRb.velocity.magnitude > maxVelocity)
+        {
+            carRb.velocity = carRb.velocity.normalized * maxVelocity;
+        }
+
+        Debug.Log("Speed boost ended");
     }
+
+    public void EnterSlowZone(float targetSpeed, float slowAccel)
+    {
+        if (isInSlowZone) return; // Prevent reapplying slowdown while inside
+
+        isInSlowZone = true;
+        savedAcceleration = maxAcceleration;
+        maxAcceleration = slowAccel;
+
+        // Instantly reduce velocity
+        Vector3 horizontalDir = new Vector3(carRb.velocity.x, 0f, carRb.velocity.z).normalized;
+        carRb.velocity = horizontalDir * targetSpeed + Vector3.up * carRb.velocity.y;
+
+        Debug.Log("Entered slow zone: accel = " + maxAcceleration);
+    }
+
+    public void ExitSlowZone()
+    {
+        if (!isInSlowZone) return;
+
+        maxAcceleration = savedAcceleration;
+        isInSlowZone = false;
+
+        Debug.Log("Exited slow zone: accel = " + maxAcceleration);
+    }
+
 
 }

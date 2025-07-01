@@ -5,18 +5,13 @@ using UnityEngine;
 
 public class SpeedPad : MonoBehaviour
 {
-    public float boostSpeed = 60f;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Something entered the pad: " + other.name);
-
         PlayersCarController car = other.GetComponentInParent<PlayersCarController>();
         if (car != null)
         {
-            Debug.Log("Car found! Applying speed boost...");
-            car.ApplyInstantSpeedBoost(boostSpeed);
+            car.ApplyInstantSpeedBoost(50f, 1f); // 60 speed for 1 seconds
         }
-
-
     }
+
 }
