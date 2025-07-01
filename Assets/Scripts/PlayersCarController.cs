@@ -76,6 +76,7 @@ public class PlayersCarController : MonoBehaviour
         carRb = GetComponent<Rigidbody>();
         carRb.centerOfMass = _centerOfMass;
         maxHealth = health;
+        healthText.color = Color.green;
     }
 
     // Called at the START of each frame
@@ -161,6 +162,11 @@ public class PlayersCarController : MonoBehaviour
         else if (health < 65)
         {
             healthText.color = Color.yellow;
+        }
+        else
+        {
+            healthText.color = Color.green;
+
         }
         healthText.text = health.ToString();
     }

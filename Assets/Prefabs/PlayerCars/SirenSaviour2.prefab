@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 5852093335073238619}
   m_Layer: 0
   m_Name: Body
-  m_TagString: player1Colliders
+  m_TagString: player2Colliders
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
