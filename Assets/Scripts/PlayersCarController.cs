@@ -49,6 +49,8 @@ public class PlayersCarController : MonoBehaviour
     public float maxAcceleration = 30.0f;
     public float boostAcceleration = 60.0f;
     public float brakeAcceleration = 50.0f;
+    public float maxVelocity = 10f;
+
 
     public float turnSensitivity = 1.0f;
     public float maxSteerAngle = 30.0f;
@@ -103,6 +105,9 @@ public class PlayersCarController : MonoBehaviour
         }
         // Health check
         CheckHealth();
+
+        // Speed check
+        ClampMaxSpeed();
     }
 
     IEnumerator CooldownTimer()
@@ -263,6 +268,14 @@ public class PlayersCarController : MonoBehaviour
         }
     }
 
+    void ClampMaxSpeed()
+    {
+        if (carRb.velocity.magnitude > maxVelocity)
+        {
+            carRb.velocity = carRb.velocity.normalized * maxVelocity;
+        }
+    }
+
     // Collision of players
     private void OnTriggerEnter(Collider other)
     {
@@ -330,4 +343,13 @@ public class PlayersCarController : MonoBehaviour
         }
         yield return new WaitForEndOfFrame();
     }
+
+    // Jack's thingy   
+    public void ApplyInstantSpeedBoost(float boostSpeed)
+    {
+        Vector3 forwardVelocity = transform.forward * boostSpeed;
+        carRb.velocity = new Vector3(forwardVelocity.x, carRb.velocity.y, forwardVelocity.z);
+        Debug.Log("Speed boost applied!");
+    }
+
 }
