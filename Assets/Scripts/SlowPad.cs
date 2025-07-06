@@ -12,6 +12,7 @@ public class SlowPad : MonoBehaviour
         PlayersCarController car = other.GetComponentInParent<PlayersCarController>();
         if (car != null)
         {
+            AudioManager.instance.PlaySFX("SlowPad");
             car.EnterSlowZone(slowSpeed, slowAcceleration);
         }
     }

@@ -54,15 +54,12 @@ public class PlayersCarController : MonoBehaviour
     private float maxHealth;
 
     public float maxAcceleration = 30.0f;
-    public float boostAcceleration = 60.0f;
     public float brakeAcceleration = 50.0f;
     public float maxVelocity = 30f;
 
     private bool isSpeedBoostActive = false;
     private float savedAcceleration;
     private bool isInSlowZone = false;
-
-
 
     public float turnSensitivity = 1.0f;
     public float maxSteerAngle = 30.0f;
@@ -376,11 +373,6 @@ public class PlayersCarController : MonoBehaviour
 
         isSpeedBoostActive = false;
 
-        // Clamp back to maxVelocity if still too fast
-        if (carRb.velocity.magnitude > maxVelocity)
-        {
-            carRb.velocity = carRb.velocity.normalized * maxVelocity;
-        }
 
         Debug.Log("Speed boost ended");
     }

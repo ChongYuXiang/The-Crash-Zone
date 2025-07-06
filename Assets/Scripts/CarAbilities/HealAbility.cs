@@ -16,6 +16,7 @@ public class HealAbility : MonoBehaviour
     IEnumerator AbilityTimer()
     {
         GameObject clone = (GameObject)Instantiate(healingField, gameObject.transform.position, gameObject.transform.rotation);
+        AudioManager.instance.PlaySFX("DeployHeal");
 
         yield return new WaitForSeconds(10); // Wait seconds
 
