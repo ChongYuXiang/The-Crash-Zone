@@ -18,7 +18,12 @@ public class HealAbility : MonoBehaviour
         GameObject clone = (GameObject)Instantiate(healingField, gameObject.transform.position, gameObject.transform.rotation);
         AudioManager.instance.PlaySFX("DeployHeal");
 
-        yield return new WaitForSeconds(10); // Wait seconds
+        yield return new WaitForSeconds(9.8f); // Wait seconds
+
+        AudioManager.instance.PlaySFX("HealEnd");
+
+
+        yield return new WaitForSeconds(0.2f); // Wait seconds
 
         // Turn off the healing field
         Destroy(clone);

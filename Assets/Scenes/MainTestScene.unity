@@ -1003,8 +1003,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGMSounds: []
   SFXSounds:
+  - name: CarDamage
+    clip: {fileID: 8300000, guid: 7ab06e396b04b3c4daab3e1bffe778ba, type: 3}
+  - name: CarExplode
+    clip: {fileID: 8300000, guid: 57689b487150fe949b0299e42842ab84, type: 3}
   - name: DeployHeal
-    clip: {fileID: 8300000, guid: a5d5e2b0e0ec27745bde0c2aba3e5be6, type: 3}
+    clip: {fileID: 8300000, guid: d800445c75dd52d4787b9088d1089191, type: 3}
+  - name: HealEnd
+    clip: {fileID: 8300000, guid: 9885d89db7e757f4fb128728ac67b24d, type: 3}
+  - name: WinchLaunch
+    clip: {fileID: 8300000, guid: 7d77b24efd06b8b4a83e4954c68895d5, type: 3}
+  - name: WinchStart
+    clip: {fileID: 8300000, guid: b7a3810eea02ea4479593d2c03974d68, type: 3}
+  - name: WinchEnd
+    clip: {fileID: 8300000, guid: b1df762ecf7a218489f28f4fc1c040cf, type: 3}
   BGMSource: {fileID: 483108479}
   SFXSource: {fileID: 300363094}
 --- !u!4 &1576338353
@@ -1470,7 +1482,7 @@ PrefabInstance:
     - target: {fileID: 7899203649379784230, guid: 1a6d81853ef9c674884957b15f5ab300,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2001,6 +2013,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SirenSaviour1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632889780110779556, guid: 73a17e4724ef22448ac1196995591fbf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7150129554217169050, guid: 73a17e4724ef22448ac1196995591fbf,
         type: 3}

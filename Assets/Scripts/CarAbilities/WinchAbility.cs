@@ -51,13 +51,19 @@ public class WinchAbility : MonoBehaviour
         ropeTarget = GameObject.Find("player" + playerIndex + "Target"); // Find the player target
         targetPlayer = ropeTarget.transform.parent.gameObject; // Get the target's rigidbody from it's parent
         winchMesh.SetActive(false); // Hide the winch model
+        AudioManager.instance.PlaySFX("WinchLaunch"); // Play activation audio
         StartCoroutine(AbilityTimer()); // Start timer for ability
     }
 
     IEnumerator AbilityTimer()
     {
-        yield return new WaitForSeconds(5); // Wait seconds
+        yield return new WaitForSeconds(0.2f); // Wait seconds
+        AudioManager.instance.PlaySFX("WinchStart"); // Play resistance audio
 
+        yield return new WaitForSeconds(2.1f); // Wait seconds
+        AudioManager.instance.PlaySFX("WinchEnd"); // Play ending audio
+
+        yield return new WaitForSeconds(2.7f); // Wait seconds
         // Reset targets to null to stop the Update()
         ropeTarget = null;
         targetPlayer = null;
