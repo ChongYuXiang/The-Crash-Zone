@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder;
+using UnityEngine.Rendering;
 
 public class HealMessenger : MonoBehaviour
 {
     private HashSet<PlayersCarController> healingTargets = new HashSet<PlayersCarController>();
+
+    public AudioSource audioSource;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,6 +19,7 @@ public class HealMessenger : MonoBehaviour
             {
                 player.HealingOverTime(true);
                 healingTargets.Add(player);
+                StartCoroutine(FadeAudio(audioSource, 1f, AudioManager.instance.SFXSource.volume / 1));
             }
         }
     }
@@ -28,6 +33,11 @@ public class HealMessenger : MonoBehaviour
             {
                 player.HealingOverTime(false);
                 healingTargets.Remove(player);
+
+                if (healingTargets.Count == 0)
+                {
+                    StartCoroutine(FadeAudio(audioSource, 1f, 0));
+                }
             }
         }
     }
@@ -42,5 +52,19 @@ public class HealMessenger : MonoBehaviour
             }
         }
         healingTargets.Clear();
+    }
+
+    IEnumerator FadeAudio(AudioSource source, float duration, float targetVolume)
+    {
+        float time = 0f;
+        float startingVol = source.volume;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            source.volume = Mathf.Lerp(startingVol, targetVolume, time/duration);
+            yield return null;
+        }
+
+        yield break;
     }
 }

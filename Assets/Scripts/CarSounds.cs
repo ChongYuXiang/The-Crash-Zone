@@ -5,7 +5,6 @@ using UnityEngine;
 public class CarSounds : MonoBehaviour
 {
     public float minSpeed;
-    public float maxSpeed;
     private float currentSpeed;
 
     private Rigidbody carRb;
@@ -30,7 +29,7 @@ public class CarSounds : MonoBehaviour
     void EngineSound()
     {
         currentSpeed = carRb.velocity.magnitude;
-        pitchFromCar = carRb.velocity.magnitude / 30f;
+        pitchFromCar = carRb.velocity.magnitude / 40f;
 
         if (currentSpeed < minSpeed)
         {
@@ -41,7 +40,7 @@ public class CarSounds : MonoBehaviour
         if (currentSpeed > minSpeed)
         {
             carAudio.pitch = minPitch + pitchFromCar;
-            carAudio.volume = pitchFromCar;
+            carAudio.volume = pitchFromCar * (AudioManager.instance.SFXSource.volume / 1);
 
             if (carAudio.pitch > maxPitch)
             {
@@ -49,7 +48,7 @@ public class CarSounds : MonoBehaviour
             }
             if (carAudio.volume > maxVolume)
             {
-                carAudio.volume = maxVolume;
+                carAudio.volume = maxVolume * (AudioManager.instance.SFXSource.volume / 1);
             }
         }
     }
