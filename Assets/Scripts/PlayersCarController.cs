@@ -176,7 +176,7 @@ public class PlayersCarController : MonoBehaviour
         healthText.text = health.ToString();
     }
 
-    void Move() // Forward and backward movement and boosting with ability key
+    void Move() // Forward and backward movement
     {
         float torque = moveInput * 600f * maxAcceleration * Time.deltaTime;
 

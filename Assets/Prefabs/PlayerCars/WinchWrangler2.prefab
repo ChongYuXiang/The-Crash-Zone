@@ -5886,8 +5886,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2412dfda65d2a184fac69c4d08ba2ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSmoothness: 5
-  rotSmoothness: 6
+  moveSmoothness: 10
+  rotSmoothness: 50
   moveOffset: {x: 0, y: 2, z: -5.3}
   rotOffset: {x: 0, y: 0.12, z: 0}
   carTarget: {fileID: 2322168658138835768}
@@ -16192,9 +16192,9 @@ MonoBehaviour:
   playerNum: 2
   health: 120
   maxAcceleration: 65
-  boostAcceleration: 200
   brakeAcceleration: 400
-  turnSensitivity: 1
+  maxVelocity: 30
+  turnSensitivity: 0.5
   maxSteerAngle: 25
   healthText: {fileID: 7729626857070476582}
   abilityManager: {fileID: 1889516908758543782}
@@ -16233,7 +16233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 0.3
-  maxSpeed: 40
   minPitch: 0
   maxPitch: 1
   maxVolume: 1

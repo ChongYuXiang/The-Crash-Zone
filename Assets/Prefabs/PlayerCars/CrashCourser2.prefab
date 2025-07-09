@@ -15654,11 +15654,11 @@ MonoBehaviour:
   playerNum: 2
   health: 100
   maxAcceleration: 65
-  brakeAcceleration: 300
+  brakeAcceleration: 400
   maxVelocity: 30
   turnSensitivity: 0.5
-  maxSteerAngle: 40
-  healthText: {fileID: 0}
+  maxSteerAngle: 25
+  healthText: {fileID: 1218827902154576184}
   abilityManager: {fileID: 0}
   abilityCooldownMax: 0
   wheels:
@@ -15695,7 +15695,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 0.3
-  maxSpeed: 40
   minPitch: 1
   maxPitch: 2
   maxVolume: 1
@@ -21257,3 +21256,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7299694027805941410}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1218827902154576184 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8477916957485289370, guid: c24074700a838fb44b9b8bef3cb4433c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7299694027805941410}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

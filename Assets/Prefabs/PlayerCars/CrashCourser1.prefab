@@ -5370,10 +5370,10 @@ MonoBehaviour:
   playerNum: 1
   health: 120
   maxAcceleration: 65
-  brakeAcceleration: 300
+  brakeAcceleration: 400
   maxVelocity: 30
   turnSensitivity: 0.5
-  maxSteerAngle: 40
+  maxSteerAngle: 25
   healthText: {fileID: 2191272980593236672}
   abilityManager: {fileID: 0}
   abilityCooldownMax: 0
@@ -5411,7 +5411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 0.3
-  maxSpeed: 40
   minPitch: 1
   maxPitch: 2
   maxVolume: 1
