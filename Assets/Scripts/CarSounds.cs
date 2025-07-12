@@ -40,7 +40,12 @@ public class CarSounds : MonoBehaviour
         if (currentSpeed > minSpeed)
         {
             carAudio.pitch = minPitch + pitchFromCar;
-            carAudio.volume = pitchFromCar * (AudioManager.instance.SFXSource.volume / 1);
+
+            carAudio.volume = pitchFromCar * 1.2f * (AudioManager.instance.SFXSource.volume / 1);
+            if (carAudio.volume < 0.3f)
+            {
+                carAudio.volume = 0.3f;
+            }
 
             if (carAudio.pitch > maxPitch)
             {

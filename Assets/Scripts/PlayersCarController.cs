@@ -299,7 +299,7 @@ public class PlayersCarController : MonoBehaviour
                 {
                     relativeSpeed = (playerVelocity - otherRb.velocity).magnitude;
                 }
-                int damageDealt = Mathf.CeilToInt(relativeSpeed) * 3;
+                int damageDealt = Mathf.CeilToInt(relativeSpeed) * 1;
 
                 // Deal damage to enemy
                 var enemyCar = other.GetComponentInParent<PlayersCarController>();

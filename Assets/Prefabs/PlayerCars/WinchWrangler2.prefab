@@ -16190,7 +16190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 2
-  health: 120
+  health: 100
   maxAcceleration: 65
   brakeAcceleration: 400
   maxVelocity: 30
@@ -16234,7 +16234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.3
   minPitch: 0
-  maxPitch: 1
+  maxPitch: 0.85
   maxVolume: 1
 --- !u!82 &8997100969289598938
 AudioSource:

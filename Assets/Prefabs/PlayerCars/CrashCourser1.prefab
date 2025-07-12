@@ -5289,6 +5289,37 @@ Transform:
   - {fileID: 4547153538682689452}
   m_Father: {fileID: 3066925054196758974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2501001341399589179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3152258107624797581}
+  m_Layer: 0
+  m_Name: AbilityManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3152258107624797581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501001341399589179}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1172075965764391829}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2693957460562280352
 GameObject:
   m_ObjectHideFlags: 0
@@ -5326,6 +5357,7 @@ Transform:
   - {fileID: 3100029067259602492}
   - {fileID: 4766203559149881448}
   - {fileID: 8283937456026966106}
+  - {fileID: 3152258107624797581}
   m_Father: {fileID: 7376147746951213026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3934410691404632609
@@ -5369,13 +5401,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 1
   health: 120
-  maxAcceleration: 65
+  maxAcceleration: 80
   brakeAcceleration: 400
-  maxVelocity: 30
+  maxVelocity: 40
   turnSensitivity: 0.5
   maxSteerAngle: 25
   healthText: {fileID: 2191272980593236672}
-  abilityManager: {fileID: 0}
+  abilityManager: {fileID: 2501001341399589179}
   abilityCooldownMax: 0
   wheels:
   - wheelModel: {fileID: 106830228317172314}
@@ -5411,8 +5443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 0.3
-  minPitch: 1
-  maxPitch: 2
+  minPitch: 0
+  maxPitch: 0.85
   maxVolume: 1
 --- !u!82 &9094542150730188201
 AudioSource:
@@ -5424,7 +5456,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 647668e7157710a4db760e8b9c259b48, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 133c9199460b27b4fa6993e7c88c554c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -15700,8 +15732,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.75, y: 0.7454277, z: 0.48}
-  m_Center: {x: 0, y: 0.52638555, z: 2.3}
+  m_Size: {x: 1.75, y: 0.7454277, z: 0.2889037}
+  m_Center: {x: 0, y: 0.52638555, z: 2.204452}
 --- !u!1 &5533281488996592732
 GameObject:
   m_ObjectHideFlags: 0

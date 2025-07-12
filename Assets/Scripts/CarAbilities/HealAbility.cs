@@ -8,7 +8,7 @@ public class HealAbility : MonoBehaviour
     [SerializeField]
     private GameObject healingField;
 
-    public void ActivateAbility(int playerIndex)
+    public void ActivateAbility()
     {
         StartCoroutine(AbilityTimer()); // Start timer for ability
     }

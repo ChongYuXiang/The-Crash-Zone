@@ -55,7 +55,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 2
+    m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -288,7 +288,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 2
+    m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -678,7 +678,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 2
+    m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -1106,7 +1106,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 2
+    m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -1393,9 +1393,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 2
   health: 120
-  maxAcceleration: 65
+  maxAcceleration: 50
   brakeAcceleration: 400
-  maxVelocity: 30
+  maxVelocity: 25
   turnSensitivity: 0.5
   maxSteerAngle: 25
   healthText: {fileID: 696581587111050039}
@@ -1435,8 +1435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 0.3
-  minPitch: 1
-  maxPitch: 2
+  minPitch: 0
+  maxPitch: 0.85
   maxVolume: 1
 --- !u!82 &6229909383986066176
 AudioSource:
@@ -1448,7 +1448,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 647668e7157710a4db760e8b9c259b48, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 133c9199460b27b4fa6993e7c88c554c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
