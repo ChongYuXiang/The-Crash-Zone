@@ -726,6 +726,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1203347849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5171994871406395975, guid: fa46e399aa8a24d479b20caae8aeb086,
+    type: 3}
+  m_PrefabInstance: {fileID: 1655240038}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1277882087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,16 +1206,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 745077928867511841, guid: fa46e399aa8a24d479b20caae8aeb086,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 0.2889037
-      objectReference: {fileID: 0}
-    - target: {fileID: 745077928867511841, guid: fa46e399aa8a24d479b20caae8aeb086,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 2.2044518
-      objectReference: {fileID: 0}
     - target: {fileID: 1088888075056577355, guid: fa46e399aa8a24d479b20caae8aeb086,
         type: 3}
       propertyPath: m_Name
@@ -1220,31 +1216,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3488440388017600254, guid: fa46e399aa8a24d479b20caae8aeb086,
-        type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3603558254823410763, guid: fa46e399aa8a24d479b20caae8aeb086,
-        type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4252149707934148004, guid: fa46e399aa8a24d479b20caae8aeb086,
         type: 3}
-      propertyPath: maxVelocity
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 4252149707934148004, guid: fa46e399aa8a24d479b20caae8aeb086,
-        type: 3}
-      propertyPath: maxAcceleration
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 5187288784171864958, guid: fa46e399aa8a24d479b20caae8aeb086,
-        type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: abilityManager
+      value: 
+      objectReference: {fileID: 1203347849}
     - target: {fileID: 5845664864395267102, guid: fa46e399aa8a24d479b20caae8aeb086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1294,11 +1270,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6151729762479066796, guid: fa46e399aa8a24d479b20caae8aeb086,
-        type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2289,10 +2260,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 820081518423669627, guid: 946fcf19d7f41ce43afa5c933864308b,
+    - target: {fileID: 196147493296827733, guid: 946fcf19d7f41ce43afa5c933864308b,
         type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2.1
+      propertyPath: m_Name
+      value: FlameEffect
       objectReference: {fileID: 0}
     - target: {fileID: 1603736199336921457, guid: 946fcf19d7f41ce43afa5c933864308b,
         type: 3}
@@ -2344,30 +2315,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2678666730456463850, guid: 946fcf19d7f41ce43afa5c933864308b,
+    - target: {fileID: 2898056385146600241, guid: 946fcf19d7f41ce43afa5c933864308b,
         type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3339848266984664263, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3734279179763660172, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181268713842813360, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4305178799102667463, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_ForwardFriction.m_Stiffness
-      value: 2.1
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6051980846114497321, guid: 946fcf19d7f41ce43afa5c933864308b,
         type: 3}
@@ -2379,10 +2330,25 @@ PrefabInstance:
       propertyPath: maxAcceleration
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 6051980846114497321, guid: 946fcf19d7f41ce43afa5c933864308b,
+        type: 3}
+      propertyPath: abilityCooldownMax
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7775659282147759134, guid: 946fcf19d7f41ce43afa5c933864308b,
         type: 3}
       propertyPath: m_Name
       value: RoaringRacer1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083517081570405341, guid: 946fcf19d7f41ce43afa5c933864308b,
+        type: 3}
+      propertyPath: speed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083517081570405341, guid: 946fcf19d7f41ce43afa5c933864308b,
+        type: 3}
+      propertyPath: duration
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2455,7 +2421,7 @@ PrefabInstance:
     - target: {fileID: 5138443419973105905, guid: 630cdbc4708bd2f4ba31b53b54d4a539,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
