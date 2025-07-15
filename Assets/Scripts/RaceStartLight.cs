@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class RaceStartLight : MonoBehaviour
 {
-    public Texture RLight;
-    public Texture RYLight;
-    public Texture YLight;
-    public Texture YGLight;
-    public Texture GLight;
+    public Material RedLight;
+    public Material YellowLight;
+    public Material GreenLight;
+    //public Material NoLight;
 
     public float switchDuration = 1f;
 
@@ -25,25 +24,21 @@ public class RaceStartLight : MonoBehaviour
     {
         while (true)
         {
-            StartLightRenderer.material.mainTexture = RLight;
+            StartLightRenderer.material = RedLight;
             Debug.Log("Red Light");
             yield return new WaitForSeconds(switchDuration);
 
-            StartLightRenderer.material.mainTexture = RYLight;
-            Debug.Log("RY Light");
+            StartLightRenderer.material = YellowLight;
+            Debug.Log("yellow Light");
             yield return new WaitForSeconds(switchDuration);
 
-            StartLightRenderer.material.mainTexture = YLight;
-            Debug.Log("Yellow Light");
-            yield return new WaitForSeconds(switchDuration);
-
-            StartLightRenderer.material.mainTexture = YGLight;
-            Debug.Log("YG Light");
-            yield return new WaitForSeconds(switchDuration);
-
-            StartLightRenderer.material.mainTexture = GLight;
+            StartLightRenderer.material = GreenLight;
             Debug.Log("Green Light");
             yield return new WaitForSeconds(switchDuration);
+
+            /*StartLightRenderer.material = NoLight;
+            Debug.Log("Red Light");
+            yield return new WaitForSeconds(switchDuration);*/
         }
     }
 }
