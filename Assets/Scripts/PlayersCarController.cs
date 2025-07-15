@@ -70,6 +70,9 @@ public class PlayersCarController : MonoBehaviour
     private int abilityCooldownCurrent = 0;
     public List<Wheel> wheels;
 
+    private float lastTeleportTime = -10f;
+    private float teleportCooldown = 1.5f;
+
     // Inputs
     private float moveInput;
     private float steerInput;
@@ -391,6 +394,16 @@ public class PlayersCarController : MonoBehaviour
         isInSlowZone = false;
 
         Debug.Log("Exited slow zone: accel = " + maxAcceleration);
+    }
+
+    public bool CanTeleport()
+    {
+        return Time.time - lastTeleportTime >= teleportCooldown;
+    }
+
+    public void RegisterTeleport()
+    {
+        lastTeleportTime = Time.time;
     }
 
 
