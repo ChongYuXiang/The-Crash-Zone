@@ -13239,74 +13239,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 249454768}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &249687837
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1603736199336921457, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 55.135483
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603736199336921457, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -18.800009
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603736199336921457, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 111.351715
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603736199336921457, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.051218987
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603736199336921457, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603736199336921457, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.99868745
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603736199336921457, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603736199336921457, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603736199336921457, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -174.128
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603736199336921457, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7775659282147759134, guid: 946fcf19d7f41ce43afa5c933864308b,
-        type: 3}
-      propertyPath: m_Name
-      value: RoaringRacer1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 946fcf19d7f41ce43afa5c933864308b, type: 3}
 --- !u!1001 &255038599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15908,7 +15840,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cf6cdf835e29d5540ae77c8226b4fe68,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -41.41825
+      value: -41.65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf6cdf835e29d5540ae77c8226b4fe68,
         type: 3}
@@ -40120,7 +40052,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cf6cdf835e29d5540ae77c8226b4fe68,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -41.510048
+      value: -41.7418
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf6cdf835e29d5540ae77c8226b4fe68,
         type: 3}
@@ -41126,7 +41058,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cf6cdf835e29d5540ae77c8226b4fe68,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -41.319
+      value: -41.51
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf6cdf835e29d5540ae77c8226b4fe68,
         type: 3}
@@ -68047,7 +67979,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cf6cdf835e29d5540ae77c8226b4fe68,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -41.420002
+      value: -41.610996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf6cdf835e29d5540ae77c8226b4fe68,
         type: 3}
@@ -120951,4 +120883,3 @@ SceneRoots:
   - {fileID: 1969829153}
   - {fileID: 1727207200}
   - {fileID: 667787254}
-  - {fileID: 249687837}
