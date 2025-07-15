@@ -22,6 +22,10 @@ public class PlayerSpawner : MonoBehaviour
     private GameObject SirenSaviour1;
     [SerializeField]
     private GameObject SirenSaviour2;
+    [SerializeField]
+    private GameObject RoaringRacer1;
+    [SerializeField]
+    private GameObject RoaringRacer2;
 
     public string player1CarID;
     public string player2CarID;
@@ -87,7 +91,13 @@ public class PlayerSpawner : MonoBehaviour
         {
             // Spawn SirenSaviour1 at spawn point 1
             GameObject clone = (GameObject)Instantiate(SirenSaviour1, spawnPoint1.position, spawnPoint1.rotation);
-            Debug.Log("Player 1 (WinchWrangler) spawned");
+            Debug.Log("Player 1 (SirenSaviour) spawned");
+        }
+        if (player1CarID == "04-21-43-15-C2-2A-81")
+        {
+            // Spawn RoaringRacer1 at spawn point 1
+            GameObject clone = (GameObject)Instantiate(RoaringRacer1, spawnPoint1.position, spawnPoint1.rotation);
+            Debug.Log("Player 1 (RoaringRacer) spawned");
         }
     }
 
@@ -111,6 +121,12 @@ public class PlayerSpawner : MonoBehaviour
             // Spawn SirenSaviour2 at spawn point 2
             GameObject clone = (GameObject)Instantiate(SirenSaviour2, spawnPoint2.position, spawnPoint2.rotation);
             Debug.Log("Player 2 (SirenSaviour) spawned");
+        }
+        if (player1CarID == "04-21-43-15-C2-2A-81")
+        {
+            // Spawn RoaringRacer2 at spawn point 1
+            GameObject clone = (GameObject)Instantiate(RoaringRacer2, spawnPoint2.position, spawnPoint2.rotation);
+            Debug.Log("Player 2 (RoaringRacer) spawned");
         }
     }
 }
