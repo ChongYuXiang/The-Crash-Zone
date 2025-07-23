@@ -44,7 +44,6 @@ public class PlayersCarController : MonoBehaviour
         public GameObject wheelModel;
         public WheelCollider wheelCollider;
         public GameObject wheelEffectObj;
-        public ParticleSystem smokeParticle;
         public Axel axel;
     }
 
@@ -68,6 +67,7 @@ public class PlayersCarController : MonoBehaviour
     public GameObject abilityManager;
     public int abilityCooldownMax;
     private int abilityCooldownCurrent = 0;
+    public bool hasAbility = true;
     public List<Wheel> wheels;
 
     private float lastTeleportTime = -10f;
@@ -222,13 +222,13 @@ public class PlayersCarController : MonoBehaviour
 
     void Ability()
     {
-        if (abilityInput != 0 && playerNum == 1 && abilityCooldownCurrent == 0)
+        if (abilityInput != 0 && playerNum == 1 && abilityCooldownCurrent == 0 && hasAbility == true)
         {
             abilityManager.SendMessage("ActivateAbility", 2);
             abilityCooldownCurrent = abilityCooldownMax;
             StartCoroutine(CooldownTimer());
         }
-        if (abilityInput != 0 && playerNum == 2 && abilityCooldownCurrent == 0)
+        if (abilityInput != 0 && playerNum == 2 && abilityCooldownCurrent == 0 && hasAbility == true)
         {
             abilityManager.SendMessage("ActivateAbility", 1);
             abilityCooldownCurrent = abilityCooldownMax;
@@ -257,11 +257,10 @@ public class PlayersCarController : MonoBehaviour
         foreach (var wheel in wheels) // For each wheel,
         {
             // Check if braking, if car in grounded, and if the car is still moving
-            if (brakeInput != 0 && wheel.axel == Axel.Rear && wheel.wheelCollider.isGrounded == true && carRb.velocity.magnitude >= 2.0f)
+            if (brakeInput != 0 && wheel.wheelCollider.isGrounded == true && carRb.velocity.magnitude >= 2.0f)
             {
                 // Enable effects
                 wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = true;
-                //wheel.smokeParticle.Emit(1);
             }
             else
             {
