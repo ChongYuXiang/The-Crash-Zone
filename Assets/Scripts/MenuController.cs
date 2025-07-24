@@ -13,8 +13,8 @@ public class MenuController : MonoBehaviour
     public Transform camPos3;
 
     private string moveType;
-    private Quaternion lookRotation;
-    private Vector3 direction;
+    private string gamemode;
+    private string playertype;
 
     // Update is called once per frame
     void Update()
@@ -34,7 +34,7 @@ public class MenuController : MonoBehaviour
 
             playerCam.transform.position = Vector3.MoveTowards(playerCam.transform.position, camPos1.transform.position, camMoveSpd * Time.deltaTime);
         }
-        if (moveType == "MenuToQuit")
+        if (moveType == "MenuToPlay")
         {
             //rotate camera to be the same as the target
             playerCam.transform.rotation = Quaternion.Slerp(playerCam.transform.rotation, camPos3.rotation, Time.deltaTime * camRotateSpd);
@@ -51,10 +51,22 @@ public class MenuController : MonoBehaviour
     {
         moveType = "BackToMenu";
     }
-    public void MenuToQuit()
+    public void MenuToPlay()
     {
-        moveType = "MenuToQuit";
+        moveType = "MenuToPlay";
     }
+
+    // Button interaction to save gamemode as "Arena" or "Racing"
+    public void GameSelect(string mode)
+    {
+        gamemode = mode;
+    }
+    // Button interaction to save player type as "VS" or "Solo"
+    public void PlayerSelect(string type)
+    {
+        playertype = type;
+    }
+
 
     // Quit Button
     public void QuitGame()
