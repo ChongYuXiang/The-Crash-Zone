@@ -16,6 +16,7 @@ public class JumpToUIElement : MonoBehaviour
 
     public void JumpToElement()
     {
+        elementToSelect.GetComponent<SelectOnHover>().dontPlayNext();
         eventSystem.SetSelectedGameObject(elementToSelect.gameObject);
     }
 }

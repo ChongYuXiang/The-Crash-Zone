@@ -1453,7 +1453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -394, y: -152}
+  m_AnchoredPosition: {x: -394, y: -180}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &20388559
@@ -24232,7 +24232,7 @@ GameObject:
   - component: {fileID: 407464811}
   - component: {fileID: 407464815}
   m_Layer: 5
-  m_Name: BackButton (1)
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24388,6 +24388,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirm
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &407464815
@@ -28970,6 +28982,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirm
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &473786641
@@ -37957,7 +37981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &625984500
 Transform:
   m_ObjectHideFlags: 0
@@ -45084,7 +45108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -404, y: 448}
+  m_AnchoredPosition: {x: -404, y: 509}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &754612207
@@ -46734,6 +46758,171 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1265533618273071972, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265533618273071972, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265533618273071972, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: BGMSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: BGMSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 47948abcb166f1840819d10a84c49830, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: BGMSounds.Array.data[0].name
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d0176e31ed851fa45b8d959c54aa5b81, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[0].name
+      value: ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7fd20e65b8482244297fa9dce69b20e5, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[1].name
+      value: ButtonConfirm
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: feb83e29ad8059f4f9e4bd5c0e6f5e29, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[2].name
+      value: ButtonConfirmLarge
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ab06e396b04b3c4daab3e1bffe778ba, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[3].name
+      value: CarDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 57689b487150fe949b0299e42842ab84, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[4].name
+      value: CarExplode
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2efef01e270856b438c244e110e1c509, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[5].name
+      value: BoostPad
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0b44b777c21a5084ead146b3efffbeaa, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[6].name
+      value: SlowPad
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d77b24efd06b8b4a83e4954c68895d5, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[7].name
+      value: WinchLaunch
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b7a3810eea02ea4479593d2c03974d68, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[8].name
+      value: WinchStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b1df762ecf7a218489f28f4fc1c040cf, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[9].name
+      value: WinchEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d800445c75dd52d4787b9088d1089191, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[10].name
+      value: DeployHeal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9885d89db7e757f4fb128728ac67b24d, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[11].name
+      value: HealEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[12].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c81e9beb1c757a64a8c4238693a6f82b, type: 3}
+    - target: {fileID: 3680340043717102747, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[12].name
+      value: RRBoost
+      objectReference: {fileID: 0}
     - target: {fileID: 3921734575049078576, guid: 40945fe9955586147a103d76bb6f8766,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46788,6 +46977,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189683691208622828, guid: 40945fe9955586147a103d76bb6f8766,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53160,6 +53354,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirm
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1242915176}
@@ -61965,6 +62171,18 @@ MonoBehaviour:
           m_StringArgument: VS
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirmLarge
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1056451218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63097,7 +63315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 870, y: 448}
+  m_AnchoredPosition: {x: 869.9998, y: 509.00006}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080976731
@@ -72340,6 +72558,18 @@ MonoBehaviour:
           m_StringArgument: Racing
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirm
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1248858420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73805,6 +74035,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirm
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1291320524
@@ -77593,7 +77835,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1.22
+  m_PixelsPerUnitMultiplier: 1.3
 --- !u!222 &1357929581
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -83168,6 +83410,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirm
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1456365519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88266,6 +88520,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirm
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1537301596
@@ -99418,7 +99684,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689451432}
   m_LocalRotation: {x: 2.6645353e-15, y: -0.19512655, z: -9.274572e-10, w: 0.98077816}
-  m_LocalPosition: {x: 0, y: 0, z: -21.000061}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 2.1440327, y: 2.5942798, z: 2.1440327}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -99427,7 +99693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -22.504, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100.99957, y: -183.04385}
+  m_AnchoredPosition: {x: -99, y: -183}
   m_SizeDelta: {x: 160, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1689451434
@@ -99534,6 +99800,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirm
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1689451437
@@ -108331,6 +108609,18 @@ MonoBehaviour:
           m_StringArgument: Solo
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirmLarge
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1820812004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110214,6 +110504,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirm
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1845173303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111669,18 +111971,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1469971314}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 1840847877}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -111692,6 +111982,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1469971314}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1862771314}
         m_TargetAssemblyTypeName: JumpToUIElement, Assembly-CSharp
@@ -111715,6 +112017,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Arena
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 26176251}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonConfirm
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1862771311

@@ -16,6 +16,11 @@ public class MenuController : MonoBehaviour
     private string gamemode;
     private string playertype;
 
+    private void Start()
+    {
+        AudioManager.instance.PlayBGM("MainMenu");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -84,5 +89,11 @@ public class MenuController : MonoBehaviour
     public void SFXVolume(float volume)
     {
         AudioManager.instance.SFXVolume(volume);
+    }
+
+    // Tell audio manager to play sound
+    public void PlayAudio(string audioName)
+    {
+        AudioManager.instance.PlaySFX(audioName);
     }
 }
