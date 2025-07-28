@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -70,6 +71,8 @@ public class MenuController : MonoBehaviour
     public void PlayerSelect(string type)
     {
         playertype = type;
+
+        SceneManager.LoadScene(1);
     }
 
 

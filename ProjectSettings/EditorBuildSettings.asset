@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/InstaPost.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MainMenu.unity
+    guid: 102bbac08cae0eb4dbb8ff559b30db2a
+  - enabled: 1
+    path: Assets/Scenes/SelectMenu.unity
+    guid: ad9ea668769de00409e016d5e3923077
   m_configObjects: {}
