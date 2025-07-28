@@ -3441,7 +3441,7 @@ PrefabInstance:
     - target: {fileID: 4628630252982665150, guid: 26b9a228514455c46afadc3c4db350aa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -314.45203
+      value: -313.7
       objectReference: {fileID: 0}
     - target: {fileID: 4628630252982665150, guid: 26b9a228514455c46afadc3c4db350aa,
         type: 3}
@@ -10398,7 +10398,7 @@ PrefabInstance:
     - target: {fileID: 8906537839719017250, guid: 5c3a2afc6c28ef74cab5deba9f2e9a64,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -112.7688
+      value: -112.7
       objectReference: {fileID: 0}
     - target: {fileID: 8906537839719017250, guid: 5c3a2afc6c28ef74cab5deba9f2e9a64,
         type: 3}
@@ -10408,7 +10408,7 @@ PrefabInstance:
     - target: {fileID: 8906537839719017250, guid: 5c3a2afc6c28ef74cab5deba9f2e9a64,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 178.74796
+      value: 179.4
       objectReference: {fileID: 0}
     - target: {fileID: 8906537839719017250, guid: 5c3a2afc6c28ef74cab5deba9f2e9a64,
         type: 3}
@@ -11227,7 +11227,7 @@ PrefabInstance:
     - target: {fileID: 4628630252982665150, guid: 26b9a228514455c46afadc3c4db350aa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 132.3628
+      value: 132.4
       objectReference: {fileID: 0}
     - target: {fileID: 4628630252982665150, guid: 26b9a228514455c46afadc3c4db350aa,
         type: 3}
@@ -11237,7 +11237,7 @@ PrefabInstance:
     - target: {fileID: 4628630252982665150, guid: 26b9a228514455c46afadc3c4db350aa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -314.45203
+      value: -313.8
       objectReference: {fileID: 0}
     - target: {fileID: 4628630252982665150, guid: 26b9a228514455c46afadc3c4db350aa,
         type: 3}
@@ -12072,7 +12072,7 @@ PrefabInstance:
     - target: {fileID: 8906537839719017250, guid: 5c3a2afc6c28ef74cab5deba9f2e9a64,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 178.74796
+      value: 179.49997
       objectReference: {fileID: 0}
     - target: {fileID: 8906537839719017250, guid: 5c3a2afc6c28ef74cab5deba9f2e9a64,
         type: 3}
@@ -13926,6 +13926,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: side structure 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099280689358346855, guid: 3259d569926c10449ae4b0d97b47448a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
