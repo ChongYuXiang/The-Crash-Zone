@@ -46,8 +46,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4faa2497c12d2044a507ca905979f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMSounds: []
+  BGMSounds:
+  - name: MainMenu
+    clip: {fileID: 8300000, guid: 47948abcb166f1840819d10a84c49830, type: 3}
   SFXSounds:
+  - name: ButtonSelect
+    clip: {fileID: 8300000, guid: d0176e31ed851fa45b8d959c54aa5b81, type: 3}
+  - name: ButtonConfirm
+    clip: {fileID: 8300000, guid: 7fd20e65b8482244297fa9dce69b20e5, type: 3}
+  - name: ButtonConfirmLarge
+    clip: {fileID: 8300000, guid: feb83e29ad8059f4f9e4bd5c0e6f5e29, type: 3}
+  - name: ButtonBack
+    clip: {fileID: 8300000, guid: e150f467ce0509e43ae1b4e4acfc66a4, type: 3}
   - name: CarDamage
     clip: {fileID: 8300000, guid: 7ab06e396b04b3c4daab3e1bffe778ba, type: 3}
   - name: CarExplode
@@ -113,10 +123,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -241,7 +251,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
