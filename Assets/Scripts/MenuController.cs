@@ -19,7 +19,10 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.instance.PlayBGM("MainMenu");
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            AudioManager.instance.PlayBGM("MainMenu");
+        }
     }
 
     // Update is called once per frame
@@ -71,7 +74,7 @@ public class MenuController : MonoBehaviour
     public void PlayerSelect(string type)
     {
         playertype = type;
-
+        //GameManager.instance.SelectGameMode(gamemode, playertype);
         SceneManager.LoadScene(1);
     }
 
