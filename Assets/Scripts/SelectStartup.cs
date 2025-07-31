@@ -9,6 +9,8 @@ public class SelectStartup : MonoBehaviour
     public TextMeshProUGUI gameModeTitle;
     public GameObject player2UI;
     public GameObject player2Car;
+    public GameObject arenaMenu;
+    public GameObject trackMenu;
 
     private void Start()
     {
@@ -24,6 +26,7 @@ public class SelectStartup : MonoBehaviour
                 player2UI.SetActive(false);
                 player2Car.SetActive(false);
             }
+            arenaMenu.SetActive(true);
         }
         if (GameManager.instance.gameMode == "Racing")
         {
@@ -37,6 +40,7 @@ public class SelectStartup : MonoBehaviour
                 player2UI.SetActive(false);
                 player2Car.SetActive(false);
             }
+            trackMenu.SetActive(true);
         }
     }
 }
