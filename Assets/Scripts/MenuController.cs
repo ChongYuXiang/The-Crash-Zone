@@ -74,8 +74,13 @@ public class MenuController : MonoBehaviour
     public void PlayerSelect(string type)
     {
         playertype = type;
-        //GameManager.instance.SelectGameMode(gamemode, playertype);
-        SceneManager.LoadScene(1);
+        GameManager.instance.SelectGameMode(gamemode, playertype);
+        ChangeScenes(1);
+    }
+
+    public void ChangeScenes(int index)
+    {
+        SceneManager.LoadScene(index);
     }
 
 
