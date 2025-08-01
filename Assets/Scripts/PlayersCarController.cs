@@ -95,6 +95,7 @@ public class PlayersCarController : MonoBehaviour
     // Called at the START of each frame
     void Update()
     {
+        Debug.Log(health);
         if (health > 0)
         {
             // Retrieve inputs and update vfx/animation
