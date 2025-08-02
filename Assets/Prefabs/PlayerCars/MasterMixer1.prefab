@@ -520,8 +520,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSmoothness: 15
   rotSmoothness: 40
-  moveOffset: {x: 0, y: 2.1, z: -5.7}
-  rotOffset: {x: 0, y: 0.03, z: 0}
+  moveOffset: {x: 0, y: 2.29, z: -6.32}
+  rotOffset: {x: 0, y: 0.11, z: 0}
   carTarget: {fileID: 5451072119132462736}
 --- !u!1 &2117100294521535638
 GameObject:
