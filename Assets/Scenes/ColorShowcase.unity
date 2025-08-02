@@ -1324,7 +1324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateX: 0
   rotateY: 0
-  rotateZ: 50
+  rotateZ: -30
 --- !u!1001 &1153285851
 PrefabInstance:
   m_ObjectHideFlags: 0
