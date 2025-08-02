@@ -140,6 +140,6 @@ Material:
     - _buttom_out: {r: 1.34, g: 0.39, b: 0, a: 0}
     - _remap_in: {r: 0, g: 0.67, b: 0, a: 0}
     - _remap_out: {r: 2.92, g: 0.84, b: 0, a: 0}
-    - _ripple_colour: {r: 0.050980367, g: 0.6116898, b: 0.7882353, a: 0}
+    - _ripple_colour: {r: 0.17443931, g: 0.52053964, b: 0.754717, a: 0}
     - _ripple_speed: {r: 1.03, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
