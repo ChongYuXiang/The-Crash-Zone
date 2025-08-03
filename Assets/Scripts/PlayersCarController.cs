@@ -20,18 +20,8 @@ public class PlayersCarController : MonoBehaviour
         set
         {
             _isFrozen = value;
-
-            if (carRb == null) return;
-
-            if (_isFrozen)
-            {
-                // Do NOT freeze constraints or set velocity to zero to avoid physics glitches
-                // Instead, brake wheels fully in Brake() method and disable input via isFrozen flag
-            }
-            else
-            {
-                // Nothing special to do here for unfreezing
-            }
+            // When frozen, input is disabled and full brake applied in Brake()
+            // No rigidbody kinematic or velocity changes here to avoid physics glitches
         }
     }
 
@@ -73,6 +63,10 @@ public class PlayersCarController : MonoBehaviour
     public float brakeAcceleration = 50.0f;
     public float maxVelocity = 30f;
 
+    public float maxSpeed = 100f;               // Current max speed, adjustable by freeze script
+    [HideInInspector]
+    public float defaultMaxSpeed = 100f;         // Store default max speed for restore
+
     private bool isSpeedBoostActive = false;
     private float savedAcceleration;
     private bool isInSlowZone = false;
@@ -103,6 +97,7 @@ public class PlayersCarController : MonoBehaviour
         carRb.centerOfMass = _centerOfMass;
         maxHealth = health;
         healthText.color = Color.green;
+        defaultMaxSpeed = maxSpeed;  // Save initial max speed
     }
 
     void Update()
@@ -193,6 +188,10 @@ public class PlayersCarController : MonoBehaviour
         if (isFrozen) return;
 
         float torque = moveInput * 600f * maxAcceleration * Time.deltaTime;
+
+        // Prevent exceeding maxSpeed
+        if (carRb.velocity.magnitude >= maxSpeed) return;
+
         foreach (var wheel in wheels)
         {
             wheel.wheelCollider.motorTorque = torque;
@@ -217,9 +216,9 @@ public class PlayersCarController : MonoBehaviour
     {
         if (isFrozen)
         {
+            // Apply full brake torque to lock wheels while frozen
             foreach (var wheel in wheels)
             {
-                // Apply infinite brake torque to lock wheels while frozen
                 wheel.wheelCollider.motorTorque = 0f;
                 wheel.wheelCollider.brakeTorque = Mathf.Infinity;
             }

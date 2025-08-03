@@ -7166,6 +7166,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1109328002}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1133638756
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3569832107164786792, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2208.584
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569832107164786792, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 499.7851
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569832107164786792, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 408.58185
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569832107164786792, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00000058114523
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569832107164786792, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569832107164786792, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569832107164786792, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569832107164786792, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569832107164786792, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569832107164786792, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5280951351093378300, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899203649379784230, guid: 1a6d81853ef9c674884957b15f5ab300,
+        type: 3}
+      propertyPath: m_Name
+      value: WinchWrangler1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a6d81853ef9c674884957b15f5ab300, type: 3}
 --- !u!1001 &1144266928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14980,9 +15053,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5bfd5854e27f04fad5f9820b7bef68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowedSceneName: testing
+  stayDurationBeforeFreeze: 3
   freezeDuration: 7
-  checkInterval: 15
+  slowDownDuration: 2
+  restoreDuration: 2
 --- !u!4 &1598127140
 Transform:
   m_ObjectHideFlags: 0
@@ -18992,3 +19066,4 @@ SceneRoots:
   - {fileID: 1598127140}
   - {fileID: 393246345}
   - {fileID: 321283309}
+  - {fileID: 1133638756}
