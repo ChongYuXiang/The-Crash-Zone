@@ -10,34 +10,52 @@ using System.Collections;
 public class PlayersCarController : MonoBehaviour
 {
     private PlayerControls controls;
+    private Rigidbody carRb;
 
-    // Set up control detection
+    private bool _isFrozen = false;
+    [HideInInspector]
+    public bool isFrozen
+    {
+        get => _isFrozen;
+        set
+        {
+            _isFrozen = value;
+
+            if (carRb == null) return;
+
+            if (_isFrozen)
+            {
+                // Do NOT freeze constraints or set velocity to zero to avoid physics glitches
+                // Instead, brake wheels fully in Brake() method and disable input via isFrozen flag
+            }
+            else
+            {
+                // Nothing special to do here for unfreezing
+            }
+        }
+    }
+
     private void Awake()
     {
         controls = new PlayerControls();
+        carRb = GetComponent<Rigidbody>();
     }
+
     private void OnEnable()
     {
         if (controls == null)
-        {
             controls = new PlayerControls();
-        }
         controls.Enable();
     }
+
     private void OnDisable()
     {
         if (controls != null)
-        {
             controls.Disable();
-        }
     }
 
-    // Wheel classes
-    public enum Axel
-    {
-        Front,
-        Rear
-    }
+    public enum Axel { Front, Rear }
+
     [Serializable]
     public struct Wheel
     {
@@ -47,7 +65,6 @@ public class PlayersCarController : MonoBehaviour
         public Axel axel;
     }
 
-    // Public Variables
     public int playerNum = 1;
     public float health = 100;
     private float maxHealth;
@@ -73,55 +90,41 @@ public class PlayersCarController : MonoBehaviour
     private float lastTeleportTime = -10f;
     private float teleportCooldown = 1.5f;
 
-    // Inputs
     private float moveInput;
     private float steerInput;
     private float brakeInput;
     private float abilityInput;
 
-    private Rigidbody carRb;
     private Vector3 _centerOfMass;
     private Vector3 playerVelocity;
 
-
     void Start()
     {
-        carRb = GetComponent<Rigidbody>();
         carRb.centerOfMass = _centerOfMass;
         maxHealth = health;
         healthText.color = Color.green;
     }
 
-    // Called at the START of each frame
     void Update()
     {
-        Debug.Log(health);
-        if (health > 0)
+        if (health > 0 && !isFrozen)
         {
-            // Retrieve inputs and update vfx/animation
             GetInputs();
             AnimateWheels();
             WheelEffects();
-
-            // Retrieve Speed
             playerVelocity = carRb.velocity;
         }
     }
 
-    // Called at the END of each frame
     void LateUpdate()
     {
         if (health > 0)
         {
-            // Car movement
             Move();
             Steer();
             Brake();
             Ability();
-            // Health check
             CheckHealth();
-
-            // Speed check
             ClampMaxSpeed();
         }
     }
@@ -130,24 +133,30 @@ public class PlayersCarController : MonoBehaviour
     {
         while (abilityCooldownCurrent > 0)
         {
-            yield return new WaitForSeconds(1); // Wait 1 second
+            yield return new WaitForSeconds(1);
             abilityCooldownCurrent -= 1;
-            Debug.Log(abilityCooldownCurrent);
         }
-        yield return new WaitForEndOfFrame();
     }
 
-    void GetInputs() // Read inputs
+    void GetInputs()
     {
-        // Check if the car is controlled by player 1 or player 2 to read the correct inputs
-        if (playerNum == 1) // Player 1
+        if (isFrozen)
+        {
+            moveInput = 0f;
+            steerInput = 0f;
+            brakeInput = 1f; // full brake while frozen
+            abilityInput = 0f;
+            return;
+        }
+
+        if (playerNum == 1)
         {
             moveInput = controls.Player1.Accelerate.ReadValue<float>();
             steerInput = controls.Player1.Steer.ReadValue<float>();
             brakeInput = controls.Player1.Brake.ReadValue<float>();
             abilityInput = controls.Player1.Ability.ReadValue<float>();
         }
-        else if (playerNum == 2) // Player 2
+        else if (playerNum == 2)
         {
             moveInput = controls.Player2.Accelerate.ReadValue<float>();
             steerInput = controls.Player2.Steer.ReadValue<float>();
@@ -175,36 +184,48 @@ public class PlayersCarController : MonoBehaviour
         else
         {
             healthText.color = Color.green;
-
         }
         healthText.text = health.ToString();
     }
 
-    void Move() // Forward and backward movement
+    void Move()
     {
-        float torque = moveInput * 600f * maxAcceleration * Time.deltaTime;
+        if (isFrozen) return;
 
-        foreach (var wheel in wheels) // Apply the calculated torque to each drive wheel
+        float torque = moveInput * 600f * maxAcceleration * Time.deltaTime;
+        foreach (var wheel in wheels)
         {
             wheel.wheelCollider.motorTorque = torque;
         }
     }
 
-    void Steer() // Left and right steering
+    void Steer()
     {
-        foreach (var wheel in wheels) // For each wheel,
+        if (isFrozen) return;
+
+        foreach (var wheel in wheels)
         {
-            if (wheel.axel == Axel.Front) // If wheel is front wheel,
+            if (wheel.axel == Axel.Front)
             {
-                // Turn wheel
-                var _steerAngle = steerInput * turnSensitivity * maxSteerAngle;
-                wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, _steerAngle, 0.6f);
+                var steerAngle = steerInput * turnSensitivity * maxSteerAngle;
+                wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, steerAngle, 0.6f);
             }
         }
     }
 
-    void Brake() // Stop vehicle movement
+    void Brake()
     {
+        if (isFrozen)
+        {
+            foreach (var wheel in wheels)
+            {
+                // Apply infinite brake torque to lock wheels while frozen
+                wheel.wheelCollider.motorTorque = 0f;
+                wheel.wheelCollider.brakeTorque = Mathf.Infinity;
+            }
+            return;
+        }
+
         if (brakeInput != 0 || moveInput == 0)
         {
             foreach (var wheel in wheels)
@@ -223,13 +244,15 @@ public class PlayersCarController : MonoBehaviour
 
     void Ability()
     {
-        if (abilityInput != 0 && playerNum == 1 && abilityCooldownCurrent == 0 && hasAbility == true)
+        if (isFrozen) return;
+
+        if (abilityInput != 0 && playerNum == 1 && abilityCooldownCurrent == 0 && hasAbility)
         {
             abilityManager.SendMessage("ActivateAbility", 2);
             abilityCooldownCurrent = abilityCooldownMax;
             StartCoroutine(CooldownTimer());
         }
-        if (abilityInput != 0 && playerNum == 2 && abilityCooldownCurrent == 0 && hasAbility == true)
+        if (abilityInput != 0 && playerNum == 2 && abilityCooldownCurrent == 0 && hasAbility)
         {
             abilityManager.SendMessage("ActivateAbility", 1);
             abilityCooldownCurrent = abilityCooldownMax;
@@ -237,37 +260,30 @@ public class PlayersCarController : MonoBehaviour
         }
     }
 
-    void AnimateWheels() // Spin and rotate wheels
+    void AnimateWheels()
     {
-        foreach (var wheel in wheels) // For each wheel,
+        foreach (var wheel in wheels)
         {
-            // Get rotation of wheel colliders
             Quaternion rot;
             Vector3 pos;
             wheel.wheelCollider.GetWorldPose(out pos, out rot);
-
-            // Match transform of colliders with mesh
             wheel.wheelModel.transform.position = pos;
             wheel.wheelModel.transform.rotation = rot;
         }
     }
 
-
-    void WheelEffects() // VFX for wheels when braking
+    void WheelEffects()
     {
-        foreach (var wheel in wheels) // For each wheel,
+        foreach (var wheel in wheels)
         {
-            // Check if braking, if car in grounded, and if the car is still moving
-            if (brakeInput != 0 && wheel.wheelCollider.isGrounded == true && carRb.velocity.magnitude >= 2.0f)
+            if (brakeInput != 0 && wheel.wheelCollider.isGrounded && carRb.velocity.magnitude >= 2.0f)
             {
-                // Enable effects
                 wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = true;
             }
             else
             {
-                // Disable effects
                 wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = false;
-            } 
+            }
         }
     }
 
@@ -279,22 +295,16 @@ public class PlayersCarController : MonoBehaviour
         }
     }
 
-    // Collision of players
     private void OnTriggerEnter(Collider other)
     {
         if ((playerNum == 1 && other.CompareTag("player2Colliders")) || (playerNum == 2 && other.CompareTag("player1Colliders")))
         {
-
             Rigidbody otherRb = other.attachedRigidbody;
             if (otherRb == null) return;
 
-            // Your direction of movement
             Vector3 contactNormal = (other.transform.position - transform.position).normalized;
-
-            // Check if you are moving INTO the other player
             float impactAlignment = Vector3.Dot(playerVelocity.normalized, contactNormal);
 
-            // if player is moving towards the other car
             if (impactAlignment > 0.5f)
             {
                 float relativeSpeed = playerVelocity.magnitude;
@@ -302,14 +312,12 @@ public class PlayersCarController : MonoBehaviour
                 {
                     relativeSpeed = (playerVelocity - otherRb.velocity).magnitude;
                 }
-                int damageDealt = Mathf.CeilToInt(relativeSpeed) * 1;
+                int damageDealt = Mathf.CeilToInt(relativeSpeed);
 
-                // Deal damage to enemy
                 var enemyCar = other.GetComponentInParent<PlayersCarController>();
                 if (enemyCar != null)
                 {
                     enemyCar.health -= damageDealt;
-                    Debug.Log($"[Player {playerNum}] dealt {damageDealt} from Relative Speed: {relativeSpeed}. Enemy Health: {enemyCar.health}");
                     AudioManager.instance.PlaySFX("CarDamage");
                     enemyCar.SendMessage("CheckHealth");
                 }
@@ -331,9 +339,10 @@ public class PlayersCarController : MonoBehaviour
             StopCoroutine(HealPerSecond());
         }
     }
+
     public IEnumerator HealPerSecond()
     {
-        while (healingStatus == true)
+        while (healingStatus)
         {
             if (health > 0)
             {
@@ -343,12 +352,10 @@ public class PlayersCarController : MonoBehaviour
             {
                 health = maxHealth;
             }
-            yield return new WaitForSeconds(0.2f); // Wait seconds
+            yield return new WaitForSeconds(0.2f);
         }
-        yield return new WaitForEndOfFrame();
     }
 
-    // Jack's thingy   
     public void ApplyInstantSpeedBoost(float boostSpeed, float duration = 2f)
     {
         StopCoroutine("SpeedBoostCoroutine");
@@ -358,32 +365,22 @@ public class PlayersCarController : MonoBehaviour
     private IEnumerator SpeedBoostCoroutine(float boostSpeed, float duration)
     {
         isSpeedBoostActive = true;
-
-        // Apply boosted velocity
         Vector3 forwardVelocity = transform.forward * boostSpeed;
         carRb.velocity = new Vector3(forwardVelocity.x, carRb.velocity.y, forwardVelocity.z);
-
         yield return new WaitForSeconds(duration);
-
         isSpeedBoostActive = false;
-
-
-        Debug.Log("Speed boost ended");
     }
 
     public void EnterSlowZone(float targetSpeed, float slowAccel)
     {
-        if (isInSlowZone) return; // Prevent reapplying slowdown while inside
+        if (isInSlowZone) return;
 
         isInSlowZone = true;
         savedAcceleration = maxAcceleration;
         maxAcceleration = slowAccel;
 
-        // Instantly reduce velocity
         Vector3 horizontalDir = new Vector3(carRb.velocity.x, 0f, carRb.velocity.z).normalized;
         carRb.velocity = horizontalDir * targetSpeed + Vector3.up * carRb.velocity.y;
-
-        Debug.Log("Entered slow zone: accel = " + maxAcceleration);
     }
 
     public void ExitSlowZone()
@@ -392,8 +389,6 @@ public class PlayersCarController : MonoBehaviour
 
         maxAcceleration = savedAcceleration;
         isInSlowZone = false;
-
-        Debug.Log("Exited slow zone: accel = " + maxAcceleration);
     }
 
     public bool CanTeleport()
@@ -405,6 +400,4 @@ public class PlayersCarController : MonoBehaviour
     {
         lastTeleportTime = Time.time;
     }
-
-
 }
