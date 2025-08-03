@@ -17,7 +17,7 @@ public class CementAbility : MonoBehaviour
     IEnumerator AbilityTimer()
     {
         GameObject clone = (GameObject)Instantiate(cement, gameObject.transform.position, gameObject.transform.rotation);
-        //AudioManager.instance.PlaySFX("DeployCement");
+        AudioManager.instance.PlaySFX("DeployCement");
 
         yield return new WaitForSeconds(duration); // Wait seconds
 

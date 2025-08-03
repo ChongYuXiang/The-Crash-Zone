@@ -14,6 +14,7 @@ public class Cement : MonoBehaviour
         {
             //AudioManager.instance.PlaySFX("CementEnter");
             car.EnterSlowZone(slowSpeed, slowAcceleration);
+            AudioManager.instance.PlaySFX("CementEnter");
         }
     }
 
