@@ -8,6 +8,7 @@ TagManager:
   - player1Colliders
   - CinemachineTarget
   - LapTrigger
+  - PlayerCar
   layers:
   - Default
   - TransparentFX
