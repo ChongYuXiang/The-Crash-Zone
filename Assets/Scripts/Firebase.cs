@@ -35,9 +35,11 @@ public class Firebase : MonoBehaviour
         string json = JsonUtility.ToJson(scoreData);
         string fullPath = $"{firebaseURL}leaderboard/{path}.json";
 
-        using (UnityWebRequest www = UnityWebRequest.Put(fullPath, json))
+        using (UnityWebRequest www = new UnityWebRequest(fullPath, "POST"))
         {
-            www.method = UnityWebRequest.kHttpVerbPOST;
+            byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
+            www.uploadHandler = new UploadHandlerRaw(jsonToSend);
+            www.downloadHandler = new DownloadHandlerBuffer();
             www.SetRequestHeader("Content-Type", "application/json");
 
             yield return www.SendWebRequest();

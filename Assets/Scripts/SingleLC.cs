@@ -5,45 +5,51 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 public class SingleLC : MonoBehaviour
 {
+    [Header("Firebase Config")]
+    public string gameMode = "single";    // e.g., "single", "versus", "timeTrial"
+    public string arenaName = "arena_1";  // e.g., "desert", "city", "space"
+
+    private bool hasSubmitted = false;
+
+    private Firebase firebase;
+
     public int totalLaps = 3;
     private int currentLap = 0;
     private bool hasFinished = false;
 
-    public TextMeshProUGUI lapText; // Assign in inspector
-    public float lapCooldown = 3f;  // Cooldown to prevent repeated triggers
+    public TextMeshProUGUI lapText;
+    public float lapCooldown = 3f;
     private float lastLapTime = -999f;
 
     public GameObject winPanel;
     public TextMeshProUGUI finalTimeText;
     public TMP_InputField nicknameInputField;
     public Button submitButton;
-    // Optional leaderboard manager to send data to
-    // public GameObject leaderboardManager;
 
     void Start()
     {
         UpdateLapUI();
         if (winPanel != null)
             winPanel.SetActive(false);
+
+        firebase = FindObjectOfType<Firebase>();
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("PlayerCar") || hasFinished)
+        if (hasFinished)
             return;
 
-        if (!other.CompareTag("LapTrigger") || hasFinished)
-            return;
-
-        // Check cooldown
+        // Cooldown check
         if (Time.time - lastLapTime < lapCooldown)
             return;
 
         lastLapTime = Time.time;
 
-        // First pass just starts the race, don't count as a lap
         if (currentLap == 0)
         {
             Debug.Log("Race started!");
@@ -60,6 +66,11 @@ public class SingleLC : MonoBehaviour
         if (currentLap > totalLaps)
         {
             hasFinished = true;
+
+            // Freeze this car
+            var playerCar = other.GetComponent<PlayersCarController>();
+            if (playerCar != null)
+                playerCar.isFrozen = true;
 
             if (RaceTimer.instance != null)
                 RaceTimer.instance.StopTimer();
@@ -79,6 +90,8 @@ public class SingleLC : MonoBehaviour
     {
         if (winPanel != null)
             winPanel.SetActive(true);
+
+            StartCoroutine(FocusInput());
 
         if (finalTimeText != null && RaceTimer.instance != null)
         {
@@ -103,13 +116,24 @@ public class SingleLC : MonoBehaviour
         Debug.Log("You won! Awaiting nickname input...");
     }
 
+    private IEnumerator FocusInput()
+    {
+        yield return new WaitForEndOfFrame();
+        nicknameInputField.Select();
+        nicknameInputField.ActivateInputField();
+    }
+
     public void SubmitScore()
     {
+        if (hasSubmitted) return;  // prevent duplicate submission
+        hasSubmitted = true;
+
         string nickname = nicknameInputField.text.ToUpper();
 
         if (nickname.Length != 3 || !IsAlpha(nickname))
         {
             Debug.LogWarning("Nickname must be exactly 3 letters.");
+            hasSubmitted = false;  // allow retry
             return;
         }
 
@@ -117,12 +141,19 @@ public class SingleLC : MonoBehaviour
 
         Debug.Log($"Submitted Nickname: {nickname}, Time: {finalTime}");
 
-        // TODO: Send this data to your leaderboard system
-        // leaderboardManager.GetComponent<Leaderboard>().AddScore(nickname, finalTime);
+        if (firebase != null)
+        {
+            firebase.SubmitScore(nickname, finalTime, gameMode, arenaName);
+        }
+        else
+        {
+            Debug.LogError("Firebase object not found in scene.");
+        }
 
-        // Disable input after submission
         submitButton.interactable = false;
         nicknameInputField.interactable = false;
+        Debug.Log("SubmitScore() triggered");
+
     }
 
     private bool IsAlpha(string input)
