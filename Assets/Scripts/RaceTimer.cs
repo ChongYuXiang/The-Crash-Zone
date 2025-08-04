@@ -47,4 +47,13 @@ public class RaceTimer : MonoBehaviour
     {
         return raceTime;
     }
+
+    public string GetCurrentTime()
+    {
+        int minutes = Mathf.FloorToInt(raceTime / 60f);
+        int seconds = Mathf.FloorToInt(raceTime % 60f);
+        int milliseconds = Mathf.FloorToInt((raceTime * 1000f) % 1000f);
+
+        return $"{minutes:00}:{seconds:00}:{milliseconds:000}";
+    }
 }
