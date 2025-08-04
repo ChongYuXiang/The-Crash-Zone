@@ -48,6 +48,10 @@ public class RaceStartLight : MonoBehaviour
         {
             car.isFrozen = false;
         }
+
+        // Start the race timer
+        if (RaceTimer.instance != null)
+            RaceTimer.instance.StartTimer();
     }
 }
 
