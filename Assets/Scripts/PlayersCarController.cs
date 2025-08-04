@@ -9,6 +9,8 @@ using System.Collections;
 
 public class PlayersCarController : MonoBehaviour
 {
+    public Renderer iceCubeRenderer;
+    public CanvasGroup freezeCanvasGroup;
     private PlayerControls controls;
     private Rigidbody carRb;
 
