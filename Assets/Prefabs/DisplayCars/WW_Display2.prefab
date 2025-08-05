@@ -609,7 +609,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2905607350599719338}
-  - component: {fileID: 477065663093422123}
   - component: {fileID: 6415122118236265168}
   m_Layer: 0
   m_Name: WW_Display2
@@ -634,21 +633,6 @@ Transform:
   - {fileID: 6833664409527329602}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &477065663093422123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8334503341555822422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a78c17546a73a2549b4d5832a236b798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateX: 0
-  rotateY: 50
-  rotateZ: 0
 --- !u!114 &6415122118236265168
 MonoBehaviour:
   m_ObjectHideFlags: 0

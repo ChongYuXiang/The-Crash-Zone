@@ -10,7 +10,7 @@ public class TestMainMenu : MonoBehaviour
 
     public void Play()
     {
-        sceneController.LoadScene(sceneToLoad);
+        sceneController.LoadScene(1);
     }
 
     

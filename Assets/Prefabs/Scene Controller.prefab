@@ -235,4 +235,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c461d706487ce1e499266a35182592ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneFadeDuration: 1
+  sceneFadeDuration: 0.5

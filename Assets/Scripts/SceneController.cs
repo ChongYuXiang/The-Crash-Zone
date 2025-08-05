@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public static SceneController instance;
+
+
     [SerializeField]
     private float sceneFadeDuration;
 
@@ -12,23 +15,31 @@ public class SceneController : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         sceneFade = GetComponentInChildren<SceneFade>();
-
+        sceneFade.gameObject.SetActive(false);
     }
 
-    private IEnumerator Start()
+    public void LoadScene(int sceneIndex)
     {
-        yield return sceneFade.FadeInCoroutine(sceneFadeDuration);
+        sceneFade.gameObject.SetActive(true);
+        StartCoroutine(LoadSceneCoroutine(sceneIndex));
     }
 
-    public void LoadScene(string sceneName)
-    {
-        StartCoroutine(LoadSceneCoroutine(sceneName));
-    }
-
-    private IEnumerator LoadSceneCoroutine(string sceneName)
+    private IEnumerator LoadSceneCoroutine(int index)
     {
         yield return sceneFade.FadeOutCoroutine(sceneFadeDuration);
-        yield return SceneManager.LoadSceneAsync(sceneName);
+        yield return SceneManager.LoadSceneAsync(index);
+        yield return sceneFade.FadeInCoroutine(sceneFadeDuration);
+        sceneFade.gameObject.SetActive(false);
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DisplayCar : MonoBehaviour
 {
     public int playerNumber;
+    public bool isCC = false;
 
     public Material[] materials;
     public Renderer[] targetRenderers;
@@ -30,15 +31,27 @@ public class DisplayCar : MonoBehaviour
         {
             Button leftButton = GameObject.Find("ConstumeLeft1").GetComponent<Button>();
             Button rightButton = GameObject.Find("ConstumeRight1").GetComponent<Button>();
+            Button scanButton = GameObject.Find("Scan1Button").GetComponent<Button>();
             leftButton.onClick.AddListener(PreviousMaterial);
             rightButton.onClick.AddListener(NextMaterial);
+            scanButton.onClick.AddListener(RemoveCar);
         }
         if (playerNumber == 2)
         {
             Button leftButton = GameObject.Find("ConstumeLeft2").GetComponent<Button>();
             Button rightButton = GameObject.Find("ConstumeRight2").GetComponent<Button>();
+            Button scanButton = GameObject.Find("Scan2Button").GetComponent<Button>();
             leftButton.onClick.AddListener(PreviousMaterial);
             rightButton.onClick.AddListener(NextMaterial);
+            scanButton.onClick.AddListener(RemoveCar);
+        }
+    }
+
+    private void Start()
+    {
+        if (isCC)
+        {
+            GameManager.instance.SelectCar(playerNumber, "CrashCourser");
         }
     }
 
@@ -47,6 +60,7 @@ public class DisplayCar : MonoBehaviour
         if (materials.Length == 0) return;
 
         currentIndex = (currentIndex + 1) % materials.Length;
+        GameManager.instance.SelectWrap(playerNumber, currentIndex+1); // Save selection to GameManager
         ApplyMaterial();
     }
 
@@ -55,6 +69,7 @@ public class DisplayCar : MonoBehaviour
         if (materials.Length == 0) return;
 
         currentIndex = (currentIndex - 1 + materials.Length) % materials.Length;
+        GameManager.instance.SelectWrap(playerNumber, currentIndex+1); // Save selection to GameManager
         ApplyMaterial();
     }
 
