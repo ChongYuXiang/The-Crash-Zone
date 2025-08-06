@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public int p1Wrap;
     public int p2Wrap;
+
+    public string selectedMap;
 
     private void Awake()
     {
@@ -55,6 +58,14 @@ public class GameManager : MonoBehaviour
         if (player == 2)
         {
             p2Wrap = wrapIndex;
+        }
+    }
+
+    public void ToScene()
+    {
+        if (selectedMap == "CrashZone")
+        {
+            SceneController.instance.LoadScene(2);
         }
     }
 }

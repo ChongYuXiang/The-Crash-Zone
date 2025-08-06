@@ -27,6 +27,7 @@ public class SelectStartup : MonoBehaviour
                 player2Car.SetActive(false);
             }
             arenaMenu.SetActive(true);
+            GameManager.instance.selectedMap = "CrashZone";
         }
         if (GameManager.instance.gameMode == "Racing")
         {
@@ -41,6 +42,7 @@ public class SelectStartup : MonoBehaviour
                 player2Car.SetActive(false);
             }
             trackMenu.SetActive(true);
+            GameManager.instance.selectedMap = "RaceTrack1";
         }
     }
 }

@@ -77,10 +77,18 @@ public class MenuController : MonoBehaviour
         GameManager.instance.SelectGameMode(gamemode, playertype);
         SceneController.instance.LoadScene(1);
     }
+    public void ArenaSelect(string map)
+    {
+        GameManager.instance.selectedMap = map;
+    }
 
-    public void ChangeScenes(int index)
+    public void ChangeScenes(int index) // General scene changing with fade
     {
         SceneController.instance.LoadScene(index);
+    }
+    public void ToPlayScene() // Tell game manager to go to the selected arena/track scene
+    {
+        GameManager.instance.ToScene();
     }
 
 
