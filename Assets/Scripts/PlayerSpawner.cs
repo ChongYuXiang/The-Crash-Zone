@@ -26,107 +26,57 @@ public class PlayerSpawner : MonoBehaviour
     private GameObject RoaringRacer1;
     [SerializeField]
     private GameObject RoaringRacer2;
+    [SerializeField]
+    private GameObject MasterMixer1;
+    [SerializeField]
+    private GameObject MasterMixer2;
 
-    public string player1CarID;
-    public string player2CarID;
 
-    public void SaveNFCID(string ID)
+
+    private void Start()
     {
-        if (string.IsNullOrEmpty(player1CarID))
+        // Spawn player 1
+        if (GameManager.instance.p1Car == "CrashCourser")
         {
-            // Save player 1's car ID
-            player1CarID = ID;
-            Debug.Log("Player 1 saved as " +  ID);
-            SpawnPlayer1();
-        }
-        else if (string.IsNullOrEmpty(player2CarID))
-        {
-            // Save player 2's car ID
-            player2CarID = ID;
-            Debug.Log("Player 2 saved as " + ID);
-            SpawnPlayer2();
-        }
-    }
-
-    public void RemovePlayer(int playerNum)
-    {
-        if (playerNum == 1)
-        {
-            player1CarID = null;
-        }
-        if (playerNum == 2)
-        {
-            player2CarID = null;
-        }
-    } 
-
-    public void StartGame()
-    {
-        if (player1CarID == null || player2CarID == null)
-        {
-            Debug.Log("IDs not set");
-            return;
-        }
-
-        SpawnPlayer1();
-        SpawnPlayer2();
-    }
-
-    private void SpawnPlayer1()
-    {
-        Debug.Log("Spawning P1...");
-        if (player1CarID == "04-C4-9A-15-C2-2A-81")
-        {
-            // Spawn CrashCourser1 at spawn point 1
             GameObject clone = (GameObject)Instantiate(CrashCourser1, spawnPoint1.position, spawnPoint1.rotation);
-            Debug.Log("Player 1 (CrashCourser) spawned");
         }
-        if (player1CarID == "04-E1-7E-16-C2-2A-81")
+        if (GameManager.instance.p1Car == "WinchWrangler")
         {
-            // Spawn WinchWrangler1 at spawn point 1
             GameObject clone = (GameObject)Instantiate(WinchWrangler1, spawnPoint1.position, spawnPoint1.rotation);
-            Debug.Log("Player 1 (WinchWrangler) spawned");
         }
-        if (player1CarID == "04-1A-AD-15-C2-2A-81")
+        if (GameManager.instance.p1Car == "SirenSaviour")
         {
-            // Spawn SirenSaviour1 at spawn point 1
             GameObject clone = (GameObject)Instantiate(SirenSaviour1, spawnPoint1.position, spawnPoint1.rotation);
-            Debug.Log("Player 1 (SirenSaviour) spawned");
         }
-        if (player1CarID == "04-21-43-15-C2-2A-81")
+        if (GameManager.instance.p1Car == "RoaringRacer")
         {
-            // Spawn RoaringRacer1 at spawn point 1
             GameObject clone = (GameObject)Instantiate(RoaringRacer1, spawnPoint1.position, spawnPoint1.rotation);
-            Debug.Log("Player 1 (RoaringRacer) spawned");
         }
-    }
+        if (GameManager.instance.p1Car == "MasterMixer")
+        {
+            GameObject clone = (GameObject)Instantiate(MasterMixer1, spawnPoint1.position, spawnPoint1.rotation);
+        }
 
-    private void SpawnPlayer2()
-    {
-        Debug.Log("Spawning P2...");
-        if (player2CarID == "04-C4-9A-15-C2-2A-81")
+        // Spawn player 2
+        if (GameManager.instance.p2Car == "CrashCourser")
         {
-            // Spawn CrashCourser2 at spawn point 2
             GameObject clone = (GameObject)Instantiate(CrashCourser2, spawnPoint2.position, spawnPoint2.rotation);
-            Debug.Log("Player 2 (CrashCourser) spawned");
         }
-        if (player2CarID == "04-E1-7E-16-C2-2A-81")
+        if (GameManager.instance.p2Car == "WinchWrangler")
         {
-            // Spawn WinchWrangler2 at spawn point 2
             GameObject clone = (GameObject)Instantiate(WinchWrangler2, spawnPoint2.position, spawnPoint2.rotation);
-            Debug.Log("Player 2 (WinchWrangler) spawned");
-}
-        if (player2CarID == "04-1A-AD-15-C2-2A-81")
-        {
-            // Spawn SirenSaviour2 at spawn point 2
-            GameObject clone = (GameObject)Instantiate(SirenSaviour2, spawnPoint2.position, spawnPoint2.rotation);
-            Debug.Log("Player 2 (SirenSaviour) spawned");
         }
-        if (player1CarID == "04-21-43-15-C2-2A-81")
+        if (GameManager.instance.p2Car == "SirenSaviour")
         {
-            // Spawn RoaringRacer2 at spawn point 1
+            GameObject clone = (GameObject)Instantiate(SirenSaviour2, spawnPoint2.position, spawnPoint2.rotation);
+        }
+        if (GameManager.instance.p2Car == "RoaringRacer")
+        {
             GameObject clone = (GameObject)Instantiate(RoaringRacer2, spawnPoint2.position, spawnPoint2.rotation);
-            Debug.Log("Player 2 (RoaringRacer) spawned");
+        }
+        if (GameManager.instance.p2Car == "MasterMixer")
+        {
+            GameObject clone = (GameObject)Instantiate(MasterMixer2, spawnPoint2.position, spawnPoint2.rotation);
         }
     }
 }

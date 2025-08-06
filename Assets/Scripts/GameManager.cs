@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void ToScene()
     {
-        if (selectedMap == "CrashZone")
+        if (selectedMap == "TestZone")
         {
             SceneController.instance.LoadScene(2);
         }
