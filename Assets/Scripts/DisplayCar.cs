@@ -12,19 +12,6 @@ public class DisplayCar : MonoBehaviour
     public Renderer[] targetRenderers;
     private int currentIndex = 0;
 
-    public void RemoveCar()
-    {
-        if (playerNumber == 1)
-        {
-            GameManager.instance.p1Car = null;
-        }
-        if (playerNumber == 2)
-        {
-            GameManager.instance.p2Car = null;
-        }
-        Destroy(gameObject);
-    }
-
     private void Awake()
     {
         if (playerNumber == 1)
@@ -52,6 +39,7 @@ public class DisplayCar : MonoBehaviour
         if (isCC)
         {
             GameManager.instance.SelectCar(playerNumber, "CrashCourser");
+            GameManager.instance.SelectWrap(playerNumber, 1);
         }
     }
 
@@ -85,5 +73,18 @@ public class DisplayCar : MonoBehaviour
                     rend.material = selectedMaterial;
             }
         }
+    }
+
+    public void RemoveCar()
+    {
+        if (playerNumber == 1)
+        {
+            GameManager.instance.p1Car = null;
+        }
+        if (playerNumber == 2)
+        {
+            GameManager.instance.p2Car = null;
+        }
+        Destroy(gameObject);
     }
 }
