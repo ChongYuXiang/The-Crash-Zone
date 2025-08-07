@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 7669701182913426108}
   - component: {fileID: 2486918421760201169}
   - component: {fileID: 3636875442516321619}
+  - component: {fileID: 4852745280911763358}
   m_Layer: 0
   m_Name: Body
   m_TagString: player2Colliders
@@ -347,6 +348,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2959467708922500008, guid: ba48dbdcd0440c94bbdd29183cf6940b, type: 3}
+--- !u!114 &4852745280911763358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321688763006932669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130087238728b864086164c1d1540416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 2
+  materials:
+  - {fileID: 2100000, guid: fe61d17efaedde54ab709167e2850883, type: 2}
+  - {fileID: 2100000, guid: e74fb9702837c6d4abdfdcd1b057cd65, type: 2}
+  - {fileID: 2100000, guid: 9b4d0ea02120a414b83daf36a5f15a75, type: 2}
+  - {fileID: 2100000, guid: dc45b96c314677d4fa3576735bd05ba5, type: 2}
+  targetRenderers:
+  - {fileID: 2486918421760201169}
 --- !u!1 &1382071502928574113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,11 +1179,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bdfb869a91e944f8a3606a9f31d2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iceCubeRenderer: {fileID: 0}
+  freezeCanvasGroup: {fileID: 0}
   playerNum: 2
   health: 120
   maxAcceleration: 80
   brakeAcceleration: 400
   maxVelocity: 40
+  maxSpeed: 100
+  defaultMaxSpeed: 100
   turnSensitivity: 0.5
   maxSteerAngle: 25
   healthText: {fileID: 1218827902154576184}
