@@ -129,11 +129,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 2
+  isCC: 0
   materials:
   - {fileID: 2100000, guid: fa10d29b9a829074e99ed7eb73369a34, type: 2}
   - {fileID: 2100000, guid: 2547ea30ebba7db45880b9931e118472, type: 2}
   - {fileID: 2100000, guid: a96123ec6d5fa454ea6b881ce5919558, type: 2}
   - {fileID: 2100000, guid: 29af0fe20eea3c141a635c037c192099, type: 2}
+  - {fileID: 2100000, guid: 23ea7b55e4c590741a7fa689da0018e9, type: 2}
   targetRenderers:
   - {fileID: 7107455350166922491}
 --- !u!1 &5667144336651766124
