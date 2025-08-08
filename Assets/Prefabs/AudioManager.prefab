@@ -78,6 +78,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9885d89db7e757f4fb128728ac67b24d, type: 3}
   - name: RRBoost
     clip: {fileID: 8300000, guid: c81e9beb1c757a64a8c4238693a6f82b, type: 3}
+  - name: DeployCement
+    clip: {fileID: 8300000, guid: feb7ba619771bc54fa067ce1a9f933a1, type: 3}
+  - name: CementEnter
+    clip: {fileID: 8300000, guid: ec9d523d1ff55e24e913d7a907936cb1, type: 3}
   BGMSource: {fileID: 1265533618273071972}
   SFXSource: {fileID: 5189683691208622828}
 --- !u!1 &6837098335123136495

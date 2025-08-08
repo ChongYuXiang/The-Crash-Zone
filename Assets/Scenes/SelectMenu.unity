@@ -7328,6 +7328,10 @@ MonoBehaviour:
     type: 3}
   RR_Display2: {fileID: 6443882499672761938, guid: 1d088605bf03c6a49ba033dbe4e16a0b,
     type: 3}
+  MM_Display1: {fileID: 5204164817620667417, guid: 964324f0aeeecb148ab0f1dbf6ef9267,
+    type: 3}
+  MM_Display2: {fileID: 2320555255673134308, guid: 7924c1eb2506986469d855cd86674de1,
+    type: 3}
 --- !u!4 &1209786189
 Transform:
   m_ObjectHideFlags: 0
@@ -7853,6 +7857,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CC_Display2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946753332103960186, guid: 2913d5ef36a22ce47843fb046389c17c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -10575,6 +10584,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CC_Display1
+      objectReference: {fileID: 0}
+    - target: {fileID: 673284338113840902, guid: a151b093adae4f141bf892a2a2f47bce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7715625455715600710, guid: a151b093adae4f141bf892a2a2f47bce,
         type: 3}

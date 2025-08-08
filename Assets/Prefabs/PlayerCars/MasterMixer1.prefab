@@ -1146,6 +1146,7 @@ GameObject:
   - component: {fileID: 1480860805415075043}
   - component: {fileID: 505729096113463808}
   - component: {fileID: 758094167448311927}
+  - component: {fileID: 8273569189255171208}
   m_Layer: 0
   m_Name: Body
   m_TagString: player1Colliders
@@ -1240,6 +1241,28 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2959467708922500008, guid: 411cdb331facdd145b59eb294b28abf3, type: 3}
+--- !u!114 &8273569189255171208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672653887203059956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130087238728b864086164c1d1540416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 1
+  materials:
+  - {fileID: 2100000, guid: a04e2178180da864dbb73dd3eb78b036, type: 2}
+  - {fileID: 2100000, guid: 8b0aabfc702f5364593251ccfae1e7aa, type: 2}
+  - {fileID: 2100000, guid: 5574f3175a81ab04bb16739b4e70ae4f, type: 2}
+  - {fileID: 2100000, guid: 51f2e4e31ce30a8448593dec91b75de2, type: 2}
+  - {fileID: 2100000, guid: 60479f67783073f48809e8a9c2862eff, type: 2}
+  targetRenderers:
+  - {fileID: 3258506284803923940}
+  - {fileID: 505729096113463808}
 --- !u!1 &3798767708617859929
 GameObject:
   m_ObjectHideFlags: 0

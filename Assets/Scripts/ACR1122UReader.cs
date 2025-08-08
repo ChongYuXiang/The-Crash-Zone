@@ -21,6 +21,8 @@ public class ACR122UReader : MonoBehaviour
     public GameObject SS_Display2;
     public GameObject RR_Display1;
     public GameObject RR_Display2;
+    public GameObject MM_Display1;
+    public GameObject MM_Display2;
 
     // Called when the script is first enabled
     private void Start()
@@ -81,6 +83,13 @@ public class ACR122UReader : MonoBehaviour
                 carToSpawn = RR_Display1;
                 p1Title.text = "ROARING-RACER";
             }
+            if (cardId == "04-FD-1F-16-C2-2A-81") // ID for MasterMixer
+            {
+                GameManager.instance.SelectCar(1, "MasterMixer");
+                ScanningScreen.SetActive(false);
+                carToSpawn = MM_Display1;
+                p1Title.text = "MASTER-MIXER";
+            }
 
             Instantiate(carToSpawn, DisplayPos1, worldPositionStays: false); // Spawn the display car
         }
@@ -107,6 +116,13 @@ public class ACR122UReader : MonoBehaviour
                 ScanningScreen.SetActive(false);
                 carToSpawn = RR_Display2;
                 p2Title.text = "ROARING-RACER";
+            }
+            if (cardId == "04-FD-1F-16-C2-2A-81") // ID for MasterMixer
+            {
+                GameManager.instance.SelectCar(2, "MasterMixer");
+                ScanningScreen.SetActive(false);
+                carToSpawn = MM_Display2;
+                p2Title.text = "MASTER-MIXER";
             }
 
             Instantiate(carToSpawn, DisplayPos2, worldPositionStays: false); // Spawn the display car
