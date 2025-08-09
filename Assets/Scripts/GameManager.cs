@@ -67,13 +67,17 @@ public class GameManager : MonoBehaviour
         {
             SceneController.instance.LoadScene(2);
         }
-        if (selectedMap == "FroZone")
+        if (selectedMap == "ConstructionZone")
         {
             SceneController.instance.LoadScene(3);
         }
-        if (selectedMap == "TestZone")
+        if (selectedMap == "FroZone")
         {
             SceneController.instance.LoadScene(4);
+        }
+        if (selectedMap == "TestZone")
+        {
+            SceneController.instance.LoadScene(5);
         }
     }
 }
