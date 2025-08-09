@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectMenu.unity
     guid: ad9ea668769de00409e016d5e3923077
   - enabled: 1
+    path: Assets/Scenes/FroZone.unity
+    guid: d43a631c91142824bb5fb32e1e04ae34
+  - enabled: 1
     path: Assets/Scenes/TestZone.unity
     guid: ea981322815416a41ac1d330818fe9af
   m_configObjects: {}
