@@ -235,9 +235,10 @@ MonoBehaviour:
   defaultMaxSpeed: 100
   turnSensitivity: 0.5
   maxSteerAngle: 25
-  healthText: {fileID: 2173005535176285648}
+  healthbar: {fileID: 7084428133679312747}
+  abilityBar: {fileID: 988294119548508112}
   abilityManager: {fileID: 4946822802111287370}
-  abilityCooldownMax: 10
+  abilityCooldownMax: 20
   hasAbility: 1
   wheels:
   - wheelModel: {fileID: 7554688206348737304}
@@ -434,7 +435,7 @@ WheelCollider:
     m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -1216,7 +1217,7 @@ WheelCollider:
     m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -1372,7 +1373,7 @@ WheelCollider:
     m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -1581,7 +1582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cement: {fileID: 3299862007029069270, guid: 51c0e68e985e0de4ca752f7440cd45cf, type: 3}
-  duration: 20
+  duration: 999
 --- !u!1 &6270181651535330367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,7 +1972,7 @@ WheelCollider:
     m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -2111,7 +2112,7 @@ WheelCollider:
     m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -2219,7 +2220,7 @@ WheelCollider:
     m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -2820,6 +2821,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7892508413195546549, guid: 0736b9c97119a8045ad518f06ffc10e6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.520874
+      objectReference: {fileID: 0}
     - target: {fileID: 8940999784755459107, guid: 0736b9c97119a8045ad518f06ffc10e6,
         type: 3}
       propertyPath: m_Name
@@ -2830,16 +2836,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0736b9c97119a8045ad518f06ffc10e6, type: 3}
---- !u!114 &2173005535176285648 stripped
+--- !u!114 &988294119548508112 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8239454596266275467, guid: 0736b9c97119a8045ad518f06ffc10e6,
+  m_CorrespondingSourceObject: {fileID: 7045702446336784523, guid: 0736b9c97119a8045ad518f06ffc10e6,
     type: 3}
   m_PrefabInstance: {fileID: 7813883103462223707}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7084428133679312747 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1017968075065507888, guid: 0736b9c97119a8045ad518f06ffc10e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7813883103462223707}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &7971285349554505382 stripped

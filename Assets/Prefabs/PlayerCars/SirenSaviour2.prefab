@@ -58,7 +58,7 @@ WheelCollider:
     m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 2
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -290,7 +290,7 @@ WheelCollider:
     m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 2
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -814,7 +814,7 @@ WheelCollider:
     m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 2
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -1319,7 +1319,7 @@ WheelCollider:
     m_Stiffness: 1.8
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 2
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -1612,9 +1612,10 @@ MonoBehaviour:
   defaultMaxSpeed: 100
   turnSensitivity: 0.5
   maxSteerAngle: 25
-  healthText: {fileID: 696581587111050039}
+  healthbar: {fileID: 2227861880503586654}
+  abilityBar: {fileID: 5701143346895122491}
   abilityManager: {fileID: 1920313457421382604}
-  abilityCooldownMax: 10
+  abilityCooldownMax: 25
   hasAbility: 1
   wheels:
   - wheelModel: {fileID: 6855039035549014255}
@@ -2263,21 +2264,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c24074700a838fb44b9b8bef3cb4433c, type: 3}
---- !u!114 &696581587111050039 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8477916957485289370, guid: c24074700a838fb44b9b8bef3cb4433c,
-    type: 3}
-  m_PrefabInstance: {fileID: 8938903971641111725}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1564469872922075475 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7618754397596358142, guid: c24074700a838fb44b9b8bef3cb4433c,
     type: 3}
   m_PrefabInstance: {fileID: 8938903971641111725}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2227861880503586654 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7126851160202542067, guid: c24074700a838fb44b9b8bef3cb4433c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8938903971641111725}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5701143346895122491 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3680525453249791126, guid: c24074700a838fb44b9b8bef3cb4433c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8938903971641111725}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

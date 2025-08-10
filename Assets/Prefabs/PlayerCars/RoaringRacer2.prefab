@@ -122,9 +122,10 @@ MonoBehaviour:
   defaultMaxSpeed: 100
   turnSensitivity: 0.5
   maxSteerAngle: 25
-  healthText: {fileID: 5323419278731965010}
+  healthbar: {fileID: 6818626246513051195}
+  abilityBar: {fileID: 1104740120556206430}
   abilityManager: {fileID: 8572129311524245349}
-  abilityCooldownMax: 5
+  abilityCooldownMax: 15
   hasAbility: 1
   wheels:
   - wheelModel: {fileID: 7143457352792911825}
@@ -5327,8 +5328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2412dfda65d2a184fac69c4d08ba2ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSmoothness: 10
-  rotSmoothness: 50
+  moveSmoothness: 15
+  rotSmoothness: 40
   moveOffset: {x: 0, y: 2.1, z: -5.7}
   rotOffset: {x: 0, y: 0.14, z: 0}
   carTarget: {fileID: 4859792703629966871}
@@ -5751,7 +5752,7 @@ WheelCollider:
     m_Stiffness: 2.1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 4
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -5929,7 +5930,7 @@ WheelCollider:
     m_Stiffness: 2.1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 4
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -10999,7 +11000,7 @@ WheelCollider:
     m_Stiffness: 2.1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 4
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -11534,7 +11535,7 @@ WheelCollider:
     m_Stiffness: 2.1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 4
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -11669,7 +11670,7 @@ WheelCollider:
     m_Stiffness: 2.1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 4
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -11789,7 +11790,7 @@ WheelCollider:
     m_Stiffness: 2.1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 4
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
     m_Stiffness: 2.4
@@ -12255,16 +12256,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c24074700a838fb44b9b8bef3cb4433c, type: 3}
---- !u!114 &5323419278731965010 stripped
+--- !u!114 &1104740120556206430 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8477916957485289370, guid: c24074700a838fb44b9b8bef3cb4433c,
+  m_CorrespondingSourceObject: {fileID: 3680525453249791126, guid: c24074700a838fb44b9b8bef3cb4433c,
     type: 3}
   m_PrefabInstance: {fileID: 4343450463449071048}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &6195908470396299318 stripped
@@ -12273,6 +12274,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4343450463449071048}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6818626246513051195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7126851160202542067, guid: c24074700a838fb44b9b8bef3cb4433c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4343450463449071048}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5299627932908140031
 PrefabInstance:
   m_ObjectHideFlags: 0
