@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5318820112079394961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1591718077721175731}
+  - component: {fileID: 4994171133260735111}
+  m_Layer: 0
+  m_Name: RacingStartup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1591718077721175731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318820112079394961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4994171133260735111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318820112079394961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47aae96c39a1914191ae6a3161cae64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint1: {fileID: 0}
+  spawnPoint2: {fileID: 0}
+  CrashCourser1: {fileID: 8202859965710974311, guid: febdcdffb191072428a906507aa93302,
+    type: 3}
+  CrashCourser2: {fileID: 1088888075056577355, guid: eddc205ca78eb774f8f07c828a3d9103,
+    type: 3}
+  WinchWrangler1: {fileID: 7899203649379784230, guid: 641529783a346b94fac27db9ddaefc84,
+    type: 3}
+  WinchWrangler2: {fileID: 5138443419973105905, guid: 55b5abada4454224985c50bc1d0b84ed,
+    type: 3}
+  SirenSaviour1: {fileID: 6632889780110779556, guid: b98338638ecf98541beee29c1820c0d9,
+    type: 3}
+  SirenSaviour2: {fileID: 6969815776944429806, guid: ab633f83b152bad439c6f324a8905438,
+    type: 3}
+  RoaringRacer1: {fileID: 7775659282147759134, guid: 5b25c019706b19a4a8e26b928f8e4e94,
+    type: 3}
+  RoaringRacer2: {fileID: 2093592039913159581, guid: 067bc576f8f42d440bd0e93aa7ed2b3b,
+    type: 3}
+  MasterMixer1: {fileID: 4803222151954809939, guid: 00a4fdfc49a68ee4e95e9cff6201caec,
+    type: 3}
+  MasterMixer2: {fileID: 7835222645946062766, guid: 42e4d52286d2c1e4ca744bbbac94608f,
+    type: 3}

@@ -11,6 +11,9 @@ public class SelectStartup : MonoBehaviour
     public GameObject player2Car;
     public GameObject arenaMenu;
     public GameObject trackMenu;
+    public JumpToUIElement nextButton;
+    public Selectable ArenaButton;
+    public Selectable RaceButton;
 
     private void Start()
     {
@@ -27,7 +30,7 @@ public class SelectStartup : MonoBehaviour
                 player2Car.SetActive(false);
             }
             arenaMenu.SetActive(true);
-            GameManager.instance.selectedMap = "CrashZone";
+            nextButton.elementToSelect = ArenaButton;
         }
         if (GameManager.instance.gameMode == "Racing")
         {
@@ -42,7 +45,7 @@ public class SelectStartup : MonoBehaviour
                 player2Car.SetActive(false);
             }
             trackMenu.SetActive(true);
-            GameManager.instance.selectedMap = "RaceTrack1";
+            nextButton.elementToSelect = RaceButton;
         }
     }
 }
