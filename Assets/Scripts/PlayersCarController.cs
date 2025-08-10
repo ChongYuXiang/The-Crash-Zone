@@ -6,6 +6,7 @@ using UnityEngine.Animations;
 using UnityEditor.ShaderGraph;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayersCarController : MonoBehaviour
 {
@@ -76,10 +77,11 @@ public class PlayersCarController : MonoBehaviour
     public float turnSensitivity = 1.0f;
     public float maxSteerAngle = 30.0f;
 
-    public TextMeshProUGUI healthText;
+    public Image healthbar;
+    public Image abilityBar;
     public GameObject abilityManager;
     public int abilityCooldownMax;
-    private int abilityCooldownCurrent = 0;
+    private float abilityCooldownCurrent = 0;
     public bool hasAbility = true;
     public List<Wheel> wheels;
 
@@ -98,7 +100,6 @@ public class PlayersCarController : MonoBehaviour
     {
         carRb.centerOfMass = _centerOfMass;
         maxHealth = health;
-        healthText.color = Color.green;
         defaultMaxSpeed = maxSpeed;  // Save initial max speed
     }
 
@@ -130,8 +131,13 @@ public class PlayersCarController : MonoBehaviour
     {
         while (abilityCooldownCurrent > 0)
         {
-            yield return new WaitForSeconds(1);
-            abilityCooldownCurrent -= 1;
+            yield return new WaitForSeconds(0.1f);
+            abilityCooldownCurrent -= 0.1f;
+            if (abilityCooldownCurrent < 0)
+            {
+                abilityCooldownCurrent = 0;
+            }
+            abilityBar.fillAmount = 1f - (abilityCooldownCurrent / abilityCooldownMax);
         }
     }
 
@@ -167,22 +173,9 @@ public class PlayersCarController : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
-            healthText.color = Color.red;
             AudioManager.instance.PlaySFX("CarExplode");
         }
-        else if (health < 30)
-        {
-            healthText.color = Color.red;
-        }
-        else if (health < 65)
-        {
-            healthText.color = Color.yellow;
-        }
-        else
-        {
-            healthText.color = Color.green;
-        }
-        healthText.text = health.ToString();
+        healthbar.fillAmount = (float)health / maxHealth;
     }
 
     void Move()
