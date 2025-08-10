@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class JumpToUIElement : MonoBehaviour
 {
     [SerializeField] private EventSystem eventSystem;
-    [SerializeField] private Selectable elementToSelect;
+    [SerializeField] public Selectable elementToSelect;
 
     private void Reset()
     {

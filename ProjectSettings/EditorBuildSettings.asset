@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestZone.unity
     guid: ea981322815416a41ac1d330818fe9af
+  - enabled: 1
+    path: Assets/Scenes/AutumnTrack.unity
+    guid: 65413c6acb914284687b80917fed0185
+  - enabled: 1
+    path: Assets/Scenes/SummerTrack.unity
+    guid: 0edb4c79a799fce4f9cfc070aa4cbb56
   m_configObjects: {}

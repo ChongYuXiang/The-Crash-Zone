@@ -79,5 +79,13 @@ public class GameManager : MonoBehaviour
         {
             SceneController.instance.LoadScene(5);
         }
+        if (selectedMap == "AutumnTrack")
+        {
+            SceneController.instance.LoadScene(6);
+        }
+        if (selectedMap == "SummerTrack")
+        {
+            SceneController.instance.LoadScene(7);
+        }
     }
 }
