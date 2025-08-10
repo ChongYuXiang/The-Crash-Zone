@@ -77,7 +77,7 @@ public class TestFreezeScript : MonoBehaviour
             iceBlock.transform.localPosition = new Vector3(0f, 1.3f, 0f); // Adjust offset if needed
             iceBlock.transform.localRotation = Quaternion.identity;
 
-            StartCoroutine(FadeMesh(iceBlock, 0f, 0.8f, slowDownDuration));
+            StartCoroutine(FadeMesh(iceBlock, 0f, 0.7f, slowDownDuration));
         }
 
         // Show player's freeze UI
@@ -104,7 +104,7 @@ public class TestFreezeScript : MonoBehaviour
 
         // Fade out ice cube
         if (iceBlock != null)
-            yield return StartCoroutine(FadeMesh(iceBlock, 0.8f, 0f, 1f));
+            yield return StartCoroutine(FadeMesh(iceBlock, 0.7f, 0f, 1f));
 
         // Detach and deactivate ice cube
         if (iceBlock != null)
