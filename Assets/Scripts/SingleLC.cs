@@ -21,11 +21,10 @@ public class SingleLC : MonoBehaviour
     private bool hasFinished = false;
 
     public TextMeshProUGUI lapText;
-    public float lapCooldown = 3f;
+    public float lapCooldown = 10f;
     private float lastLapTime = -999f;
 
     public GameObject winPanel;
-    public TextMeshProUGUI finalTimeText;
     public TMP_InputField nicknameInputField;
     public Button submitButton;
 
@@ -42,23 +41,16 @@ public class SingleLC : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (hasFinished)
+        {
             return;
-
+        }
         // Cooldown check
         if (Time.time - lastLapTime < lapCooldown)
+        {
             return;
+        }
 
         lastLapTime = Time.time;
-
-        if (currentLap == 0)
-        {
-            Debug.Log("Race started!");
-        }
-        else
-        {
-            Debug.Log($"Lap {currentLap}/{totalLaps}");
-        }
-
         currentLap++;
 
         UpdateLapUI();
@@ -83,7 +75,7 @@ public class SingleLC : MonoBehaviour
     {
         int displayLap = Mathf.Clamp(currentLap, 0, totalLaps);
         if (lapText != null)
-            lapText.text = $"Lap: {displayLap}/{totalLaps}";
+            lapText.text = $"{displayLap}/{totalLaps}";
     }
 
     private void ShowWinUI()
@@ -93,10 +85,9 @@ public class SingleLC : MonoBehaviour
 
             StartCoroutine(FocusInput());
 
-        if (finalTimeText != null && RaceTimer.instance != null)
+        if (RaceTimer.instance != null)
         {
             string time = RaceTimer.instance.GetCurrentTime();
-            finalTimeText.text = $"Final Time: {time}";
         }
 
         if (nicknameInputField != null)

@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3152691416553768827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2288497215192382814}
+  - component: {fileID: 3642720888291997164}
+  m_Layer: 0
+  m_Name: RacingStartupSolo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2288497215192382814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152691416553768827}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1591718077721175731}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3642720888291997164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152691416553768827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47aae96c39a1914191ae6a3161cae64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint1: {fileID: 0}
+  spawnPoint2: {fileID: 0}
+  CrashCourser1: {fileID: 8202859965710974311, guid: cb3f0ebfda4743c4f928fef4fa86ae57,
+    type: 3}
+  CrashCourser2: {fileID: 0}
+  WinchWrangler1: {fileID: 7899203649379784230, guid: 4583b2f70f6fd6d40960863218592a7c,
+    type: 3}
+  WinchWrangler2: {fileID: 0}
+  SirenSaviour1: {fileID: 6632889780110779556, guid: fd60848d674436b4fb4ff4161b6a1519,
+    type: 3}
+  SirenSaviour2: {fileID: 0}
+  RoaringRacer1: {fileID: 7775659282147759134, guid: 5076ffea476964c4e9e1b4718aa276d2,
+    type: 3}
+  RoaringRacer2: {fileID: 0}
+  MasterMixer1: {fileID: 4803222151954809939, guid: 86b2239962afcd54db5ec083d1b61eea,
+    type: 3}
+  MasterMixer2: {fileID: 0}
+  forVS: 0
 --- !u!1 &5318820112079394961
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +71,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1591718077721175731}
-  - component: {fileID: 4994171133260735111}
   m_Layer: 0
   m_Name: RacingStartup
   m_TagString: Untagged
@@ -29,16 +90,50 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2993314033512194907}
+  - {fileID: 2288497215192382814}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4994171133260735111
+--- !u!1 &6887690071576825158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2993314033512194907}
+  - component: {fileID: 7252805940052389180}
+  m_Layer: 0
+  m_Name: RacingStartupVS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2993314033512194907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887690071576825158}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1591718077721175731}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7252805940052389180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5318820112079394961}
+  m_GameObject: {fileID: 6887690071576825158}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b47aae96c39a1914191ae6a3161cae64, type: 3}
@@ -66,3 +161,4 @@ MonoBehaviour:
     type: 3}
   MasterMixer2: {fileID: 7835222645946062766, guid: 42e4d52286d2c1e4ca744bbbac94608f,
     type: 3}
+  forVS: 1

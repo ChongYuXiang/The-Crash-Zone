@@ -31,6 +31,7 @@ public class RaceStartLight : MonoBehaviour
             car.isFrozen = true;
         }
 
+        yield return new WaitForSeconds(2);
         StartLightRenderer.material = RedLight;
         Debug.Log("Red Light");
         yield return new WaitForSeconds(switchDuration);
