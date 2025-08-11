@@ -66,10 +66,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5bfd5854e27f04fad5f9820b7bef68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stayDurationBeforeFreeze: 0
-  freezeDuration: 3
-  slowDownDuration: 2
-  restoreDuration: 2
+  stayDurationBeforeFreeze: 0.1
+  freezeDuration: 2
+  slowDownDuration: 1
+  restoreDuration: 1
 --- !u!1001 &5577469246407976298
 PrefabInstance:
   m_ObjectHideFlags: 0
