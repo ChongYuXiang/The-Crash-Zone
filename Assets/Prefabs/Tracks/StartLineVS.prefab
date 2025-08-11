@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6002135082297887890}
   - component: {fileID: 4913437431503018470}
-  - component: {fileID: 3994230099669578622}
+  - component: {fileID: 1787094926674329175}
   m_Layer: 0
-  m_Name: SoloLapCounter
+  m_Name: VSLapCounter
   m_TagString: LapTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,8 +30,7 @@ Transform:
   m_LocalPosition: {x: -0.2199942, y: 0.48999998, z: -0.020004272}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8707723430854390197}
+  m_Children: []
   m_Father: {fileID: 7175959615624307885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4913437431503018470
@@ -55,7 +54,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 15, y: 4.626886, z: 2}
   m_Center: {x: 0, y: 1.813443, z: 0}
---- !u!114 &3994230099669578622
+--- !u!114 &1787094926674329175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,18 +63,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1087941675023685361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04e169f967a38244a85faa84a5d55fab, type: 3}
+  m_Script: {fileID: 11500000, guid: 2967bcf449f24b5419c0cfb5b6fade65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMode: single
-  arenaName: arena_1
-  totalLaps: 3
-  lapText: {fileID: 0}
-  lapCooldown: 10
-  winPanel: {fileID: 0}
-  finalTimeText: {fileID: 0}
-  nicknameInputField: {fileID: 0}
-  submitButton: {fileID: 0}
+  lapText1: {fileID: 0}
+  lapText2: {fileID: 0}
 --- !u!1 &4743759158688336265
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,8 +79,9 @@ GameObject:
   - component: {fileID: 7175959615624307885}
   - component: {fileID: 5464604276262860752}
   - component: {fileID: 2807101730293591257}
+  - component: {fileID: 2597058468562178647}
   m_Layer: 0
-  m_Name: StartLine
+  m_Name: StartLineVS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,48 +154,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &5027275571943116360
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8707723430854390197}
-  - component: {fileID: 5479318371251449216}
-  m_Layer: 0
-  m_Name: FirebaseManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8707723430854390197
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5027275571943116360}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -122.35115, y: -423.8308, z: -6.554291}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6002135082297887890}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5479318371251449216
+--- !u!114 &2597058468562178647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5027275571943116360}
+  m_GameObject: {fileID: 4743759158688336265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdd20dc109bbfbf48aceeabfb8aa65ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 29d0a58789bd727408ab2fec38184bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firebaseURL: https://capstone-70c48-default-rtdb.asia-southeast1.firebasedatabase.app/
+  modeToHide: Solo

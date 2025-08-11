@@ -27,6 +27,7 @@ public class SingleLC : MonoBehaviour
     public GameObject winPanel;
     public TMP_InputField nicknameInputField;
     public Button submitButton;
+    public TextMeshProUGUI submittedText;
 
     void Start()
     {
@@ -67,6 +68,7 @@ public class SingleLC : MonoBehaviour
             if (RaceTimer.instance != null)
                 RaceTimer.instance.StopTimer();
 
+            GameManager.instance.gameOver = true;
             ShowWinUI();
         }
     }
@@ -141,7 +143,8 @@ public class SingleLC : MonoBehaviour
             Debug.LogError("Firebase object not found in scene.");
         }
 
-        submitButton.interactable = false;
+        submitButton.gameObject.SetActive(false);
+        submittedText.text = "Submitted!";
         nicknameInputField.interactable = false;
         Debug.Log("SubmitScore() triggered");
 

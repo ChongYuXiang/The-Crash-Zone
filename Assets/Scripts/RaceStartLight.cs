@@ -17,14 +17,14 @@ public class RaceStartLight : MonoBehaviour
     {
         StartLightRenderer = GetComponent<Renderer>();
 
-        // Find all active cars in the scene at Start
-        allCars = FindObjectsOfType<PlayersCarController>();
-
         StartCoroutine(ChangeLightTexture());
     }   
 
     private IEnumerator ChangeLightTexture()
     {
+        yield return new WaitForSeconds(0.05f);
+        allCars = FindObjectsOfType<PlayersCarController>(); // Find cars
+
         // Freeze all cars
         foreach (var car in allCars)
         {
