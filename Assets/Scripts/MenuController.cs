@@ -90,6 +90,11 @@ public class MenuController : MonoBehaviour
     {
         GameManager.instance.ToScene();
     }
+    public void ReloadScene() // Fade to reset the scene
+    {
+        SceneController.instance.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 
 
     // Quit Button

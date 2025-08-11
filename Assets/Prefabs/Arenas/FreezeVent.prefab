@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5bfd5854e27f04fad5f9820b7bef68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stayDurationBeforeFreeze: 0.5
+  stayDurationBeforeFreeze: 0
   freezeDuration: 3
   slowDownDuration: 2
   restoreDuration: 2

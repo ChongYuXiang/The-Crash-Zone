@@ -125,6 +125,12 @@ public class PlayersCarController : MonoBehaviour
             CheckHealth();
             ClampMaxSpeed();
         }
+
+        // Always stop the car if frozen or game over
+        if (isFrozen || GameManager.instance.gameOver || health <= 0)
+        {
+            ForceStopCar();
+        }
     }
 
     IEnumerator CooldownTimer()
@@ -170,10 +176,11 @@ public class PlayersCarController : MonoBehaviour
 
     void CheckHealth()
     {
-        if (health <= 0)
+        if (health <= 0 && !GameManager.instance.gameOver)
         {
             health = 0;
             AudioManager.instance.PlaySFX("CarExplode");
+            GameManager.instance.PlayerWins(playerNum);
         }
         healthbar.fillAmount = (float)health / maxHealth;
     }
@@ -253,6 +260,17 @@ public class PlayersCarController : MonoBehaviour
             StartCoroutine(CooldownTimer());
         }
     }
+
+    private void ForceStopCar()
+    {
+        // Lock the wheels
+        foreach (var wheel in wheels)
+        {
+            wheel.wheelCollider.motorTorque = 0f;
+            wheel.wheelCollider.brakeTorque = Mathf.Infinity;
+        }
+    }
+
 
     void AnimateWheels()
     {

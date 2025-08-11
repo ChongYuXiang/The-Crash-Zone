@@ -39,6 +39,7 @@ public class SceneController : MonoBehaviour
     {
         yield return sceneFade.FadeOutCoroutine(sceneFadeDuration);
         yield return SceneManager.LoadSceneAsync(index);
+        GameManager.instance.gameOver = false;
         yield return sceneFade.FadeInCoroutine(sceneFadeDuration);
         sceneFade.gameObject.SetActive(false);
     }

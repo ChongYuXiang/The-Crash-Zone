@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -17,6 +18,10 @@ public class GameManager : MonoBehaviour
     public int p2Wrap;
 
     public string selectedMap;
+
+    public TextMeshProUGUI winnerText;
+    public GameObject victoryScreen;
+    public bool gameOver = false;
 
     private void Awake()
     {
@@ -86,6 +91,23 @@ public class GameManager : MonoBehaviour
         if (selectedMap == "SummerTrack")
         {
             SceneController.instance.LoadScene(7);
+        }
+    }
+
+    public void PlayerWins(int loserIndex)
+    {
+        if (!gameOver)
+        {
+            victoryScreen.SetActive(true);
+            if (loserIndex == 1)
+            {
+                winnerText.text = "PLAYER 2 WINS!";
+            }
+            if (loserIndex == 2)
+            {
+                winnerText.text = "PLAYER 1 WINS!";
+            }
+            gameOver = true;
         }
     }
 }
