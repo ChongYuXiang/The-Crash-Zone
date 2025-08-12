@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RaceStartLight : MonoBehaviour
@@ -8,17 +9,16 @@ public class RaceStartLight : MonoBehaviour
     public Material YellowLight;
     public Material GreenLight;
 
-    public float switchDuration = 1f;
-    private Renderer StartLightRenderer;
+    public TextMeshProUGUI countdown;
+
+    public Renderer[] StartLightRenderers;
 
     private PlayersCarController[] allCars;
 
     void Start()
     {
-        StartLightRenderer = GetComponent<Renderer>();
-
         StartCoroutine(ChangeLightTexture());
-    }   
+    }
 
     private IEnumerator ChangeLightTexture()
     {
@@ -31,18 +31,44 @@ public class RaceStartLight : MonoBehaviour
             car.isFrozen = true;
         }
 
-        yield return new WaitForSeconds(2);
-        StartLightRenderer.material = RedLight;
+        yield return new WaitForSeconds(1);
+        //countdown.text = "3";
+        yield return new WaitForSeconds(1);
+        if (StartLightRenderers != null && StartLightRenderers.Length > 0)
+        {
+            foreach (Renderer rend in StartLightRenderers)
+            {
+                if (rend != null)
+                    rend.material = RedLight;
+            }
+        }
         Debug.Log("Red Light");
-        yield return new WaitForSeconds(switchDuration);
+        //countdown.text = "2";
+        yield return new WaitForSeconds(1);
 
-        StartLightRenderer.material = YellowLight;
+        if (StartLightRenderers != null && StartLightRenderers.Length > 0)
+        {
+            foreach (Renderer rend in StartLightRenderers)
+            {
+                if (rend != null)
+                    rend.material = YellowLight;
+            }
+        }
         Debug.Log("Yellow Light");
-        yield return new WaitForSeconds(switchDuration);
+        //countdown.text = "1";
+        yield return new WaitForSeconds(1);
 
-        StartLightRenderer.material = GreenLight;
+        if (StartLightRenderers != null && StartLightRenderers.Length > 0)
+        {
+            foreach (Renderer rend in StartLightRenderers)
+            {
+                if (rend != null)
+                    rend.material = GreenLight;
+            }
+        }
         Debug.Log("Green Light");
-        yield return new WaitForSeconds(switchDuration);
+        //countdown.text = "GO";
+        yield return new WaitForSeconds(0.2f);
 
         // Unfreeze all cars
         foreach (var car in allCars)
@@ -52,7 +78,10 @@ public class RaceStartLight : MonoBehaviour
 
         // Start the race timer
         if (RaceTimer.instance != null)
+        {
             RaceTimer.instance.StartTimer();
+
+        }
     }
 }
 

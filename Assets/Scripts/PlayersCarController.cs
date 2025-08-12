@@ -122,7 +122,6 @@ public class PlayersCarController : MonoBehaviour
             Steer();
             Brake();
             Ability();
-            CheckHealth();
             ClampMaxSpeed();
         }
 
@@ -181,8 +180,10 @@ public class PlayersCarController : MonoBehaviour
             health = 0;
             AudioManager.instance.PlaySFX("CarExplode");
             GameManager.instance.PlayerWins(playerNum);
+            GameManager.instance.StartCoroutine(GameManager.instance.playerVFX(playerNum, "explosion"));
         }
         healthbar.fillAmount = (float)health / maxHealth;
+        GameManager.instance.StartCoroutine(GameManager.instance.playerVFX(playerNum, "sparks"));
     }
 
     void Move()

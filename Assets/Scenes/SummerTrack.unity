@@ -3685,6 +3685,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6021043954640292846, guid: b8a3cdab32e3f8847888e2b81143bfb2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5807,6 +5812,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6977116489763108304, guid: 9988d221e157b7c4ea8a91601e3fca46,
+        type: 3}
+      propertyPath: m_text
+      value: 1/3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6042,6 +6052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StartLineVS
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743759158688336265, guid: f0b95292a4f36ac439ca64d23623a4ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7175959615624307885, guid: f0b95292a4f36ac439ca64d23623a4ca,
         type: 3}

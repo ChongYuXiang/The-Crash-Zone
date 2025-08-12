@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     public GameObject victoryScreen;
     public bool gameOver = false;
 
+    public GameObject sparks;
+    public GameObject explosion;
+
     private void Awake()
     {
         if (instance == null)
@@ -107,7 +110,36 @@ public class GameManager : MonoBehaviour
             {
                 winnerText.text = "PLAYER 1 WINS!";
             }
+            if (loserIndex == 0)
+            {
+                winnerText.text = "TIME OUT: TIE!";
+            }
             gameOver = true;
+        }
+    }
+
+    public IEnumerator playerVFX(int pIndex, string VFX)
+    {
+        GameObject targetPos = null;
+        if (pIndex == 1)
+        {
+            targetPos = GameObject.Find("player1Target");
+        }
+        if (pIndex == 2)
+        {
+            targetPos = GameObject.Find("player2Target");
+        }
+        if (VFX == "sparks")
+        {
+            GameObject clone = (GameObject)Instantiate(sparks, targetPos.transform.position, targetPos.transform.rotation);
+            yield return new WaitForSeconds(1);
+            Destroy(clone);
+        }
+        if (VFX == "explosion")
+        {
+            GameObject clone = (GameObject)Instantiate(explosion, targetPos.transform.position, targetPos.transform.rotation);
+            yield return new WaitForSeconds(3);
+            Destroy(clone);
         }
     }
 }

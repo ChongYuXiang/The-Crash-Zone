@@ -594,6 +594,9 @@ MonoBehaviour:
   winnerText: {fileID: 7017652302180331000}
   victoryScreen: {fileID: 6021043954640292846}
   gameOver: 0
+  sparks: {fileID: 9163557926850462338, guid: 4a4c907ab21605144a68c691c846ff50, type: 3}
+  explosion: {fileID: 5847283056200355007, guid: 5479c4495a112ee4d930d42042e983ab,
+    type: 3}
 --- !u!1 &6021043954640292846
 GameObject:
   m_ObjectHideFlags: 0

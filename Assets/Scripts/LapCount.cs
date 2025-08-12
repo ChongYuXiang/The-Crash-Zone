@@ -31,13 +31,15 @@ public class LapCount : MonoBehaviour
 
     public void CheckWinner()
     {
-        if (lapcountP1 >= 3 && lapcountP2 <= lapcountP1)
+        if (lapcountP1 > 3 && lapcountP2 <= lapcountP1)
         {
             Debug.Log("P1 wins");
+            GameManager.instance.PlayerWins(2);
         }
-        else if (lapcountP2 >= 3 && lapcountP1 <= lapcountP2)
+        else if (lapcountP2 > 3 && lapcountP1 <= lapcountP2)
         {
             Debug.Log("P2 wins");
+            GameManager.instance.PlayerWins(1);
         }
     }
 }
