@@ -1185,7 +1185,7 @@ MonoBehaviour:
   maxSpeed: 100
   defaultMaxSpeed: 100
   turnSensitivity: 0.5
-  maxSteerAngle: 25
+  maxSteerAngle: 30
   healthbar: {fileID: 1680085228144568434}
   abilityBar: {fileID: 5090386604569073431}
   abilityManager: {fileID: 7736671875969323070}
@@ -1666,7 +1666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1146720909999190969}
   m_Layer: 0
-  m_Name: player1Target
+  m_Name: player2Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

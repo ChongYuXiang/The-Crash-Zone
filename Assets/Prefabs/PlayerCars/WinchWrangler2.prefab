@@ -574,8 +574,8 @@ MonoBehaviour:
   ropeLine: {fileID: 4128860903022455567}
   winchMesh: {fileID: 4016584711658382439}
   selfPlayer: {fileID: 6376133480712552797}
-  pullStrength: 600
-  moveStrength: 1
+  pullStrength: 800
+  moveStrength: 2
 --- !u!1 &2346530220196949811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,7 +1671,7 @@ MonoBehaviour:
   maxVelocity: 30
   maxSpeed: 100
   defaultMaxSpeed: 100
-  turnSensitivity: 0.5
+  turnSensitivity: 0.4
   maxSteerAngle: 25
   healthbar: {fileID: 3844920243377826886}
   abilityBar: {fileID: 7255182105874879267}

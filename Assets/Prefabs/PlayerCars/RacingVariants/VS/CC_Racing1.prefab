@@ -482,7 +482,7 @@ MonoBehaviour:
   maxVelocity: 40
   maxSpeed: 100
   defaultMaxSpeed: 100
-  turnSensitivity: 0.5
+  turnSensitivity: 0.4
   maxSteerAngle: 25
   healthbar: {fileID: 4089000913272693207}
   abilityBar: {fileID: 6294023691305687404}
