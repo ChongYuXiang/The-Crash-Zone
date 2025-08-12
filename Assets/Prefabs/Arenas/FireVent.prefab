@@ -68,6 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerTick: 2
   tickRate: 0.2
+  audioToPlay: Fire
 --- !u!1 &4273477252013625893
 GameObject:
   m_ObjectHideFlags: 0

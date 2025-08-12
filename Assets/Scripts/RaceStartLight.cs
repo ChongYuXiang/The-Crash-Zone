@@ -41,6 +41,7 @@ public class RaceStartLight : MonoBehaviour
                 if (rend != null)
                     rend.material = RedLight;
             }
+            AudioManager.instance.PlaySFX("Count");
         }
         Debug.Log("Red Light");
         //countdown.text = "2";
@@ -53,6 +54,7 @@ public class RaceStartLight : MonoBehaviour
                 if (rend != null)
                     rend.material = YellowLight;
             }
+            AudioManager.instance.PlaySFX("Count");
         }
         Debug.Log("Yellow Light");
         //countdown.text = "1";
@@ -65,6 +67,7 @@ public class RaceStartLight : MonoBehaviour
                 if (rend != null)
                     rend.material = GreenLight;
             }
+            AudioManager.instance.PlaySFX("Start");
         }
         Debug.Log("Green Light");
         //countdown.text = "GO";
@@ -76,11 +79,13 @@ public class RaceStartLight : MonoBehaviour
             car.isFrozen = false;
         }
 
+        yield return new WaitForSeconds(0.2f);
+        AudioManager.instance.PlayBGM("Racing");
+
         // Start the race timer
         if (RaceTimer.instance != null)
         {
             RaceTimer.instance.StartTimer();
-
         }
     }
 }

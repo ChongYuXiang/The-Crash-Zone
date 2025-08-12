@@ -115,6 +115,8 @@ public class GameManager : MonoBehaviour
                 winnerText.text = "TIME OUT: TIE!";
             }
             gameOver = true;
+
+            AudioManager.instance.PlayBGM("Quiet");
         }
     }
 

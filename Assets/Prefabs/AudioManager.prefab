@@ -49,6 +49,20 @@ MonoBehaviour:
   BGMSounds:
   - name: MainMenu
     clip: {fileID: 8300000, guid: 47948abcb166f1840819d10a84c49830, type: 3}
+  - name: SelectScreen
+    clip: {fileID: 8300000, guid: 6a919258838c482439b51e602a06e242, type: 3}
+  - name: CrashZone
+    clip: {fileID: 8300000, guid: 2107bffb1725c514c80830633204462b, type: 3}
+  - name: Construction
+    clip: {fileID: 8300000, guid: 7f4954283e57aae4897e0f0ba63523fd, type: 3}
+  - name: FroZone
+    clip: {fileID: 8300000, guid: 9d4f14e4dc06ae943b88fe82f2ca2174, type: 3}
+  - name: Test
+    clip: {fileID: 8300000, guid: 1c8cb1c7c5b33ea4fac26e0101be9277, type: 3}
+  - name: Racing
+    clip: {fileID: 8300000, guid: 72f92627c504f3540b7a2b8edf7b1220, type: 3}
+  - name: Quiet
+    clip: {fileID: 8300000, guid: 714a88803c75e594295b355fbefb718c, type: 3}
   SFXSounds:
   - name: ButtonSelect
     clip: {fileID: 8300000, guid: d0176e31ed851fa45b8d959c54aa5b81, type: 3}
@@ -78,10 +92,16 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9885d89db7e757f4fb128728ac67b24d, type: 3}
   - name: RRBoost
     clip: {fileID: 8300000, guid: c81e9beb1c757a64a8c4238693a6f82b, type: 3}
-  - name: DeployCement
-    clip: {fileID: 8300000, guid: feb7ba619771bc54fa067ce1a9f933a1, type: 3}
-  - name: CementEnter
-    clip: {fileID: 8300000, guid: ec9d523d1ff55e24e913d7a907936cb1, type: 3}
+  - name: Crowd
+    clip: {fileID: 8300000, guid: afd2f1510d1d8b8419b65144396b2e84, type: 3}
+  - name: Count
+    clip: {fileID: 8300000, guid: 8c8b6b38fc51d8349816be341f551855, type: 3}
+  - name: Start
+    clip: {fileID: 8300000, guid: 7cea8d1ce6cc0cd4cb93c44a1b9912e9, type: 3}
+  - name: Saw
+    clip: {fileID: 8300000, guid: 38097f1f06529fa4d999a84067e5e68c, type: 3}
+  - name: Fire
+    clip: {fileID: 8300000, guid: 3b4eb90ef1ec5a348b4819197d102285, type: 3}
   BGMSource: {fileID: 1265533618273071972}
   SFXSource: {fileID: 5189683691208622828}
 --- !u!1 &6837098335123136495

@@ -23,6 +23,10 @@ public class MenuController : MonoBehaviour
         {
             AudioManager.instance.PlayBGM("MainMenu");
         }
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            AudioManager.instance.PlayBGM("SelectScreen");
+        }
     }
 
     // Update is called once per frame
@@ -119,5 +123,10 @@ public class MenuController : MonoBehaviour
     public void PlayAudio(string audioName)
     {
         AudioManager.instance.PlaySFX(audioName);
+    }
+    // Tell audio manager to play BGM
+    public void PlayBGM(string audioName)
+    {
+        AudioManager.instance.PlayBGM(audioName);
     }
 }

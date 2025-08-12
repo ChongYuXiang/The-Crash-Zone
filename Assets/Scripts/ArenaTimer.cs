@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ArenaTimer : MonoBehaviour
 {
@@ -29,21 +30,25 @@ public class ArenaTimer : MonoBehaviour
         foreach (TextMeshProUGUI text in pCounts)
         {
             text.text = "3";
+            AudioManager.instance.PlaySFX("Count");
         }
         yield return new WaitForSeconds(1);
         foreach (TextMeshProUGUI text in pCounts)
         {
             text.text = "2";
+            AudioManager.instance.PlaySFX("Count");
         }
         yield return new WaitForSeconds(1);
         foreach (TextMeshProUGUI text in pCounts)
         {
             text.text = "1";
+            AudioManager.instance.PlaySFX("Count");
         }
         yield return new WaitForSeconds(1);
         foreach (TextMeshProUGUI text in pCounts)
         {
             text.text = "CRASH";
+            AudioManager.instance.PlaySFX("Start");
         }
         yield return new WaitForSeconds(0.2f);
 
@@ -53,7 +58,25 @@ public class ArenaTimer : MonoBehaviour
             car.isFrozen = false;
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            AudioManager.instance.PlayBGM("CrashZone");
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            AudioManager.instance.PlayBGM("Construction");
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            AudioManager.instance.PlayBGM("FroZone");
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            AudioManager.instance.PlayBGM("Test");
+        }
+
+        yield return new WaitForSeconds(0.8f);
         foreach (TextMeshProUGUI text in pCounts)
         {
             text.text = "";

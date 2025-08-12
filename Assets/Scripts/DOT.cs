@@ -7,6 +7,8 @@ public class DOT : MonoBehaviour
     [SerializeField] private float damagePerTick = 5f;
     [SerializeField] private float tickRate = 1f; // Damage every second
 
+    public string audioToPlay;
+
     private Dictionary<PlayersCarController, Coroutine> activeCoroutines = new();
 
     private void OnTriggerEnter(Collider other)
@@ -37,7 +39,10 @@ public class DOT : MonoBehaviour
             {
                 player.health -= damagePerTick;
                 player.SendMessage("CheckHealth");
-                //AudioManager.instance.PlaySFX("-"); if u wanna add sound
+                if (audioToPlay != null)
+                {
+                    AudioManager.instance.PlaySFX(audioToPlay);
+                }
             }
             yield return new WaitForSeconds(tickRate);
         }

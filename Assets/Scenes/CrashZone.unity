@@ -25466,6 +25466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerTick: 2
   tickRate: 0.1
+  audioToPlay: Saw
 --- !u!4 &479475193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8930539803903993468, guid: f2ed33c56cb43cb45823f65fc1f8f2bb,
@@ -61532,6 +61533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerTick: 2
   tickRate: 0.1
+  audioToPlay: Saw
 --- !u!4 &1046793017 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3912384668857229482, guid: 3918884b3c3a86345a5c3d82327f6a9b,
