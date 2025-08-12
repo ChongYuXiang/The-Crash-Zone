@@ -1,9 +1,6 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
-using UnityEngine.Animations;
-using UnityEditor.ShaderGraph;
 using TMPro;
 using System.Collections;
 using UnityEngine.UI;
