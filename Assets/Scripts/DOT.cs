@@ -38,6 +38,7 @@ public class DOT : MonoBehaviour
             if (player.health > 0)
             {
                 player.health -= damagePerTick;
+                GameManager.instance.StartCoroutine(GameManager.instance.playerVFX(player.playerNum, "sparks"));
                 player.SendMessage("CheckHealth");
                 if (audioToPlay != null)
                 {

@@ -1,77 +1,250 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
-public class EnemyAI : MonoBehaviour
+public class AICarController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private float damageAmount = 15f;
-    [SerializeField] private float detectionRadius = 25f;
-    [SerializeField] private float knockbackForce = 10f;
+    [Header("AI Target")]
+    public Transform target; // Player car transform
+    public float followDistance = 10f; // Distance to maintain from player
+    public float turnSensitivity = 1.0f;
 
-    private PlayersCarController targetCar;
-    private Rigidbody rb;
+    [Header("Car Setup")]
+    public int aiNum = 2; // For identifying in game manager
+    public List<Wheel> wheels;
+    private Rigidbody carRb;
 
-    void Start()
+    [Header("Stats")]
+    public float health = 100;
+    private float maxHealth;
+    public float maxAcceleration = 30.0f;
+    public float maxVelocity = 30f;
+    public float maxSpeed = 100f;
+    public Image healthbar;
+
+    [Header("State")]
+    public bool isFrozen = false;
+    private bool isSpeedBoostActive = false;
+    private bool isInSlowZone = false;
+    private float savedAcceleration;
+
+    private float moveInput;
+    private float steerInput;
+    private Vector3 _centerOfMass;
+    private Vector3 aiVelocity;
+
+    [Serializable]
+    public enum Axel { Front, Rear }
+
+    [Serializable]
+    public struct Wheel
     {
-        rb = GetComponent<Rigidbody>();
+        public GameObject wheelModel;
+        public WheelCollider wheelCollider;
+        public Axel axel;
     }
 
-    void Update()
+    private void Awake()
     {
-        FindClosestPlayerInRange();
+        carRb = GetComponent<Rigidbody>();
+        maxHealth = health;
+    }
 
-        if (targetCar != null)
+    private void Start()
+    {
+        carRb.centerOfMass = _centerOfMass;
+        target = GameObject.Find("player1Target").transform;
+    }
+
+    private void Update()
+    {
+        if (health > 0 && !isFrozen)
         {
-            Vector3 direction = (targetCar.transform.position - transform.position).normalized;
-            rb.MovePosition(transform.position + direction * moveSpeed * Time.deltaTime);
+            CalculateAIInputs();
+            AnimateWheels();
+            aiVelocity = carRb.velocity;
         }
     }
 
-    void FindClosestPlayerInRange()
+    private void LateUpdate()
     {
-        PlayersCarController[] allPlayers = FindObjectsOfType<PlayersCarController>();
-        float shortestDistance = detectionRadius;
-        PlayersCarController nearest = null;
-
-        foreach (var player in allPlayers)
+        if (health > 0)
         {
-            float distance = Vector3.Distance(transform.position, player.transform.position);
-            if (distance <= shortestDistance)
+            Move();
+            Steer();
+            ClampMaxSpeed();
+        }
+
+        if (isFrozen || GameManager.instance.gameOver || health <= 0)
+        {
+            ForceStopCar();
+        }
+        else
+        {
+            ReleaseBrakes();
+        }
+    }
+
+    // ---------------- AI Input Logic ----------------
+    private void CalculateAIInputs()
+    {
+        if (target == null) return;
+
+        Vector3 localTarget = transform.InverseTransformPoint(target.position);
+
+        // Move forward if far, reverse if too close
+        if (localTarget.z > followDistance) moveInput = 1f;
+        else if (localTarget.z < followDistance * 0.5f) moveInput = -0.5f;
+        else moveInput = 0f;
+
+        // Steer toward target
+        steerInput = Mathf.Clamp(localTarget.x / 5f, -1f, 1f) * turnSensitivity;
+    }
+
+    // ---------------- Car Physics ----------------
+    private void Move()
+    {
+        if (isFrozen) return;
+
+        float torque = moveInput * 600f * maxAcceleration * Time.deltaTime;
+
+        if (carRb.velocity.magnitude >= maxSpeed) return;
+
+        foreach (var wheel in wheels)
+        {
+            wheel.wheelCollider.motorTorque = torque;
+        }
+    }
+
+    private void Steer()
+    {
+        if (isFrozen) return;
+
+        foreach (var wheel in wheels)
+        {
+            if (wheel.axel == Axel.Front)
             {
-                shortestDistance = distance;
-                nearest = player;
+                var steerAngle = steerInput * 30f;
+                wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, steerAngle, 0.6f);
             }
         }
-
-        targetCar = nearest;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void ForceStopCar()
     {
-        PlayersCarController car = collision.gameObject.GetComponentInParent<PlayersCarController>();
-        if (car != null)
+        foreach (var wheel in wheels)
         {
-            car.health -= damageAmount;
-            car.SendMessage("CheckHealth");
-            //AudioManager.instance.PlaySFX("EnemyHit"); sound effect
-
-            // Apply knockback to the car
-            Rigidbody carRb = car.GetComponent<Rigidbody>();
-            if (carRb != null)
-            {
-                Vector3 knockbackDir = (car.transform.position - transform.position).normalized;
-                carRb.AddForce(knockbackDir * knockbackForce, ForceMode.Impulse); 
-            }
-
-            // Destroy enemy on hit (optional)
-            Destroy(gameObject);
+            wheel.wheelCollider.motorTorque = 0f;
+            wheel.wheelCollider.brakeTorque = Mathf.Infinity;
+        }
+    }
+    private void ReleaseBrakes()
+    {
+        foreach (var wheel in wheels)
+        {
+            wheel.wheelCollider.brakeTorque = 0f;
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void AnimateWheels()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        foreach (var wheel in wheels)
+        {
+            Quaternion rot;
+            Vector3 pos;
+            wheel.wheelCollider.GetWorldPose(out pos, out rot);
+            wheel.wheelModel.transform.position = pos;
+            wheel.wheelModel.transform.rotation = rot;
+        }
+    }
+
+    private void ClampMaxSpeed()
+    {
+        if (!isSpeedBoostActive && carRb.velocity.magnitude > maxVelocity)
+        {
+            carRb.velocity = carRb.velocity.normalized * maxVelocity;
+        }
+    }
+
+    // ---------------- Health & Damage ----------------
+    public void CheckHealth()
+    {
+        if (health <= 0 && !GameManager.instance.gameOver)
+        {
+            health = 0;
+            AudioManager.instance.PlaySFX("CarExplode");
+            GameManager.instance.PlayerWins(aiNum);
+            GameManager.instance.StartCoroutine(GameManager.instance.playerVFX(aiNum, "explosion"));
+        }
+        healthbar.fillAmount = (float)health / maxHealth;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((aiNum == 2 && other.CompareTag("player1Colliders")) || (aiNum == 1 && other.CompareTag("player2Colliders")))
+        {
+            Rigidbody otherRb = other.attachedRigidbody;
+            if (otherRb == null) return;
+
+            Vector3 contactNormal = (other.transform.position - transform.position).normalized;
+            float impactAlignment = Vector3.Dot(aiVelocity.normalized, contactNormal);
+
+            if (impactAlignment > 0.5f)
+            {
+                float relativeSpeed = aiVelocity.magnitude;
+                if (otherRb.velocity.magnitude >= 0)
+                {
+                    relativeSpeed = (aiVelocity - otherRb.velocity).magnitude;
+                }
+                int damageDealt = Mathf.CeilToInt(relativeSpeed);
+
+                var enemyCar = other.GetComponentInParent<PlayersCarController>();
+                if (enemyCar == null) enemyCar = other.GetComponentInParent<PlayersCarController>(); // also damage player
+                if (enemyCar != null)
+                {
+                    enemyCar.health -= damageDealt;
+                    AudioManager.instance.PlaySFX("CarDamage");
+                    enemyCar.CheckHealth();
+                    GameManager.instance.StartCoroutine(GameManager.instance.playerVFX(enemyCar.playerNum, "sparks"));
+                }
+            }
+        }
+    }
+
+    // ---------------- Speed Boost & Slow Zones ----------------
+    public void ApplyInstantSpeedBoost(float boostSpeed, float duration = 2f)
+    {
+        StopCoroutine("SpeedBoostCoroutine");
+        StartCoroutine(SpeedBoostCoroutine(boostSpeed, duration));
+    }
+
+    private System.Collections.IEnumerator SpeedBoostCoroutine(float boostSpeed, float duration)
+    {
+        isSpeedBoostActive = true;
+        Vector3 forwardVelocity = transform.forward * boostSpeed;
+        carRb.velocity = new Vector3(forwardVelocity.x, carRb.velocity.y, forwardVelocity.z);
+        yield return new WaitForSeconds(duration);
+        isSpeedBoostActive = false;
+    }
+
+    public void EnterSlowZone(float targetSpeed, float slowAccel)
+    {
+        if (isInSlowZone) return;
+
+        isInSlowZone = true;
+        savedAcceleration = maxAcceleration;
+        maxAcceleration = slowAccel;
+
+        Vector3 horizontalDir = new Vector3(carRb.velocity.x, 0f, carRb.velocity.z).normalized;
+        carRb.velocity = horizontalDir * targetSpeed + Vector3.up * carRb.velocity.y;
+    }
+
+    public void ExitSlowZone()
+    {
+        if (!isInSlowZone) return;
+
+        maxAcceleration = savedAcceleration;
+        isInSlowZone = false;
     }
 }

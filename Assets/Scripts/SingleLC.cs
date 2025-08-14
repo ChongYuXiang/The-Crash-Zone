@@ -70,6 +70,7 @@ public class SingleLC : MonoBehaviour
 
             GameManager.instance.gameOver = true;
             ShowWinUI();
+            AudioManager.instance.PlayBGM("Quiet");
         }
     }
 

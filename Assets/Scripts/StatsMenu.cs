@@ -31,13 +31,19 @@ public class StatsMenu : MonoBehaviour
             {
                 healthStat.fillAmount = 1;
                 SpeedStat.fillAmount = 0.33f;
-                abilityText.text = "Repair Field";
+                abilityText.text = "Healing Field";
             }
             if (GameManager.instance.p1Car == "RoaringRacer")
             {
                 healthStat.fillAmount = 0.33f;
                 SpeedStat.fillAmount = 1;
                 abilityText.text = "Super Boost";
+            }
+            if (GameManager.instance.p1Car == "MasterMixer")
+            {
+                healthStat.fillAmount = 1f;
+                SpeedStat.fillAmount = 0.33f;
+                abilityText.text = "Cement Pour";
             }
         }
         if (playerNum == 2)
@@ -58,13 +64,19 @@ public class StatsMenu : MonoBehaviour
             {
                 healthStat.fillAmount = 1;
                 SpeedStat.fillAmount = 0.33f;
-                abilityText.text = "Repair Field";
+                abilityText.text = "Healing Field";
             }
             if (GameManager.instance.p2Car == "RoaringRacer")
             {
                 healthStat.fillAmount = 0.33f;
                 SpeedStat.fillAmount = 1;
                 abilityText.text = "Super Boost";
+            }
+            if (GameManager.instance.p2Car == "MasterMixer")
+            {
+                healthStat.fillAmount = 1f;
+                SpeedStat.fillAmount = 0.33f;
+                abilityText.text = "Cement Pour";
             }
         }
     }

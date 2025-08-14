@@ -170,7 +170,7 @@ public class PlayersCarController : MonoBehaviour
         }
     }
 
-    void CheckHealth()
+    public void CheckHealth()
     {
         if (health <= 0 && !GameManager.instance.gameOver)
         {
@@ -180,7 +180,6 @@ public class PlayersCarController : MonoBehaviour
             GameManager.instance.StartCoroutine(GameManager.instance.playerVFX(playerNum, "explosion"));
         }
         healthbar.fillAmount = (float)health / maxHealth;
-        GameManager.instance.StartCoroutine(GameManager.instance.playerVFX(playerNum, "sparks"));
     }
 
     void Move()
@@ -330,6 +329,34 @@ public class PlayersCarController : MonoBehaviour
                     enemyCar.health -= damageDealt;
                     AudioManager.instance.PlaySFX("CarDamage");
                     enemyCar.SendMessage("CheckHealth");
+                    GameManager.instance.StartCoroutine(GameManager.instance.playerVFX(enemyCar.playerNum, "sparks"));
+                }
+            }
+        }
+        else if (other.CompareTag("enemyCollider"))
+        {
+            Rigidbody otherRb = other.attachedRigidbody;
+            if (otherRb == null) return;
+
+            Vector3 contactNormal = (other.transform.position - transform.position).normalized;
+            float impactAlignment = Vector3.Dot(playerVelocity.normalized, contactNormal);
+
+            if (impactAlignment > 0.5f)
+            {
+                float relativeSpeed = playerVelocity.magnitude;
+                if (otherRb.velocity.magnitude >= 0)
+                {
+                    relativeSpeed = (playerVelocity - otherRb.velocity).magnitude;
+                }
+                int damageDealt = Mathf.CeilToInt(relativeSpeed);
+
+                var enemyCar = other.GetComponentInParent<AICarController>();
+                if (enemyCar != null)
+                {
+                    enemyCar.health -= damageDealt;
+                    AudioManager.instance.PlaySFX("CarDamage");
+                    enemyCar.SendMessage("CheckHealth");
+                    GameManager.instance.StartCoroutine(GameManager.instance.playerVFX(enemyCar.aiNum, "sparks"));
                 }
             }
         }
@@ -363,6 +390,7 @@ public class PlayersCarController : MonoBehaviour
                 health = maxHealth;
             }
             yield return new WaitForSeconds(0.2f);
+            CheckHealth();
         }
     }
 
