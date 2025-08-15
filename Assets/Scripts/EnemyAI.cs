@@ -93,13 +93,23 @@ public class AICarController : MonoBehaviour
 
         Vector3 localTarget = transform.InverseTransformPoint(target.position);
 
-        // Move forward if far, reverse if too close
-        if (localTarget.z > followDistance) moveInput = 1f;
-        else if (localTarget.z < followDistance * 0.5f) moveInput = -0.5f;
-        else moveInput = 0f;
+        bool targetBehind = localTarget.z < 0f;
 
-        // Steer toward target
+        // Always steer toward the target position in local space
         steerInput = Mathf.Clamp(localTarget.x / 5f, -1f, 1f) * turnSensitivity;
+
+        if (targetBehind)
+        {
+            // If target is behind, keep moving forward to swing around
+            moveInput = 1f;
+        }
+        else
+        {
+            // Forward if far, reverse if too close
+            if (localTarget.z > followDistance) moveInput = 1f;
+            else if (localTarget.z < followDistance * 0.5f) moveInput = -0.5f;
+            else moveInput = 0f;
+        }
     }
 
     // ---------------- Car Physics ----------------

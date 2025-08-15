@@ -30,6 +30,8 @@ public class PlayerSpawner : MonoBehaviour
     private GameObject MasterMixer1;
     [SerializeField]
     private GameObject MasterMixer2;
+    [SerializeField]
+    private GameObject CrazyCourser;
 
     public bool forVS = true;
 
@@ -104,6 +106,21 @@ public class PlayerSpawner : MonoBehaviour
             {
                 GameObject clone = (GameObject)Instantiate(MasterMixer1, spawnPoint1.position, spawnPoint1.rotation);
             }
+            if (GameManager.instance.gameMode == "Arena")
+            {
+                GameObject clone = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
+                GameObject clone1 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
+                GameObject clone2 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
+                GameObject clone3 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
+                GameObject clone4 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
+                GameObject clone5 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
+                GameObject clone6 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
+                GameObject clone7 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
+                GameObject clone8 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
+                GameObject clone9 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
+                
+            }
+
         }
     }
 }

@@ -10,7 +10,7 @@ public class ArenaTimer : MonoBehaviour
     public TextMeshProUGUI topText;
     public TextMeshProUGUI[] pCounts;
     private PlayersCarController[] allCars;
-    private AICarController enemy;
+    private AICarController[] enemies;
 
     private void Start()
     {
@@ -21,15 +21,18 @@ public class ArenaTimer : MonoBehaviour
     {
         yield return new WaitForSeconds(0.05f);
         allCars = FindObjectsOfType<PlayersCarController>(); // Find cars
-        enemy = FindAnyObjectByType<AICarController>();
+        enemies = FindObjectsOfType<AICarController>();
         // Freeze all cars
         foreach (var car in allCars)
         {
             car.isFrozen = true;
         }
-        if (enemy != null)
+        if (enemies != null)
         {
-            enemy.isFrozen = true;
+            foreach (var enemy in enemies)
+            {
+                enemy.isFrozen = true;
+            }
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -63,9 +66,12 @@ public class ArenaTimer : MonoBehaviour
         {
             car.isFrozen = false;
         }
-        if (enemy != null)
+        if (enemies != null)
         {
-            enemy.isFrozen = false;
+            foreach (var enemy in enemies)
+            {
+                enemy.isFrozen = false;
+            }
         }
 
         yield return new WaitForSeconds(0.2f);

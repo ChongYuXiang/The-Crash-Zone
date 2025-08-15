@@ -16,14 +16,20 @@ public class LapCount : MonoBehaviour
         if (other.gameObject.tag == "player1Colliders")
         {
             lapcountP1 += 1;
-            lapText1.text = lapcountP1.ToString() + "/3";
+            if (lapcountP1 <= 3)
+            {
+                lapText1.text = lapcountP1.ToString() + "/3";
+            }
             Debug.Log("P1 + 1");
             CheckWinner();
         }
         if (other.gameObject.tag == "player2Colliders")
         {
             lapcountP2 += 1;
-            lapText2.text = lapcountP2.ToString() + "/3";
+            if (lapcountP2 <= 3)
+            {
+                lapText2.text = lapcountP2.ToString() + "/3";
+            }
             Debug.Log("P2 + 1");
             CheckWinner();
         }

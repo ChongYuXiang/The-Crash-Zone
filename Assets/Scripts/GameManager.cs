@@ -102,17 +102,24 @@ public class GameManager : MonoBehaviour
         if (!gameOver)
         {
             victoryScreen.SetActive(true);
-            if (loserIndex == 1)
+            if (GameObject.Find("CrazyCourser") != null && loserIndex == 1)
             {
-                winnerText.text = "PLAYER 2 WINS!";
+                winnerText.text = "YOU LOSE";
             }
-            if (loserIndex == 2)
+            else
             {
-                winnerText.text = "PLAYER 1 WINS!";
-            }
-            if (loserIndex == 0)
-            {
-                winnerText.text = "TIME OUT: TIE!";
+                if (loserIndex == 1)
+                {
+                    winnerText.text = "PLAYER 2 WINS!";
+                }
+                if (loserIndex == 2)
+                {
+                    winnerText.text = "PLAYER 1 WINS!";
+                }
+                if (loserIndex == 0)
+                {
+                    winnerText.text = "TIME OUT: TIE!";
+                }
             }
             gameOver = true;
 

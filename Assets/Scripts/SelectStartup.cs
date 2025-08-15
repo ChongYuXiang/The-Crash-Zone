@@ -8,7 +8,9 @@ public class SelectStartup : MonoBehaviour
 {
     public TextMeshProUGUI gameModeTitle;
     public GameObject player2UI;
+    public GameObject enemyUI;
     public GameObject player2Car;
+    public GameObject enemyCar;
     public GameObject arenaMenu;
     public GameObject trackMenu;
     public JumpToUIElement nextButton;
@@ -28,6 +30,8 @@ public class SelectStartup : MonoBehaviour
                 gameModeTitle.text = "ARENA SOLO";
                 player2UI.SetActive(false);
                 player2Car.SetActive(false);
+                enemyUI.SetActive(true);
+                enemyCar.SetActive(true);
             }
             arenaMenu.SetActive(true);
             nextButton.elementToSelect = ArenaButton;
