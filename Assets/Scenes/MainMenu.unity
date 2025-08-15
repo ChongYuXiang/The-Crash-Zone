@@ -18824,7 +18824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &303828150
 Transform:
   m_ObjectHideFlags: 0
@@ -139280,23 +139280,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5447458589104459307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8562245831026701969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 130087238728b864086164c1d1540416, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNumber: 2
-  materials:
-  - {fileID: 2100000, guid: 108b3a54214a59e429af94e5edc1ea20, type: 2}
-  targetRenderers:
-  - {fileID: 6249385610883937379}
 --- !u!33 &5463212185313665163
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -145835,7 +145818,6 @@ GameObject:
   - component: {fileID: 931721597111510023}
   - component: {fileID: 6249385610883937379}
   - component: {fileID: 8983705708328544542}
-  - component: {fileID: 5447458589104459307}
   m_Layer: 0
   m_Name: Body
   m_TagString: enemyCollider
