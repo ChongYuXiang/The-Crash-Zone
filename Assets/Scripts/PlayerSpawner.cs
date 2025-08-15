@@ -109,6 +109,10 @@ public class PlayerSpawner : MonoBehaviour
             if (GameManager.instance.gameMode == "Arena")
             {
                 GameObject clone = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
+            }
+            if (GameManager.instance.gameMode == "MAYHEM")
+            {
+                GameObject clone = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
                 GameObject clone1 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
                 GameObject clone2 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
                 GameObject clone3 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
@@ -118,7 +122,6 @@ public class PlayerSpawner : MonoBehaviour
                 GameObject clone7 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
                 GameObject clone8 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
                 GameObject clone9 = (GameObject)Instantiate(CrazyCourser, spawnPoint2.position, spawnPoint2.rotation);
-                
             }
 
         }

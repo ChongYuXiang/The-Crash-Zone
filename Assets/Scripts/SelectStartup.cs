@@ -51,5 +51,18 @@ public class SelectStartup : MonoBehaviour
             trackMenu.SetActive(true);
             nextButton.elementToSelect = RaceButton;
         }
+        if (GameManager.instance.gameMode == "MAYHEM")
+        {
+            if (GameManager.instance.playerCount == "Solo")
+            {
+                gameModeTitle.text = "MAYHEM";
+                player2UI.SetActive(false);
+                player2Car.SetActive(false);
+                enemyUI.SetActive(true);
+                enemyCar.SetActive(true);
+            }
+            arenaMenu.SetActive(true);
+            nextButton.elementToSelect = ArenaButton;
+        }
     }
 }
