@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class HealMessenger : MonoBehaviour
 {
     private HashSet<PlayersCarController> healingTargets = new HashSet<PlayersCarController>();
+    private HashSet<AICarController> AIhealingTargets = new HashSet<AICarController>();
 
     public AudioSource audioSource;
 
@@ -19,6 +20,17 @@ public class HealMessenger : MonoBehaviour
             {
                 player.HealingOverTime(true);
                 healingTargets.Add(player);
+                StartCoroutine(FadeAudio(audioSource, 1f, AudioManager.instance.SFXSource.volume / 1));
+                return;
+            }
+        }
+        if (other.CompareTag("enemyCollider"))
+        {
+            AICarController enemy = other.GetComponentInParent<AICarController>();
+            if (enemy != null)
+            {
+                enemy.HealingOverTime(true);
+                AIhealingTargets.Add(enemy);
                 StartCoroutine(FadeAudio(audioSource, 1f, AudioManager.instance.SFXSource.volume / 1));
             }
         }
@@ -40,6 +52,20 @@ public class HealMessenger : MonoBehaviour
                 }
             }
         }
+        if (other.CompareTag("enemyCollider"))
+        {
+            AICarController enemy = other.GetComponentInParent<AICarController>();
+            if (enemy != null)
+            {
+                enemy.HealingOverTime(false);
+                AIhealingTargets.Remove(enemy);
+
+                if (AIhealingTargets.Count == 0)
+                {
+                    StartCoroutine(FadeAudio(audioSource, 1f, 0));
+                }
+            }
+        }
     }
 
     private void OnDestroy()
@@ -51,7 +77,16 @@ public class HealMessenger : MonoBehaviour
                 player.HealingOverTime(false);
             }
         }
+
+        foreach (var enemy in AIhealingTargets)
+        {
+            if (enemy != null)
+            {
+                enemy.HealingOverTime(false);
+            }
+        }
         healingTargets.Clear();
+        AIhealingTargets.Clear();
     }
 
     IEnumerator FadeAudio(AudioSource source, float duration, float targetVolume)

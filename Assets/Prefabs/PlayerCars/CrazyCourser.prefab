@@ -576,7 +576,10 @@ MonoBehaviour:
   maxAcceleration: 80
   maxVelocity: 40
   maxSpeed: 100
+  defaultMaxSpeed: 100
   healthbar: {fileID: 1149672356453989730}
+  iceCubeRenderer: {fileID: 3045340692364047073}
+  freezeCanvasGroup: {fileID: 1933105248867359360}
   isFrozen: 0
 --- !u!1 &5031592010651811947
 GameObject:
@@ -1446,6 +1449,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2affe44090f3b8b4a8b80a678c0ead49, type: 3}
+--- !u!23 &3045340692364047073 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3021758522432023724, guid: 2affe44090f3b8b4a8b80a678c0ead49,
+    type: 3}
+  m_PrefabInstance: {fileID: 264666073297018445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4181616327850019214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4153547565285906371, guid: 2affe44090f3b8b4a8b80a678c0ead49,
@@ -1590,6 +1599,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09cfe50f87877be4596e0d2e0373dc8c, type: 3}
+--- !u!225 &1933105248867359360 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 4241320347460867070, guid: 09cfe50f87877be4596e0d2e0373dc8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2310336271545010558}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6602932292444924909 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8911961166243603091, guid: 09cfe50f87877be4596e0d2e0373dc8c,

@@ -2,28 +2,29 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Collections;
 
 public class AICarController : MonoBehaviour
 {
-    [Header("AI Target")]
     public Transform target; // Player car transform
     public float followDistance = 10f; // Distance to maintain from player
     public float turnSensitivity = 1.0f;
 
-    [Header("Car Setup")]
     public int aiNum = 2; // For identifying in game manager
     public List<Wheel> wheels;
     private Rigidbody carRb;
 
-    [Header("Stats")]
     public float health = 100;
     private float maxHealth;
     public float maxAcceleration = 30.0f;
     public float maxVelocity = 30f;
     public float maxSpeed = 100f;
+    [HideInInspector]
+    public float defaultMaxSpeed = 100f;         // Store default max speed for restore
     public Image healthbar;
+    public Renderer iceCubeRenderer;
+    public CanvasGroup freezeCanvasGroup;
 
-    [Header("State")]
     public bool isFrozen = false;
     private bool isSpeedBoostActive = false;
     private bool isInSlowZone = false;
@@ -86,7 +87,6 @@ public class AICarController : MonoBehaviour
         }
     }
 
-    // ---------------- AI Input Logic ----------------
     private void CalculateAIInputs()
     {
         if (target == null) return;
@@ -112,7 +112,6 @@ public class AICarController : MonoBehaviour
         }
     }
 
-    // ---------------- Car Physics ----------------
     private void Move()
     {
         if (isFrozen) return;
@@ -177,7 +176,6 @@ public class AICarController : MonoBehaviour
         }
     }
 
-    // ---------------- Health & Damage ----------------
     public void CheckHealth()
     {
         if (health <= 0 && !GameManager.instance.gameOver)
@@ -222,7 +220,6 @@ public class AICarController : MonoBehaviour
         }
     }
 
-    // ---------------- Speed Boost & Slow Zones ----------------
     public void ApplyInstantSpeedBoost(float boostSpeed, float duration = 2f)
     {
         StopCoroutine("SpeedBoostCoroutine");
@@ -256,5 +253,37 @@ public class AICarController : MonoBehaviour
 
         maxAcceleration = savedAcceleration;
         isInSlowZone = false;
+    }
+
+
+    private bool healingStatus = false;
+    public void HealingOverTime(bool isHealing)
+    {
+        healingStatus = isHealing;
+        if (healingStatus)
+        {
+            StartCoroutine(HealPerSecond());
+        }
+        else
+        {
+            StopCoroutine(HealPerSecond());
+        }
+    }
+
+    public IEnumerator HealPerSecond()
+    {
+        while (healingStatus)
+        {
+            if (health > 0)
+            {
+                health += 1;
+            }
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
+            yield return new WaitForSeconds(0.2f);
+            CheckHealth();
+        }
     }
 }
