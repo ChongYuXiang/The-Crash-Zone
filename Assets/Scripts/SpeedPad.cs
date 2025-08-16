@@ -14,7 +14,15 @@ public class SpeedPad : MonoBehaviour
         if (car != null)
         {
             AudioManager.instance.PlaySFX("BoostPad");
-            car.ApplyInstantSpeedBoost(speed, duration); // 60 speed for 1 seconds
+            car.ApplyInstantSpeedBoost(speed, duration);
+            return;
+        }
+        AICarController enemy = other.GetComponentInParent<AICarController>();
+        if (enemy != null)
+        {
+            AudioManager.instance.PlaySFX("BoostPad");
+            enemy.ApplyInstantSpeedBoost(speed, duration);
+            return;
         }
     }
 

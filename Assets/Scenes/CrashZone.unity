@@ -36234,6 +36234,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6796016958421057155, guid: 657955f18d98dec4689d9216dcc82654,
+        type: 3}
+      propertyPath: tickRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6796016958421057155, guid: 657955f18d98dec4689d9216dcc82654,
+        type: 3}
+      propertyPath: damagePerTick
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

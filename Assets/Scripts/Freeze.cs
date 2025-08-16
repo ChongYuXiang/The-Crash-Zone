@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TestFreezeScript : MonoBehaviour
+public class Freeze : MonoBehaviour
 {
     [Header("Freeze Settings")]
     public float stayDurationBeforeFreeze = 3f;
