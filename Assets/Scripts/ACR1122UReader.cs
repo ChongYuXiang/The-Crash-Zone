@@ -27,7 +27,7 @@ public class ACR122UReader : MonoBehaviour
     // Called when the script is first enabled
     private void Start()
     {
-        // Instantiate the Lando card reader
+        // Instantiate the Lando card readern
         cardReader = new Cardreader();
 
         // Subscribe to the CardConnected event
@@ -62,6 +62,13 @@ public class ACR122UReader : MonoBehaviour
         GameObject carToSpawn = null;
         if (currentPlayer == 1) // Spawns for player 1
         {
+            if (cardId == "04-21-43-15-C2-2A-81") // ID for CrashCourser
+            {
+                GameManager.instance.SelectCar(1, "CrashCourser");
+                ScanningScreen.SetActive(false);
+                carToSpawn = CC_Display1;
+                p1Title.text = "CRASH-COURSER";
+            }
             if (cardId == "04-E1-7E-16-C2-2A-81") // ID for WinchWrangler
             {
                 GameManager.instance.SelectCar(1, "WinchWrangler");
@@ -96,6 +103,13 @@ public class ACR122UReader : MonoBehaviour
 
         if (currentPlayer == 2) // Spawns for player 2
         {
+            if (cardId == "04-21-43-15-C2-2A-81") // ID for CrashCourser
+            {
+                GameManager.instance.SelectCar(2, "CrashCourser");
+                ScanningScreen.SetActive(false);
+                carToSpawn = CC_Display2;
+                p2Title.text = "CRASH-COURSER";
+            }
             if (cardId == "04-E1-7E-16-C2-2A-81") // ID for WinchWrangler
             {
                 GameManager.instance.SelectCar(2, "WinchWrangler");
