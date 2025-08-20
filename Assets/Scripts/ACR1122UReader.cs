@@ -1,7 +1,8 @@
 using UnityEngine;
 using Lando;
 using System;
-using TMPro; // <-- The namespace from Lando.dll
+using TMPro;
+using System.Collections; // <-- The namespace from Lando.dll
 
 public class ACR122UReader : MonoBehaviour
 {
@@ -52,6 +53,7 @@ public class ACR122UReader : MonoBehaviour
         }
     }
 
+   
     // This method is called every time a card is detected
     private void OnCardConnected(object sender, CardreaderEventArgs e)
     {
@@ -164,4 +166,104 @@ public class ACR122UReader : MonoBehaviour
         cardReader.CardConnected -= OnCardConnected;
         cardReader.CardDisconnected -= OnCardDisconnected;
     }
+
+
+    public void SwitchButton(int playerNum)// For modded version without need for NFC
+    {
+        StartCoroutine(SwitchCar(playerNum));
+    }
+
+    IEnumerator SwitchCar(int playerNum)
+    {
+        GameObject carToSpawn = null;
+        if (playerNum == 1)
+        {
+            if (GameManager.instance.p1Car == "CrashCourser")
+            {
+                yield return new WaitForEndOfFrame();
+                GameManager.instance.SelectCar(1, "WinchWrangler");
+                GameManager.instance.SelectWrap(1, 0);
+                carToSpawn = WW_Display1;
+                p1Title.text = "WINCH-WRANGLER";
+            }
+            else if (GameManager.instance.p1Car == "WinchWrangler")
+            {
+                yield return new WaitForEndOfFrame();
+                GameManager.instance.SelectCar(1, "SirenSaviour");
+                GameManager.instance.SelectWrap(1, 0);
+                carToSpawn = SS_Display1;
+                p1Title.text = "SIREN-SAVIOUR";
+            }
+            else if (GameManager.instance.p1Car == "SirenSaviour")
+            {
+                yield return new WaitForEndOfFrame();
+                GameManager.instance.SelectCar(1, "RoaringRacer");
+                GameManager.instance.SelectWrap(1, 0);
+                carToSpawn = RR_Display1;
+                p1Title.text = "ROARING-RACER";
+            }
+            else if (GameManager.instance.p1Car == "RoaringRacer")
+            {
+                yield return new WaitForEndOfFrame();
+                GameManager.instance.SelectCar(1, "MasterMixer");
+                GameManager.instance.SelectWrap(1, 0);
+                carToSpawn = MM_Display1;
+                p1Title.text = "MASTER-MIXER";
+            }
+            else if (GameManager.instance.p1Car == "MasterMixer")
+            {
+                yield return new WaitForEndOfFrame();
+                GameManager.instance.SelectCar(1, "CrashCourser");
+                GameManager.instance.SelectWrap(1, 0);
+                carToSpawn = CC_Display1;
+                p1Title.text = "CRASH-COURSER";
+            }
+            Instantiate(carToSpawn, DisplayPos1, worldPositionStays: false); // Spawn the display car
+        }
+        if (playerNum == 2)
+        {
+            if (GameManager.instance.p2Car == "CrashCourser")
+            {
+                yield return new WaitForEndOfFrame();
+                GameManager.instance.SelectCar(2, "WinchWrangler");
+                GameManager.instance.SelectWrap(2, 0);
+                carToSpawn = WW_Display2;
+                p2Title.text = "WINCH-WRANGLER";
+            }
+            else if (GameManager.instance.p2Car == "WinchWrangler")
+            {
+                yield return new WaitForEndOfFrame();
+                GameManager.instance.SelectCar(2, "SirenSaviour");
+                GameManager.instance.SelectWrap(2, 0);
+                carToSpawn = SS_Display2;
+                p2Title.text = "SIREN-SAVIOUR";
+            }
+            else if (GameManager.instance.p2Car == "SirenSaviour")
+            {
+                yield return new WaitForEndOfFrame();
+                GameManager.instance.SelectCar(2, "RoaringRacer");
+                GameManager.instance.SelectWrap(2, 0);
+                carToSpawn = RR_Display2;
+                p2Title.text = "ROARING-RACER";
+            }
+            else if (GameManager.instance.p2Car == "RoaringRacer")
+            {
+                yield return new WaitForEndOfFrame();
+                GameManager.instance.SelectCar(2, "MasterMixer");
+                GameManager.instance.SelectWrap(2, 0);
+                carToSpawn = MM_Display2;
+                p2Title.text = "MASTER-MIXER";
+            }
+            else if (GameManager.instance.p2Car == "MasterMixer")
+            {
+                yield return new WaitForEndOfFrame();
+                GameManager.instance.SelectCar(2, "CrashCourser");
+                GameManager.instance.SelectWrap(2, 0);
+                carToSpawn = CC_Display2;
+                p2Title.text = "CRASH-COURSER";
+            }
+            Instantiate(carToSpawn, DisplayPos2, worldPositionStays: false); // Spawn the display car
+        }
+    }
+
 }

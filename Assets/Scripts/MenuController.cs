@@ -23,7 +23,7 @@ public class MenuController : MonoBehaviour
         {
             AudioManager.instance.PlayBGM("MainMenu");
         }
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 8)
         {
             AudioManager.instance.PlayBGM("SelectScreen");
         }
@@ -79,7 +79,7 @@ public class MenuController : MonoBehaviour
     {
         playertype = type;
         GameManager.instance.SelectGameMode(gamemode, playertype);
-        SceneController.instance.LoadScene(1);
+        SceneController.instance.LoadScene(8);
     }
     public void ArenaSelect(string map)
     {
